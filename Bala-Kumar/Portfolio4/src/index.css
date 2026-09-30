@@ -1,0 +1,449 @@
+@import "tailwindcss";
+
+/* Amber-500 fails contrast on dark tints (~3.0:1); gold-300 is the on-dark
+   signal tone at ~7.6:1 on #0A0B11. Used for badges, ratings and warnings. */
+@theme {
+  --color-gold-300: #FBD38D;
+  /* Semantic tone utilities (text-tone-rose etc.) resolve against the
+     theme-scoped raw tokens above, so one class works in both themes. */
+  --color-tone-rose: var(--tone-rose);
+  --color-tone-cyan: var(--tone-cyan);
+  --color-tone-emerald: var(--tone-emerald);
+  --color-tone-purple: var(--tone-purple);
+  --color-tone-amber: var(--tone-amber);
+}
+
+/* Fonts are loaded in index.html <head> via preconnect + stylesheet link,
+   which removes the CSS→font-CSS→font render-blocking chain the old
+   @import created. See docs/COMPETITION-SCORING-PLAN.md (F1). */
+
+:root {
+  --bg-primary: #08090D;
+  --bg-surface: #11131A;
+  --bg-surface-secondary: #181B24;
+  --text-primary: #F5F7FA;
+  --text-muted: #A7AFBF;
+  --accent-primary: #C9A45C;
+  --accent-secondary: #EFE3C2;
+  --accent-color: #C9A45C;
+  /* Ink color for text/icons sitting ON accent fills (AA on #C9A45C). */
+  --accent-ink: #17130A;
+  --accent-glow: rgba(201, 164, 92, 0.18);
+  --signal-dim: rgba(201, 164, 92, 0.45);
+  --signal-hot: #EFE3C2;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --color-success: #34D399;
+  --color-warning: #FBBF24;
+  --color-error: #FF007F;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  /* Semantic tone tokens (rose/cyan/emerald/purple/amber). Tailwind's -400
+     shades pass on dark surfaces but fall to ~2:1 on white, so the light
+     theme swaps in darker, hue-faithful shades below. Text-level colors MUST
+     use these tokens, not fixed Tailwind classes. */
+  --tone-rose: #FB7185;
+  --tone-cyan: #22D3EE;
+  --tone-emerald: #34D399;
+  --tone-purple: #C084FC;
+  --tone-amber: #FBBF24;
+  --visual-bg: #0B0C13;
+  --visual-ink: #F5F7FA;
+  --visual-muted: #A7AFBF;
+  --page-halo: rgba(201, 164, 92, 0.14);
+  --surface-glass: rgba(17, 19, 26, 0.78);
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html.light {
+  --bg-primary: #F7F8FC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-secondary: #EEF0F6;
+  --text-primary: #111318;
+  --text-muted: #596273;
+  /* #8A6A2E sits at the AA boundary for normal-size text (~3.4:1 on white);
+     darkened to a 7+:1 ink-gold so badges and mono labels pass on light. */
+  --accent-primary: #6B531F;
+  --accent-secondary: #594418;
+  --accent-color: #6B531F;
+  --accent-ink: #FFFFFF;
+  --accent-glow: rgba(138, 106, 46, 0.14);
+  --signal-dim: rgba(138, 106, 46, 0.4);
+  --signal-hot: #6B5A32;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --border-strong: rgba(17, 19, 24, 0.2);
+  /* Dark-on-white tone shades: all ≥ 6:1 on the light surfaces. */
+  --tone-rose: #BE123C;
+  --tone-cyan: #155E75;
+  --tone-emerald: #065F46;
+  --tone-purple: #6B21A8;
+  --tone-amber: #B45309;
+  --visual-bg: #10131D;
+  --visual-ink: #F5F7FA;
+  --visual-muted: #B5BECE;
+  --page-halo: rgba(138, 106, 46, 0.1);
+  --surface-glass: rgba(255, 255, 255, 0.78);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  background-image: radial-gradient(circle at 76% -10%, var(--page-halo), transparent 31rem), radial-gradient(circle at 8% 38%, var(--accent-glow), transparent 28rem);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html.light body {
+  background-image: radial-gradient(circle at 78% -12%, rgba(138, 106, 46, 0.1), transparent 34rem), radial-gradient(circle at 4% 38%, rgba(107, 90, 50, 0.08), transparent 28rem);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface-secondary);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+html.light .bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+.studio-panel {
+  background: var(--surface-glass);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.08);
+}
+
+.visual-stage {
+  background-color: var(--visual-bg);
+  color: var(--visual-ink);
+  isolation: isolate;
+}
+
+.visual-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, 0.035) 50%, transparent 75%);
+  opacity: 0.8;
+}
+
+.artifact-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--visual-bg);
+}
+
+.artifact-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms cubic-bezier(.2,.8,.2,1), filter 500ms ease;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .artifact-frame:hover img {
+    transform: scale(1.045);
+    filter: saturate(1.12);
+  }
+}
+
+.eyebrow-rule {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+
+.eyebrow-rule::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.float-slow { animation: float-slow 8s ease-in-out infinite; }
+.marquee-track { animation: marquee-slide 20s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.float-delayed { animation: float-slow 9s ease-in-out -4s infinite; }
+
+.loader-cube {
+  transform-style: preserve-3d;
+  animation: loader-spin 1.5s cubic-bezier(0.6, 0.05, 0.3, 0.95) infinite;
+}
+
+@keyframes loader-spin {
+  0% { transform: rotateX(-22deg) rotateY(0deg); }
+  100% { transform: rotateX(-22deg) rotateY(360deg); }
+}
+
+html.light .hero-particles { opacity: .32; }
+
+@keyframes float-slow {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
+}
+
+.glow-accent {
+  box-shadow: 0 18px 50px var(--accent-glow);
+}
+
+.border-glow {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.text-glow {
+  text-shadow: 0 8px 40px var(--accent-glow);
+}
+
+/* 3D Perspective Card Container */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+/* ── Transmission motif ──────────────────────────────────────────────── */
+
+/* Dotted carrier lines that flank a small mono label — the section-level
+   echo of the artworks' packet lanes. Pure CSS, no animation cost. */
+.signal-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.signal-rule::before,
+.signal-rule::after {
+  content: '';
+  height: 3px;
+  flex: 1 1 0;
+  border-radius: 999px;
+  background-image: repeating-linear-gradient(to right, var(--signal-dim) 0 12px, transparent 12px 22px);
+  background-size: 22px 3px;
+}
+
+.signal-rule::after {
+  background-image: repeating-linear-gradient(to right, var(--signal-hot) 0 12px, transparent 12px 22px);
+}
+
+/* Sweeping carrier beams for hero-adjacent panels. GPU-friendly
+   (transform/opacity only) and fully disabled under reduced motion. */
+.carrier-wave {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.carrier-wave span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--accent-color), var(--accent-secondary), transparent);
+  opacity: 0;
+  animation: carrier-run 5.5s linear infinite;
+  will-change: transform, opacity;
+}
+
+.carrier-wave span:nth-child(2) { animation-delay: 1.9s; animation-duration: 6.8s; }
+.carrier-wave span:nth-child(3) { animation-delay: 3.8s; animation-duration: 7.9s; }
+
+@keyframes carrier-run {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  14%  { opacity: 0.45; }
+  50%  { opacity: 0.8; }
+  86%  { opacity: 0.45; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+/* Standing wave that idles under reduced motion instead of disappearing. */
+@media (prefers-reduced-motion: reduce) {
+  .carrier-wave span {
+    animation: none;
+    top: 30%;
+    opacity: 0.25;
+  }
+  .carrier-wave span:nth-child(2) { top: 55%; opacity: 0.16; }
+  .carrier-wave span:nth-child(3) { top: 78%; opacity: 0.1; }
+}
+
+/* Dashed "connection pending" chip that replaces raw [ADD LINK] strings.
+   Keeps the honest placeholder language but styles it as part of the system. */
+.terminal-pending {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: 0.5rem;
+  background: var(--bg-surface-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.terminal-pending::before {
+  content: '$';
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.terminal-pending .pending-caret {
+  width: 0.5em;
+  height: 1em;
+  background: var(--accent-secondary);
+  animation: pending-blink 1.1s steps(2, start) infinite;
+}
+
+@keyframes pending-blink {
+  to { visibility: hidden; }
+}
+
+/* ————— Premium layer ————— */
+
+.font-serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(105deg, #F5E7C1 0%, #D9BC7A 45%, #9A7A35 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+html.light .text-gold-gradient {
+  background: linear-gradient(105deg, #8A6A2E 0%, #6B5322 60%, #4E3C17 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.gold-hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+}
+
+/* Cinematic film grain — one fixed layer, GPU-cheap steps animation. */
+.grain {
+  position: fixed;
+  inset: -100%;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  animation: grain-shift 9s steps(6) infinite;
+}
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-6%, 4%); }
+  40% { transform: translate(4%, -7%); }
+  60% { transform: translate(-3%, 6%); }
+  80% { transform: translate(6%, -3%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Serif marquee band */
+.marquee { overflow: hidden; white-space: nowrap; }
+.marquee-track {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3.5rem;
+  width: max-content;
+  padding-right: 3.5rem;
+  animation: marquee-slide 30s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee-slide { to { transform: translateX(-50%); } }
+
+/* Custom cursor — native cursor hidden only on fine pointers */
+@media (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor a,
+  body.custom-cursor button,
+  body.custom-cursor [role='button'] {
+    cursor: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain { animation: none; }
+  .marquee-track { animation: none; }
+}
+
+/* Reduced Motion utilities */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
