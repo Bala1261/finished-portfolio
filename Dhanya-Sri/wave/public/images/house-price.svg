@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="houseBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#houseBg)"/>
+  
+  <!-- Dashboard -->
+  <rect x="40" y="40" width="320" height="220" rx="12" fill="white" opacity="0.95"/>
+  
+  <!-- House Icon -->
+  <g transform="translate(200, 80)">
+    <path d="M -40 0 L 0 -40 L 40 0 L 40 40 L -40 40 Z" fill="#10B981" opacity="0.8"/>
+    <rect x="-15" y="10" width="30" height="30" fill="#059669"/>
+    <rect x="-35" y="5" width="15" height="15" fill="#FFF" opacity="0.7"/>
+    <rect x="20" y="5" width="15" height="15" fill="#FFF" opacity="0.7"/>
+  </g>
+  
+  <!-- Price Display -->
+  <rect x="60" y="145" width="280" height="50" rx="8" fill="#F0FDF4"/>
+  <text x="200" y="165" font-family="Arial" font-size="14" fill="#059669" text-anchor="middle" font-weight="bold">Predicted Price</text>
+  <text x="200" y="185" font-family="Arial" font-size="24" fill="#10B981" text-anchor="middle" font-weight="bold">$425,000</text>
+  
+  <!-- Features -->
+  <g transform="translate(70, 210)">
+    <rect width="70" height="30" rx="6" fill="#DCFCE7"/>
+    <text x="10" y="12" font-family="Arial" font-size="10" font-weight="bold" fill="#059669">3 Beds</text>
+    <text x="10" y="23" font-family="Arial" font-size="8" fill="#64748B">Bedrooms</text>
+    
+    <rect x="85" width="70" height="30" rx="6" fill="#DCFCE7"/>
+    <text x="95" y="12" font-family="Arial" font-size="10" font-weight="bold" fill="#059669">2 Bath</text>
+    <text x="95" y="23" font-family="Arial" font-size="8" fill="#64748B">Bathrooms</text>
+    
+    <rect x="170" width="70" height="30" rx="6" fill="#DCFCE7"/>
+    <text x="175" y="12" font-family="Arial" font-size="10" font-weight="bold" fill="#059669">2000 ft²</text>
+    <text x="180" y="23" font-family="Arial" font-size="8" fill="#64748B">Area</text>
+  </g>
+  
+  <!-- ML Icon -->
+  <circle cx="340" cy="60" r="15" fill="#10B981" opacity="0.2"/>
+  <text x="340" y="65" font-family="Arial" font-size="14" font-weight="bold" fill="#059669" text-anchor="middle">ML</text>
+</svg>

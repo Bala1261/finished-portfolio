@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="netflixBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E50914;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B20710;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#netflixBg)"/>
+  
+  <!-- Netflix Logo Background -->
+  <rect x="80" y="40" width="240" height="220" rx="12" fill="#141414" opacity="0.9"/>
+  
+  <!-- Play Button -->
+  <circle cx="200" cy="120" r="40" fill="white" opacity="0.95"/>
+  <path d="M 185 105 L 185 135 L 215 120 Z" fill="#E50914"/>
+  
+  <!-- Movie Thumbnails -->
+  <g opacity="0.7">
+    <rect x="100" y="180" width="50" height="70" rx="4" fill="#333"/>
+    <rect x="160" y="180" width="50" height="70" rx="4" fill="#444"/>
+    <rect x="220" y="180" width="50" height="70" rx="4" fill="#333"/>
+    <rect x="280" y="180" width="50" height="70" rx="4" fill="#444"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="200" y="35" font-family="Arial" font-size="24" font-weight="bold" fill="white" text-anchor="middle">NETFLIX</text>
+  
+  <!-- Subtitle -->
+  <text x="200" y="175" font-family="Arial" font-size="14" fill="white" text-anchor="middle" opacity="0.9">Watch Anywhere</text>
+</svg>

@@ -1,0 +1,53 @@
+# VISHAL K - RESUME
+
+## CONTACT INFORMATION
+- Email: vishal250820@gmail.com
+- Phone: +91 6381180488
+- Location: Cuddalore, Tamil Nadu
+- GitHub: https://github.com/Vishal-25-cyber
+- LinkedIn: https://www.linkedin.com/feed/
+
+## EDUCATION
+**Bachelor of Engineering in Computer Science**
+Kongu Engineering College (2023 - 2027)
+Current CGPA: 7.50
+
+## TECHNICAL SKILLS
+**Programming Languages:** C, Python, Java
+**Web Technologies:** HTML5, CSS3, JavaScript, React.js
+**Backend:** Node.js, Express.js
+**Database:** MongoDB
+**Tools:** Git, GitHub, VS Code
+**Areas of Interest:** Full Stack Development, UI/UX Design
+
+## CERTIFICATIONS
+- MongoDB Certified Associate Developer (May 2025)
+- Java Foundation (Present)
+
+## ACHIEVEMENTS & EVENTS
+- Participated in Hackathon at Sathyabama University
+- Presented Technical Paper at Sona College of Technology
+- Demonstrated Project at CIT
+
+## PROJECTS
+### Portfolio Website
+- Built with React and Node.js
+- Features: Responsive design, animations, contact form
+- Technologies: React, Framer Motion, CSS3
+
+### Task Management System
+- Full-stack application with authentication
+- Technologies: React, Express, MongoDB
+
+### Weather Application
+- Real-time weather information using APIs
+- Technologies: React, REST APIs, CSS3
+
+## INTERESTS
+- Gaming
+- Learning new technologies
+- UI/UX Design
+- Problem Solving
+
+---
+This is a temporary resume file. Please replace with your actual PDF resume.

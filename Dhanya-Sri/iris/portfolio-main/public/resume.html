@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishal K - Resume</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #6c63ff;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .header .title {
+            font-size: 16px;
+            color: #6c63ff;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #6c63ff;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .section-content {
+            padding-left: 10px;
+        }
+
+        .item {
+            margin-bottom: 15px;
+        }
+
+        .item h3 {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 3px;
+        }
+
+        .item .meta {
+            font-size: 14px;
+            color: #6c63ff;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .item .description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .skill-category h4 {
+            font-size: 14px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skill-category li {
+            font-size: 13px;
+            color: #555;
+            padding: 2px 0;
+        }
+
+        .skill-category li:before {
+            content: "▹ ";
+            color: #6c63ff;
+            font-weight: bold;
+        }
+
+        .projects .item {
+            page-break-inside: avoid;
+        }
+
+        ul.bullet-list {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        ul.bullet-list li {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 3px;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .no-print {
+                display: none;
+            }
+        }
+
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #6c63ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .print-button:hover {
+            background: #5a52d5;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button no-print" onclick="window.print()">Save as PDF / Print</button>
+
+    <div class="header">
+        <h1>VISHAL K</h1>
+        <div class="title">Full Stack Developer | UI/UX Enthusiast</div>
+        <div class="contact-info">
+            <span>📧 vishal250820@gmail.com</span>
+            <span>📱 +91 6381180488</span>
+            <span>📍 Cuddalore, Tamil Nadu</span>
+            <span>💻 github.com/Vishal-25-cyber</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Education</h2>
+        <div class="section-content">
+            <div class="item">
+                <h3>Bachelor of Engineering in Computer Science</h3>
+                <div class="meta">Kongu Engineering College | 2023 - 2027</div>
+                <div class="description">CGPA: 7.50 | Currently in 3rd Year</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Technical Skills</h2>
+        <div class="section-content">
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Frontend</h4>
+                    <ul>
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>React.js</li>
+                        <li>UI/UX Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Backend</h4>
+                    <ul>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>C</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Tools & Technologies</h4>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>VS Code</li>
+                        <li>MongoDB</li>
+                        <li>REST APIs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section projects">
+        <h2>Projects</h2>
+        <div class="section-content">
+            <div class="item">
+                <h3>Portfolio Website</h3>
+                <div class="meta">React, Node.js, Express | 2025</div>
+                <div class="description">
+                    A modern, responsive portfolio website built with React featuring smooth animations, dark theme, and integrated contact form with backend email functionality.
+                </div>
+                <ul class="bullet-list">
+                    <li>Implemented with React hooks and Framer Motion animations</li>
+                    <li>Built RESTful API with Node.js and Express for contact form</li>
+                    <li>Integrated Nodemailer for email notifications</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <h3>Task Management System</h3>
+                <div class="meta">React, JavaScript | 2024</div>
+                <div class="description">
+                    A comprehensive task management application with drag-and-drop functionality, priority levels, and deadline tracking.
+                </div>
+                <ul class="bullet-list">
+                    <li>Designed intuitive UI for task organization</li>
+                    <li>Implemented local storage for data persistence</li>
+                    <li>Added filtering and sorting capabilities</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <h3>Weather Application</h3>
+                <div class="meta">JavaScript, API Integration | 2024</div>
+                <div class="description">
+                    Real-time weather application providing current conditions and forecasts using OpenWeatherMap API.
+                </div>
+                <ul class="bullet-list">
+                    <li>Integrated third-party weather API</li>
+                    <li>Responsive design for all devices</li>
+                    <li>Dynamic UI updates based on weather conditions</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <h3>E-Commerce UI Design</h3>
+                <div class="meta">React, UI/UX Design | 2024</div>
+                <div class="description">
+                    Modern e-commerce interface with product catalog, cart functionality, and checkout flow.
+                </div>
+                <ul class="bullet-list">
+                    <li>Designed user-friendly shopping experience</li>
+                    <li>Implemented cart management and state handling</li>
+                    <li>Created responsive product grid layouts</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Certifications & Courses</h2>
+        <div class="section-content">
+            <div class="item">
+                <h3>MongoDB Certified Associate Developer</h3>
+                <div class="meta">MongoDB University | May 2025</div>
+                <div class="description">
+                    Comprehensive certification covering database design, CRUD operations, aggregation framework, and best practices for MongoDB development.
+                </div>
+            </div>
+
+            <div class="item">
+                <h3>Java Foundation</h3>
+                <div class="meta">Online Course | Present</div>
+                <div class="description">
+                    Currently pursuing advanced Java programming concepts including OOP principles, collections framework, and exception handling.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Technical Events & Participation</h2>
+        <div class="section-content">
+            <div class="item">
+                <h3>Sathyabama University Hackathon</h3>
+                <div class="meta">Participant | 2024</div>
+                <div class="description">
+                    Participated in 24-hour hackathon developing innovative solutions to real-world problems.
+                </div>
+            </div>
+
+            <div class="item">
+                <h3>Sona College Technical Paper Presentation</h3>
+                <div class="meta">Presenter | 2024</div>
+                <div class="description">
+                    Presented technical paper on emerging technologies in web development.
+                </div>
+            </div>
+
+            <div class="item">
+                <h3>CIT College Project Demonstration</h3>
+                <div class="meta">Demonstrator | 2024</div>
+                <div class="description">
+                    Demonstrated software project showcasing full-stack development capabilities.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>About Me</h2>
+        <div class="section-content">
+            <div class="description">
+                Passionate 3rd year Computer Science student with strong interest in Full Stack Development and UI/UX Design. 
+                Committed to creating efficient, user-friendly web applications and constantly learning new technologies. 
+                Active participant in hackathons and technical events, with hands-on experience in modern web development frameworks and tools.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

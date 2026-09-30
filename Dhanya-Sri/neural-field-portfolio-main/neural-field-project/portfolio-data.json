@@ -1,0 +1,36 @@
+{
+  "user": {
+    "name": "Priyadharshan R",
+    "firstName": "Priyadharshan",
+    "lastName": "R",
+    "mark": "Priyadharshan<i>.</i>",
+    "designation": "AI/ML, Flutter and full-stack engineering, from a B.Tech IT bench in India.",
+    "bioLead": "Final-year Information Technology, aiming at a software or AI-ML role where I get to build things end to end.",
+    "resumeUrl": "#resume",
+    "email": "priyadharshanravichandran2@gmail.com",
+    "github": "https://github.com/Priyadharshan-7",
+    "leetcode": "https://leetcode.com/u/Priyadharshan_7/",
+    "linkedin": "https://www.linkedin.com/in/priyadharshan7",
+    "location": "India — open to relocation"
+  },
+  "navItems": [
+    { "id": "home", "label": "Home" },
+    { "id": "portfolio", "label": "Portfolio" },
+    { "id": "contact", "label": "Contact" },
+    { "id": "hireme", "label": "Hire Me" },
+    { "id": "resume", "label": "Resume" }
+  ],
+  "stats": [
+    { "count": 6, "label": "Projects shipped" },
+    { "count": 5, "label": "Languages used" },
+    { "count": 11, "label": "Core subjects" }
+  ],
+  "facts": [
+    { "dt": "Name", "dd": "Priyadharshan R" },
+    { "dt": "Degree", "dd": "B.Tech, Information Technology" },
+    { "dt": "Aiming for", "dd": "Software Engineer / AI-ML Engineer" },
+    { "dt": "Strong in", "dd": "Python, Java, Dart, SQL, JavaScript" },
+    { "dt": "Interests", "dd": "AI & ML, mobile apps, full-stack, cybersecurity, databases, UI/UX" },
+    { "dt": "Location", "dd": "India — open to relocation" }
+  ]
+}

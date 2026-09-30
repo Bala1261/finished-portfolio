@@ -1,0 +1,19 @@
+{
+  "user": {
+    "name": "Vishal K",
+    "designation": "Full Stack Developer & UI/UX Designer",
+    "email": "vishal250820@gmail.com",
+    "phone": "+91 6381180488",
+    "location": "Cuddalore, Tamil Nadu",
+    "photoUrl": "/images/profile.jpg",
+    "resumeUrl": "/resume.html",
+    "openToHire": true
+  },
+  "navigation": [
+    { "label": "Home", "path": "/" },
+    { "label": "Portfolio", "path": "/portfolio" },
+    { "label": "Contact", "path": "/contact" },
+    { "label": "Hire Me", "path": "/hire-me" },
+    { "label": "Resume", "path": "/resume", "isExternal": true }
+  ]
+}

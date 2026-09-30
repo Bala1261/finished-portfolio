@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Priyadharshan R — Neural Field</title>
+
+<meta name="description" content="Priyadharshan R — B.Tech Information Technology. Machine learning, Flutter and full-stack engineering.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+  /* View management */
+  .view-pane {
+    display: none;
+  }
+
+  .view-pane.active-view {
+    display: block;
+  }
+</style>
+</head>
+
+<body class="hold">
+
+<div id="boot">
+  <div class="boot-in">
+    <div class="boot-num" id="bootnum">0</div>
+
+    <div class="boot-track">
+      <i id="boottrack"></i>
+    </div>
+
+    <p class="boot-msg" id="bootmsg">
+      Building the field
+    </p>
+  </div>
+</div>
+
+<canvas id="gl"></canvas>
+
+<div class="fallback"></div>
+<div class="haze"></div>
+<div id="halo"></div>
+<div class="tip" id="tip"></div>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header class="bar">
+
+  <a class="mark" href="#home" data-target="home">
+    Priyadharshan<i>.</i>
+  </a>
+
+  <nav class="menu">
+
+    <a href="#home"
+       class="nav-link live"
+       data-target="home">
+      Home
+    </a>
+
+    <a href="#portfolio"
+       class="nav-link"
+       data-target="portfolio">
+      Portfolio
+    </a>
+
+    <a href="#contact"
+       class="nav-link"
+       data-target="contact">
+      Contact
+    </a>
+
+    <a href="#hireme"
+       class="nav-link"
+       data-target="hireme">
+      Hire Me
+    </a>
+
+    <a href="#resume"
+       class="nav-link"
+       data-target="resume">
+      Resume
+    </a>
+
+  </nav>
+
+  <button
+    id="burger"
+    aria-label="Open menu"
+    aria-expanded="false">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </button>
+
+</header>
+
+
+<!-- MOBILE DRAWER -->
+
+<nav id="drawer" aria-hidden="true">
+
+  <a href="#home"
+     class="drawer-link"
+     data-target="home">
+    Home
+  </a>
+
+  <a href="#portfolio"
+     class="drawer-link"
+     data-target="portfolio">
+    Portfolio
+  </a>
+
+  <a href="#contact"
+     class="drawer-link"
+     data-target="contact">
+    Contact
+  </a>
+
+  <a href="#hireme"
+     class="drawer-link"
+     data-target="hireme">
+    Hire Me
+  </a>
+
+  <a href="#resume"
+     class="drawer-link"
+     data-target="resume">
+    Resume
+  </a>
+
+</nav>
+
+
+<main>
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section id="home" class="view-pane active-view">
+
+  <div
+    class="hero-in"
+    style="
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    ">
+
+    <h1>
+
+      <span class="row">
+        <span>Priyadharshan</span>
+      </span>
+
+      <span class="row">
+        <span class="grad">R</span>
+      </span>
+
+    </h1>
+
+
+    <p class="hero-sub">
+      I train the model, build the app around it, and ship the whole thing.
+      <b>AI/ML</b>, <b>Flutter</b> and <b>full-stack</b> engineering,
+      from a B.Tech IT bench in India.
+    </p>
+
+
+    <div class="row-cta">
+
+      <button
+        class="btn nav-btn"
+        data-target="portfolio">
+
+        <span>View Portfolio</span>
+
+      </button>
+
+
+      <button
+        class="btn ghost nav-btn"
+        data-target="resume">
+
+        <span>Resume</span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <p class="cue">
+    <i></i>
+    Select a section from the navigation menu
+  </p>
+
+</section>
+
+
+
+<!-- =========================
+     PORTFOLIO
+========================= -->
+
+<section id="portfolio" class="view-pane">
+
+  <div class="wrap">
+
+
+    <div class="head rise">
+
+      <p class="eyebrow">
+        Portfolio
+      </p>
+
+      <h2>
+        Six projects deep,<br>
+        still shipping.
+      </h2>
+
+      <p class="lede">
+        Final-year Information Technology, aiming at a software or AI-ML role
+        where I get to build things end to end.
+      </p>
+
+    </div>
+
+
+    <div class="grid2">
+
+
+      <div class="pane story rise">
+
+        <p>
+          I started with Java and databases, then machine learning pulled me in —
+          the part where messy real data turns into something that actually predicts.
+          <b>Regression, tree ensembles, clustering, LLM fine-tuning with LoRA.</b>
+        </p>
+
+
+        <p>
+          But a model in a notebook helps nobody. So I learned to build the thing
+          around it: <b>Flutter for mobile, Streamlit and React for the web,
+          MySQL underneath.</b> Every project here runs, not just compiles.
+        </p>
+
+
+        <div class="figs">
+
+          <div class="fig">
+            <b class="tick" data-n="6">0</b>
+            <span>Projects shipped</span>
+          </div>
+
+          <div class="fig">
+            <b class="tick" data-n="5">0</b>
+            <span>Languages used</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <dl class="pane facts rise">
+
+        <div class="fact">
+          <dt>Name</dt>
+          <dd>Priyadharshan R</dd>
+        </div>
+
+        <div class="fact">
+          <dt>Degree</dt>
+          <dd>B.Tech, Information Technology</dd>
+        </div>
+
+        <div class="fact">
+          <dt>Aiming for</dt>
+          <dd>Software Engineer / AI-ML Engineer</dd>
+        </div>
+
+      </dl>
+
+    </div>
+
+
+
+    <!-- TOOLKIT -->
+
+    <div style="margin-top: 60px;">
+
+      <div class="head rise">
+
+        <p class="eyebrow">
+          Toolkit
+        </p>
+
+        <h2>
+          What I build with.
+        </h2>
+
+      </div>
+
+      <div
+        class="stacks"
+        id="stacks">
+      </div>
+
+    </div>
+
+
+
+    <!-- SELECTED WORK -->
+
+    <div style="margin-top: 60px;">
+
+      <div class="head rise">
+
+        <p class="eyebrow">
+          Selected work
+        </p>
+
+        <h2>
+          Six things that run.
+        </h2>
+
+      </div>
+
+      <div
+        class="works"
+        id="works">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact" class="view-pane">
+
+  <div class="wrap grid2">
+
+
+    <div
+      class="rise"
+      style="position: relative;">
+
+      <p class="eyebrow">
+        Contact
+      </p>
+
+
+      <p class="huge">
+        Let's build<br>
+        <span class="grad">something.</span>
+      </p>
+
+
+      <p
+        class="lede"
+        style="margin-top:22px">
+
+        Open to internships and graduate software / AI-ML roles.
+        Email reaches me fastest — I reply the same day.
+
+      </p>
+
+
+      <!-- COPY EMAIL BUTTON -->
+
+      <button
+        class="btn"
+        id="copy"
+        style="margin-top:28px">
+
+        <span>Copy my email</span>
+
+      </button>
+
+
+    </div>
+
+
+
+    <!-- CONTACT LINKS -->
+
+    <div class="links rise">
+
+
+      <a
+        class="link"
+        href="mailto:priyadharshanravichandran2@gmail.com">
+
+        Email
+
+        <em>
+          priyadharshanravichandran2@gmail.com
+        </em>
+
+      </a>
+
+
+      <a
+        class="link"
+        href="https://www.linkedin.com/in/priyadharshan7"
+        target="_blank"
+        rel="noopener">
+
+        LinkedIn
+
+        <em>
+          in/priyadharshan7
+        </em>
+
+      </a>
+
+
+      <a
+        class="link"
+        href="https://github.com/Priyadharshan-7"
+        target="_blank"
+        rel="noopener">
+
+        GitHub
+
+        <em>
+          Priyadharshan-7
+        </em>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     HIRE ME
+========================= -->
+
+<section id="hireme" class="view-pane">
+
+  <div class="wrap">
+
+
+    <div class="head rise">
+
+      <p class="eyebrow">
+        Hiring Handoff
+      </p>
+
+      <h2>
+        Hire Priyadharshan R
+      </h2>
+
+      <p class="lede">
+        Initiate contract engagements, full-time positions,
+        or custom development projects.
+      </p>
+
+    </div>
+
+
+    <div
+      class="pane rise"
+      style="
+        text-align: center;
+        padding: 50px;
+      ">
+
+      <p
+        style="
+          color:var(--mist);
+          margin-bottom:20px;
+        ">
+
+        Authenticated talent record & direct engineering workflow.
+
+      </p>
+
+
+      <button
+        class="btn nav-btn"
+        data-target="contact">
+
+        <span>
+          Proceed to Contact
+        </span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     RESUME
+========================= -->
+
+<section id="resume" class="view-pane">
+
+  <div class="wrap">
+
+
+    <div class="head rise">
+
+      <p class="eyebrow">
+        Curriculum Vitae
+      </p>
+
+      <h2>
+        Resume & Background
+      </h2>
+
+      <p class="lede">
+        Detailed education, core subjects,
+        and technical proficiencies structured cleanly.
+      </p>
+
+    </div>
+
+
+
+    <!-- EDUCATION -->
+
+    <div
+      class="pane rise"
+      style="margin-bottom:30px;">
+
+      <h3
+        style="
+          font-family:var(--display);
+          font-size:1.4rem;
+          color:var(--mint);
+          margin-bottom:12px;
+        ">
+
+        Education
+
+      </h3>
+
+
+      <p>
+
+        <b>
+          B.Tech, Information Technology
+        </b>
+
+        — Kongu Engineering College (2023–2027)
+        with hands-on experience building real-world web applications
+        from scratch, including UI design, frontend and backend development,
+        database modeling, and deployment.
+
+      </p>
+
+    </div>
+
+
+
+    <!-- CAREER OBJECTIVE -->
+
+    <div
+      class="pane rise"
+      style="margin-bottom:30px;">
+
+      <h3
+        style="
+          font-family:var(--display);
+          font-size:1.4rem;
+          color:var(--mint);
+          margin-bottom:12px;
+        ">
+
+        Career Objective
+
+      </h3>
+
+
+      <p>
+
+        Seeking an entry-level role in Full-Stack Development
+        to build scalable, high-performance web applications.
+
+      </p>
+
+    </div>
+
+
+
+    <!-- SKILLS -->
+
+    <div class="pane rise">
+
+      <h3
+        style="
+          font-family:var(--display);
+          font-size:1.4rem;
+          color:var(--mint);
+          margin-bottom:16px;
+        ">
+
+        Core Coursework & Skills
+
+      </h3>
+
+
+      <div
+        class="tags rise"
+        id="tags">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <span>
+    Priyadharshan R — Neural Field
+  </span>
+
+  <span>
+    Built with WebGL. No templates, no stock assets.
+  </span>
+
+  <span>
+    2026
+  </span>
+
+</footer>
+
+
+
+<!-- =========================
+     THREE.JS
+========================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+
+
+<!-- =========================
+     VIEW SWITCHER
+========================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const views = document.querySelectorAll(".view-pane");
+
+  const links = document.querySelectorAll(
+    ".nav-link, .drawer-link, .nav-btn, .mark"
+  );
+
+
+  function switchView(targetId) {
+
+    views.forEach(function (view) {
+
+      if (view.id === targetId) {
+
+        view.classList.add("active-view");
+
+      } else {
+
+        view.classList.remove("active-view");
+
+      }
+
+    });
+
+
+    links.forEach(function (link) {
+
+      const target =
+        link.getAttribute("data-target") ||
+        (
+          link.getAttribute("href")
+            ? link.getAttribute("href").substring(1)
+            : null
+        );
+
+
+      if (target === targetId) {
+
+        link.classList.add("live");
+
+      } else {
+
+        link.classList.remove("live");
+
+      }
+
+    });
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+
+
+
+  links.forEach(function (link) {
+
+    link.addEventListener("click", function (e) {
+
+      const target =
+        this.getAttribute("data-target") ||
+        (
+          this.getAttribute("href")
+            ? this.getAttribute("href").substring(1)
+            : null
+        );
+
+
+      if (!target) return;
+
+
+      e.preventDefault();
+
+      switchView(target);
+
+
+      const burger =
+        document.getElementById("burger");
+
+      const drawer =
+        document.getElementById("drawer");
+
+
+      if (burger && drawer) {
+
+        burger.classList.remove("open");
+
+        drawer.classList.remove("open");
+
+        document.body.classList.remove("hold");
+
+        drawer.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+        burger.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      }
+
+    });
+
+  });
+
+
+
+  /* =====================================
+     COPY EMAIL
+  ===================================== */
+
+  const copyBtn =
+    document.getElementById("copy");
+
+  const toast =
+    document.getElementById("toast");
+
+  const email =
+    "priyadharshanravichandran2@gmail.com";
+
+
+  if (copyBtn) {
+
+    const buttonText =
+      copyBtn.querySelector("span");
+
+
+    function setButtonText(text) {
+
+      if (buttonText) {
+
+        buttonText.textContent = text;
+
+      } else {
+
+        copyBtn.textContent = text;
+
+      }
+
+    }
+
+
+    function showSuccess() {
+
+      setButtonText("Email copied");
+
+
+      if (toast) {
+
+        toast.textContent = "Email copied";
+
+        toast.classList.add("up");
+
+      }
+
+
+      setTimeout(function () {
+
+        setButtonText("Copy my email");
+
+
+        if (toast) {
+
+          toast.classList.remove("up");
+
+        }
+
+      }, 2000);
+
+    }
+
+
+    function showFailure() {
+
+      setButtonText("Copy failed");
+
+
+      if (toast) {
+
+        toast.textContent = "Copy failed";
+
+        toast.classList.add("up");
+
+      }
+
+
+      setTimeout(function () {
+
+        setButtonText("Copy my email");
+
+
+        if (toast) {
+
+          toast.classList.remove("up");
+
+        }
+
+      }, 2000);
+
+    }
+
+
+    function fallbackCopy() {
+
+      const textarea =
+        document.createElement("textarea");
+
+
+      textarea.value = email;
+
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      textarea.style.top = "0";
+      textarea.setAttribute("readonly", "");
+
+
+      document.body.appendChild(textarea);
+
+
+      textarea.focus();
+      textarea.select();
+      textarea.setSelectionRange(
+        0,
+        textarea.value.length
+      );
+
+
+      let success = false;
+
+
+      try {
+
+        success =
+          document.execCommand("copy");
+
+      } catch (error) {
+
+        console.error(
+          "Fallback copy failed:",
+          error
+        );
+
+        success = false;
+
+      }
+
+
+      document.body.removeChild(textarea);
+
+
+      if (success) {
+
+        showSuccess();
+
+      } else {
+
+        showFailure();
+
+      }
+
+    }
+
+
+    copyBtn.addEventListener(
+      "click",
+      async function () {
+
+        /*
+          First try the modern Clipboard API.
+        */
+
+        if (
+          navigator.clipboard &&
+          window.isSecureContext
+        ) {
+
+          try {
+
+            await navigator.clipboard.writeText(
+              email
+            );
+
+            showSuccess();
+
+            return;
+
+          } catch (error) {
+
+            console.warn(
+              "Clipboard API failed. Trying fallback.",
+              error
+            );
+
+          }
+
+        }
+
+
+        /*
+          Fallback for older browsers
+          and non-secure/local environments.
+        */
+
+        fallbackCopy();
+
+      }
+    );
+
+  }
+
+});
+
+</script>
+
+
+
+<!-- =========================
+     SITE LOGIC
+========================= -->
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
