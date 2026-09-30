@@ -1,0 +1,1 @@
+(() => { const form=document.querySelector('#contactForm, form'); const status=document.getElementById('formStatus'); if(!form||!status)return; form.addEventListener('submit', async e=>{e.preventDefault(); status.textContent='Your message form is a sample. Connect it to /api/profile/public/{handle}/contact to enable delivery.'; }); })();
