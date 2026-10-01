@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Contact Ezhil Arasan — Direct inquiries for brand voice architecture, executive ghostwriting, editorial strategy retainers, and keynote speaking." />
+    <title>Contact &amp; Inquiries — Ezhil Arasan</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/contact.css" />
+  </head>
+  <body>
+    <!-- Topbar Navigation Slot -->
+    <header class="topbar" id="bexo-navbar"></header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="contact-main">
+      <div class="container">
+        <div class="contact-layout-grid">
+          <!-- Left Column: Direct Channels & Status -->
+          <div class="contact-info-panel">
+            <div id="contact-status-badge" class="contact-badge-zone"></div>
+
+            <h1 class="contact-heading">Let's build ideas that move people.</h1>
+            <p class="contact-subheading">
+              Available for brand voice systems, editorial advisory retainers, founder ghostwriting, and keynote speaking engagements worldwide.
+            </p>
+
+            <div class="contact-channels-card">
+              <div class="channel-item">
+                <span class="channel-label">Direct Editorial Email</span>
+                <div id="contact-email-slot"></div>
+              </div>
+
+              <div class="channel-item">
+                <span class="channel-label">Telephone / WhatsApp</span>
+                <div id="contact-phone-slot"></div>
+              </div>
+
+              <div class="channel-item">
+                <span class="channel-label">Location Base</span>
+                <div id="contact-location-slot"></div>
+              </div>
+
+              <div id="contact-socials-slot"></div>
+            </div>
+          </div>
+
+          <!-- Right Column: Accessible Form Card -->
+          <div class="contact-form-card">
+            <div class="form-header">
+              <h2 class="form-title">Send Project Inquiry</h2>
+              <p class="form-subtitle">Messages are transmitted directly to Ezhil's primary communication channel.</p>
+            </div>
+
+            <form id="bexo-contact-form" novalidate aria-label="Editorial Inquiry Form">
+              <!-- Honeypot Field for Spam Protection (Hidden) -->
+              <div class="honeypot-field" aria-hidden="true">
+                <label for="contact-fax">Leave this field blank</label>
+                <input type="text" id="contact-fax" name="_gotcha" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <!-- Name Field -->
+              <div class="form-group">
+                <label for="contact-name" class="form-label">
+                  Full Name <span class="required-star">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="contact-name" 
+                  name="name" 
+                  class="form-input" 
+                  placeholder="e.g. Priya Sundaram" 
+                  required 
+                  aria-required="true" 
+                />
+              </div>
+
+              <!-- Email Field -->
+              <div class="form-group">
+                <label for="contact-email" class="form-label">
+                  Professional / Work Email <span class="required-star">*</span>
+                </label>
+                <input 
+                  type="email" 
+                  id="contact-email" 
+                  name="email" 
+                  class="form-input" 
+                  placeholder="priya@company.com" 
+                  required 
+                  aria-required="true" 
+                />
+              </div>
+
+              <!-- Phone Field (Optional) -->
+              <div class="form-group">
+                <label for="contact-phone" class="form-label">
+                  Phone / WhatsApp <span class="optional-hint">(Optional)</span>
+                </label>
+                <input 
+                  type="tel" 
+                  id="contact-phone" 
+                  name="phone" 
+                  class="form-input" 
+                  placeholder="+91 98765 43210" 
+                />
+              </div>
+
+              <!-- Message Field -->
+              <div class="form-group">
+                <label for="contact-message" class="form-label">
+                  Project Context or Inquiry <span class="required-star">*</span>
+                </label>
+                <textarea 
+                  id="contact-message" 
+                  name="message" 
+                  class="form-textarea" 
+                  rows="4" 
+                  placeholder="Describe your organization, challenge, timeline, or editorial requirements..." 
+                  required 
+                  aria-required="true"
+                ></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary form-submit-btn" id="contact-submit-btn">
+                <span>Send Direct Inquiry</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+
+              <!-- Live Status Output (Accessible Alert) -->
+              <div id="form-live-status" class="form-status-alert" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Site Footer Slot -->
+    <footer class="site-footer" id="bexo-footer"></footer>
+
+    <!-- Runtime Integration Scripts -->
+    <script type="module">
+      import { initNavigation } from '../js/nav.js';
+      import { initTheme } from '../js/theme.js';
+      import { initContact } from '../js/contact.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        initNavigation('contact');
+        initContact();
+      });
+    </script>
+  </body>
+</html>
