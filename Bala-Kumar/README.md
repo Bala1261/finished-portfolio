@@ -14,3 +14,6 @@ https://r-portfolio-template.vercel.app/
 
 Live Portfolio5
 https://portfolio5-template.onrender.com
+
+Live Portfolio6
+https://paportfolio-template.onrender.com
