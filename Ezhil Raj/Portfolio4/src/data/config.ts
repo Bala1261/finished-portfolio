@@ -1,0 +1,55 @@
+const config = {
+  title: "Alex Carter | Full Stack Developer",
+  description: {
+    long: "Aspiring Software Developer passionate about full-stack development, system design, and AI/ML innovation. Strong proficiency in Java, Python, and JavaScript, with hands-on experience building scalable Web and Android applications.",
+    short:
+      "Discover the portfolio of Alex Carter, a passionate Full Stack Developer specializing in AI, ML, and scalable applications.",
+  },
+  keywords: [
+    "Alex Carter",
+    "Alex",
+    "Carter Alex",
+    "Full Stack Developer",
+    "Frontend Developer",
+    "Backend Developer",
+    "Software Engineer",
+    "Web Development",
+    "Java",
+    "Python",
+    "JavaScript",
+    "TypeScript",
+    "React.js",
+    "Next.js",
+    "Node.js",
+    "SQL",
+    "MongoDB",
+    "PostgreSQL",
+    "Docker",
+    "Git",
+    "System Design",
+    "AI/ML",
+  ],
+  author: "Alex Carter",
+  handle: "alexcarter",
+  headline: "Full Stack Developer | System Designer",
+  careerGoal: "Building high-performance scalable systems and AI-powered applications.",
+  bio: "Aspiring Software Developer passionate about full-stack development, system design, and AI/ML innovation. Strong proficiency in Java, Python, and JavaScript, with hands-on experience building scalable Web and Android applications.",
+  openToHire: true,
+  email: "alexcarter.dev@gmail.com",
+  phone: "+1 555-0199",
+  site: "https://portfolio-4-ivgj.vercel.app",
+
+  get ogImg() {
+    return this.site + "/assets/seo/og-image.png";
+  },
+  resume: "https://drive.google.com/file/d/1hFjr5zUdN9GPsgRVrLEUigB0AVsBzFTP/view?usp=sharing",
+  social: {
+    linkedin: "https://www.linkedin.com/in/alexcarter-dev/",
+    twitter: "",
+    github: "https://github.com/EXHIL6373",
+    instagram: "https://www.instagram.com/alexcarter.dev/",
+    whatsapp: "https://wa.me/15550199?text=Hi%20Alex,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!",
+  },
+  leetcodeUsername: "alexcarter",
+};
+export { config };
