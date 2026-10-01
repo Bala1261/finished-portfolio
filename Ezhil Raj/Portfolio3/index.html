@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Alex Mercer — Creative Director & Multidisciplinary Designer. Shaping iconic visual identities, digital products, and spatial experiences." />
+    <meta name="author" content="Alex Mercer" />
+    <title>Alex Mercer — Creative Director &amp; Designer</title>
+
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="Alex Mercer — Creative Director &amp; Designer" />
+    <meta property="og:description" content="Where visionary aesthetics meet rigorous digital craft." />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="public/assets/favicon.svg" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <!-- Topbar Navigation Slot -->
+    <header class="topbar" id="bexo-navbar"></header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="home-main">
+      <div class="container">
+        <!-- Hero Section -->
+        <section class="home-hero" aria-label="Personal Introduction">
+          <div class="hero-grid">
+            <div class="hero-text-col">
+              <div class="hero-meta-row">
+                <span class="badge badge-accent">Creative Direction &amp; Systems</span>
+                <div id="home-hire-badge" class="status-pill status-open" hidden></div>
+              </div>
+
+              <h1 class="hero-title" data-bind="user.name">Alex Mercer</h1>
+              <p class="hero-designation" data-bind="profile.headline">Creative Director &amp; Designer</p>
+              <p class="hero-bio" data-bind="profile.bio">
+                Shaping iconic visual identities and digital product experiences at the intersection of motion, typography, and interactive technology.
+              </p>
+
+              <!-- Primary & Conditional Actions -->
+              <div class="hero-actions-row">
+                <a href="pages/portfolio.html" class="btn btn-primary btn-lg" id="cta-view-portfolio">
+                  <span>View Selected Portfolio</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <div id="cta-resume-container" class="inline-block" hidden></div>
+                <a href="pages/contact.html" class="btn btn-text">
+                  Direct Inquiries &rarr;
+                </a>
+              </div>
+
+              <!-- Stats Counter Row -->
+              <div id="home-hero-stats" class="hero-stats-row"></div>
+            </div>
+
+            <!-- Portrait Visual Column -->
+            <div class="hero-visual-col">
+              <div class="hero-portrait-frame">
+                <img 
+                  id="home-portrait" 
+                  src="public/assets/portrait.png" 
+                  alt="Alex Mercer — Creative Director Portrait" 
+                  class="hero-portrait-img" 
+                  loading="eager" 
+                />
+                <div class="hero-portrait-badge">
+                  <div>
+                    <div class="portrait-caption-name" data-bind="user.name">Alex Mercer</div>
+                    <div class="portrait-caption-role" data-bind="profile.tagline">Art Director &amp; Designer</div>
+                  </div>
+                  <span class="badge-mini">NYC / Global</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Project Teaser Slot -->
+        <section id="home-featured-project" class="featured-section" aria-label="Featured Project" hidden></section>
+
+        <!-- Creative Services Overview -->
+        <section class="services-section" aria-label="Creative Capabilities">
+          <div class="section-head">
+            <div>
+              <span class="badge badge-accent">Core Disciplines</span>
+              <h2 class="section-title">Design &amp; Creative Capabilities</h2>
+            </div>
+            <a href="pages/portfolio.html" class="btn btn-outline btn-sm">Explore All &rarr;</a>
+          </div>
+          <div id="home-services-slot" class="services-grid"></div>
+        </section>
+
+        <!-- Awards & Recognition Ticker -->
+        <section class="ticker-section" aria-label="Distinctions & Recognition">
+          <div class="section-head">
+            <div>
+              <span class="badge badge-accent">Honors</span>
+              <h2 class="section-title">Selected Industry Awards</h2>
+            </div>
+          </div>
+          <div id="home-awards-slot" class="ticker-grid"></div>
+          <div id="home-clients-slot" class="clients-grid"></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Site Footer Slot -->
+    <footer class="site-footer" id="bexo-footer"></footer>
+
+    <!-- Runtime Integration Scripts -->
+    <script type="module">
+      import { initNavigation } from './js/nav.js';
+      import { initTheme } from './js/theme.js';
+      import { renderPage } from './js/render.js';
+      import { initMedia } from './js/media.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        initNavigation('home');
+        renderPage('home');
+        initMedia();
+      });
+    </script>
+  </body>
+</html>

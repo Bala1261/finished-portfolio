@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Alex Mercer — Comprehensive Portfolio of Brand Systems, UI/UX Products, Motion, and Creative Technology." />
+    <title>Portfolio &amp; Selected Works — Alex Mercer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../public/assets/favicon.svg" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/portfolio.css" />
+  </head>
+  <body>
+    <!-- Topbar Navigation Slot -->
+    <header class="topbar" id="bexo-navbar"></header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="portfolio-main">
+      <div class="container">
+        <!-- 1. Identity Hero Block -->
+        <section class="portfolio-hero-card" aria-label="Professional Profile Summary">
+          <div class="portfolio-portrait-col">
+            <img 
+              id="portfolio-portrait" 
+              src="../public/assets/portrait.png" 
+              alt="Alex Mercer" 
+              class="portfolio-portrait-img" 
+              loading="eager" 
+            />
+          </div>
+          <div class="portfolio-info-col">
+            <div class="portfolio-badge-row">
+              <span class="badge badge-accent">Selected Archives</span>
+              <div id="portfolio-hire-badge" class="status-pill status-open" hidden></div>
+            </div>
+            <h1 class="portfolio-name" data-bind="user.name">Alex Mercer</h1>
+            <p class="portfolio-headline" data-bind="profile.headline">Creative Director &amp; Designer</p>
+            <p class="portfolio-bio" data-bind="profile.bio">
+              Shaping visual identities and digital product experiences at the intersection of motion, typography, and interactive technology.
+            </p>
+            <div id="portfolio-career-goal" class="portfolio-career-goal" hidden></div>
+          </div>
+        </section>
+
+        <!-- 2. Skills Section -->
+        <section id="section-skills" class="portfolio-section" aria-label="Skills and Toolkit" hidden>
+          <div class="portfolio-section-head">
+            <h2 class="portfolio-section-title">Core Skills &amp; Creative Toolkit</h2>
+          </div>
+          <div id="portfolio-skills-grid" class="skills-grid"></div>
+        </section>
+
+        <!-- 3. Experience Section -->
+        <section id="section-experience" class="portfolio-section" aria-label="Professional Experience" hidden>
+          <div class="portfolio-section-head">
+            <h2 class="portfolio-section-title">Career Experience</h2>
+          </div>
+          <div id="portfolio-experience-timeline" class="timeline-list"></div>
+        </section>
+
+        <!-- 4. Education Section -->
+        <section id="section-education" class="portfolio-section" aria-label="Academic Education" hidden>
+          <div class="portfolio-section-head">
+            <h2 class="portfolio-section-title">Education &amp; Training</h2>
+          </div>
+          <div id="portfolio-education-grid" class="education-grid"></div>
+        </section>
+
+        <!-- 5. Selected Work / Projects Section -->
+        <section id="section-work" class="portfolio-section" aria-label="Selected Projects" hidden>
+          <div class="portfolio-section-head">
+            <h2 class="portfolio-section-title">Selected Work &amp; Case Studies</h2>
+            <span class="badge badge-accent">Interactive Lightbox Available</span>
+          </div>
+          <div id="portfolio-work-grid" class="projects-grid"></div>
+        </section>
+
+        <!-- 6. Certificates Section -->
+        <section id="section-certificates" class="portfolio-section" aria-label="Certifications" hidden>
+          <div class="portfolio-section-head">
+            <h2 class="portfolio-section-title">Licenses &amp; Certifications</h2>
+          </div>
+          <div id="portfolio-certificates-grid" class="certificates-grid"></div>
+        </section>
+
+        <!-- 7. Achievements Section -->
+        <section id="section-achievements" class="portfolio-section" aria-label="Honors and Awards" hidden>
+          <div class="portfolio-section-head">
+            <h2 class="portfolio-section-title">Honors &amp; Achievements</h2>
+          </div>
+          <div id="portfolio-achievements-grid" class="achievements-grid"></div>
+        </section>
+
+        <!-- 8. Research Section -->
+        <section id="section-research" class="portfolio-section" aria-label="Published Research and Papers" hidden>
+          <div class="portfolio-section-head">
+            <h2 class="portfolio-section-title">Research &amp; Publications</h2>
+          </div>
+          <div id="portfolio-research-grid" class="research-grid"></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Site Footer Slot -->
+    <footer class="site-footer" id="bexo-footer"></footer>
+
+    <!-- Runtime Integration Scripts -->
+    <script type="module">
+      import { initNavigation } from '../js/nav.js';
+      import { initTheme } from '../js/theme.js';
+      import { renderPage } from '../js/render.js';
+      import { initMedia } from '../js/media.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        initNavigation('portfolio');
+        renderPage('portfolio');
+        initMedia();
+      });
+    </script>
+  </body>
+</html>

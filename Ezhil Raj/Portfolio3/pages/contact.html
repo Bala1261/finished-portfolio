@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Contact Alex Mercer — Direct communications for brand consultations, creative direction, and digital product collaborations." />
+    <title>Contact &amp; Inquiries — Alex Mercer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../public/assets/favicon.svg" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/contact.css" />
+  </head>
+  <body>
+    <!-- Topbar Navigation Slot -->
+    <header class="topbar" id="bexo-navbar"></header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="contact-main">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Left: Information Panel -->
+          <div class="contact-info-panel">
+            <div>
+              <div class="contact-eyebrow">
+                <span class="badge badge-accent">Direct Transmission</span>
+              </div>
+              <h1 class="contact-title">Let’s Create Something Iconic.</h1>
+              <p class="contact-lead">
+                Open to select creative direction retainers, brand design systems, and high-impact digital ventures. Reach out directly or send a message below.
+              </p>
+            </div>
+
+            <!-- Truthful Open to Work Status Badge -->
+            <div id="contact-status-badge"></div>
+
+            <!-- Details Box -->
+            <div class="contact-details-box">
+              <div id="contact-email-slot"></div>
+              <div id="contact-phone-slot"></div>
+              <div id="contact-location-slot"></div>
+            </div>
+
+            <!-- Social Links -->
+            <div>
+              <div class="footer-col-heading">Social Portals</div>
+              <div id="contact-socials-slot" class="contact-socials-row"></div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Contact Form -->
+          <div class="contact-form-panel">
+            <h2>Send a Direct Message</h2>
+            <p>Fill out the project scope or inquiry details. I respond within 24-48 business hours.</p>
+
+            <form id="bexo-contact-form" novalidate>
+              <!-- Hidden Honeypot Field -->
+              <div class="form-hp" aria-hidden="true">
+                <label for="bexo_website_hp">Leave this field blank</label>
+                <input type="text" id="bexo_website_hp" name="bexo_website_hp" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <!-- Full Name (Required) -->
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Full Name *</label>
+                <input 
+                  type="text" 
+                  id="contact-name" 
+                  name="name" 
+                  class="form-input" 
+                  placeholder="e.g. Jordan Rivera" 
+                  required 
+                  autocomplete="name" 
+                />
+              </div>
+
+              <!-- Email Address (Required) -->
+              <div class="form-group">
+                <label for="contact-email" class="form-label">Email Address *</label>
+                <input 
+                  type="email" 
+                  id="contact-email" 
+                  name="email" 
+                  class="form-input" 
+                  placeholder="e.g. jordan@studio.com" 
+                  required 
+                  autocomplete="email" 
+                />
+              </div>
+
+              <!-- Phone Number (Optional) -->
+              <div class="form-group">
+                <label for="contact-phone" class="form-label">Phone Number (Optional)</label>
+                <input 
+                  type="tel" 
+                  id="contact-phone" 
+                  name="phone" 
+                  class="form-input" 
+                  placeholder="e.g. +1 (555) 019-2834" 
+                  autocomplete="tel" 
+                />
+              </div>
+
+              <!-- Message (Required) -->
+              <div class="form-group">
+                <label for="contact-message" class="form-label">Project Scope / Message *</label>
+                <textarea 
+                  id="contact-message" 
+                  name="message" 
+                  class="form-textarea" 
+                  placeholder="Tell me about your project, timeline, and goals..." 
+                  required
+                ></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-lg w-full">
+                <span>Send Message</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+
+              <!-- Live Accessible Status Alert -->
+              <div id="contact-form-status" class="form-status-alert" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Site Footer Slot -->
+    <footer class="site-footer" id="bexo-footer"></footer>
+
+    <!-- Runtime Integration Scripts -->
+    <script type="module">
+      import { initNavigation } from '../js/nav.js';
+      import { initTheme } from '../js/theme.js';
+      import { initContact } from '../js/contact.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        initNavigation('contact');
+        initContact();
+      });
+    </script>
+  </body>
+</html>

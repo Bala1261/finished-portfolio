@@ -1,0 +1,748 @@
+/* ==========================================================================
+   BEXO Standard — Design & Creative Portfolio Template
+   Portfolio Page Styles & Case Study Modal
+   ========================================================================== */
+
+.portfolio-main {
+  padding: 40px 0 80px;
+}
+
+/* 1. Identity Hero Block */
+.portfolio-hero-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 4vw, 44px);
+  margin-bottom: 60px;
+  box-shadow: var(--shadow-card);
+  align-items: center;
+}
+
+.portfolio-portrait-col {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 1 / 1.15;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+}
+
+.portfolio-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio-info-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.portfolio-name {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.portfolio-headline {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(20px, 2.8vw, 28px);
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.portfolio-bio {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  max-width: 65ch;
+}
+
+.portfolio-career-goal {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent);
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+/* Sections Shared Structure */
+.portfolio-section {
+  margin-bottom: 70px;
+}
+
+.portfolio-section[hidden] {
+  display: none !important;
+}
+
+.portfolio-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 14px;
+}
+
+.portfolio-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.4vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* 2. Skills Collection */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.skill-category-card {
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.skill-category-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.skill-pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-pill {
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  border: 1px solid transparent;
+  transition: all var(--transition);
+}
+
+.skill-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* 3. Experience Timeline */
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+}
+
+.timeline-card {
+  padding: 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  position: relative;
+  transition: border-color var(--transition);
+}
+
+.timeline-card:hover {
+  border-color: var(--border-accent);
+}
+
+.timeline-header {
+  margin-bottom: 12px;
+}
+
+.timeline-period {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.timeline-role {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.timeline-company {
+  font-size: 14.5px;
+  color: var(--text-muted);
+}
+
+.timeline-desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.timeline-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.timeline-highlights li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.timeline-highlights li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 11px;
+  top: 3px;
+}
+
+/* 4. Education Grid */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.education-card {
+  padding: 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.education-year {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.education-degree {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.education-institution {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.education-honors {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--status-amber);
+  margin-bottom: 8px;
+}
+
+.education-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* 5. Projects Grid (Selected Work) */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+}
+
+.project-media-wrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.05);
+}
+
+.project-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 14, 18, 0.65);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition);
+  padding: 16px;
+}
+
+.project-card:hover .project-media-overlay {
+  opacity: 1;
+}
+
+.project-info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.project-year {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.project-desc {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.stack-tag {
+  font-size: 11.5px;
+  padding: 3px 8px;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+.project-links-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* 6. Certificates Grid */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.cert-card {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.cert-icon {
+  font-size: 22px;
+  color: var(--accent);
+}
+
+.cert-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.cert-issuer {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.cert-id {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.cert-link {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--accent);
+  margin-top: 8px;
+}
+
+/* 7. Achievements Grid */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.ach-card {
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.ach-year {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.ach-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.ach-org {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.ach-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* 8. Research Grid */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.res-card {
+  padding: 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.res-year {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.res-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.res-pub {
+  font-size: 14px;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.res-authors {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+.res-summary {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+/* ==========================================================================
+   Case Study Modal & Lightbox
+   ========================================================================== */
+.bexo-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.bexo-modal-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bexo-modal-card {
+  width: min(840px, 94vw);
+  max-height: 90vh;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(20px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bexo-modal-backdrop.is-open .bexo-modal-card {
+  transform: translateY(0);
+}
+
+.bexo-modal-header {
+  position: sticky;
+  top: 0;
+  background: var(--bg-card);
+  padding: 24px 30px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 10;
+}
+
+.bexo-modal-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.2vw, 32px);
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.bexo-modal-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.bexo-modal-close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.bexo-modal-close:hover {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.bexo-modal-body {
+  padding: 30px;
+}
+
+.bexo-modal-statement {
+  padding: 20px 24px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  border-left: 4px solid var(--accent);
+  margin-bottom: 24px;
+}
+
+.bexo-modal-statement blockquote {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 21px;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.bexo-modal-hero-image {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.bexo-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.bexo-modal-col h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.bexo-modal-col p {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.bexo-modal-metrics {
+  margin-bottom: 28px;
+}
+
+.bexo-modal-metrics h4 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.bexo-modal-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.modal-metric-card {
+  padding: 14px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-metric-val {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.modal-metric-lbl {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.bexo-modal-gallery {
+  margin-bottom: 28px;
+}
+
+.bexo-modal-gallery h4 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.bexo-modal-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.modal-gallery-item {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+
+.modal-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 900px) {
+  .portfolio-hero-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .portfolio-portrait-col {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .bexo-modal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .education-grid, .research-grid {
+    grid-template-columns: 1fr;
+  }
+}

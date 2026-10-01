@@ -1,0 +1,376 @@
+/* ==========================================================================
+   BEXO Standard — Design & Creative Portfolio Template
+   Contact & Hire Me Page Styles
+   ========================================================================== */
+
+.contact-main, .hire-me-main {
+  padding: 50px 0 90px;
+}
+
+/* ==========================================================================
+   Contact Page Layout
+   ========================================================================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(30px, 5vw, 60px);
+  align-items: start;
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.contact-eyebrow {
+  margin-bottom: 12px;
+}
+
+.contact-title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.8vw, 56px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.contact-lead {
+  font-size: 16.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 48ch;
+}
+
+.contact-details-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.contact-info-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color var(--transition);
+}
+
+.contact-info-link:hover {
+  color: var(--accent);
+}
+
+.contact-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.contact-socials-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.social-pill-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all var(--transition);
+}
+
+.social-pill-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--bg-card-hover);
+}
+
+/* Contact Form */
+.contact-form-panel {
+  padding: clamp(28px, 4vw, 44px);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.contact-form-panel h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.contact-form-panel p {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  transition: border-color var(--transition);
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Honeypot field (hidden from screen & users) */
+.form-hp {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Status Alert Box */
+.form-status-alert {
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 20px;
+  display: none;
+}
+
+.form-status-alert:not(:empty) {
+  display: block;
+}
+
+.form-status-alert.pending {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.form-status-alert.success {
+  background: var(--status-green-soft);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: var(--status-green);
+}
+
+.form-status-alert.error {
+  background: var(--status-red-soft);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: var(--status-red);
+}
+
+/* ==========================================================================
+   Hire Me Page Layout
+   ========================================================================== */
+.hire-hero {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 50px;
+}
+
+.hire-badge-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.hire-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.hire-title .highlight {
+  color: var(--accent);
+}
+
+.hire-lead {
+  font-size: clamp(16px, 2.2vw, 20px);
+  color: var(--text-muted);
+}
+
+.hire-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.pillar-card {
+  padding: 32px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar-badge {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.pillar-card h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.pillar-card p {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Platform Handoff Box */
+.hire-handoff-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: clamp(32px, 5vw, 54px);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hire-handoff-main {
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+
+.hire-handoff-main h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.6vw, 36px);
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.hire-handoff-main p {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.hire-primary-action .btn {
+  box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+.hire-fallback-section {
+  padding-top: 32px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.hire-fallback-section h3 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.hire-fallback-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.fallback-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all var(--transition);
+}
+
+.fallback-link-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hire-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hire-fallback-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .fallback-link-btn {
+    justify-content: center;
+  }
+}
