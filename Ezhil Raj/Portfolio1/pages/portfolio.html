@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio of Ezhil Arasan — Case studies in brand voice architecture, editorial thought leadership, UX writing, and published strategic essays." />
+    <title>Portfolio &amp; Case Studies — Ezhil Arasan</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/portfolio.css" />
+  </head>
+  <body>
+    <!-- Topbar Navigation Slot -->
+    <header class="topbar" id="bexo-navbar"></header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="portfolio-main">
+      <div class="container">
+        <!-- 1. Identity & About Section -->
+        <section id="portfolio-identity-section" class="portfolio-section" aria-label="Professional Identity"></section>
+
+        <!-- 2. Skills Collection -->
+        <section id="portfolio-skills-section" class="portfolio-section" aria-label="Skills &amp; Capabilities" hidden></section>
+
+        <!-- 3. Selected Work (Projects) Collection -->
+        <section id="portfolio-projects-section" class="portfolio-section" aria-label="Selected Case Studies" hidden></section>
+
+        <!-- 4. Research & Published Essays Collection -->
+        <section id="portfolio-research-section" class="portfolio-section" aria-label="Published Essays &amp; Insights" hidden></section>
+
+        <!-- 5. Experience Timeline Collection -->
+        <section id="portfolio-experience-section" class="portfolio-section" aria-label="Work Experience &amp; Leadership" hidden></section>
+
+        <!-- 6. Education Collection -->
+        <section id="portfolio-education-section" class="portfolio-section" aria-label="Education &amp; Academic Honors" hidden></section>
+
+        <!-- 7. Certificates Collection -->
+        <section id="portfolio-certificates-section" class="portfolio-section" aria-label="Certificates &amp; Credentials" hidden></section>
+
+        <!-- 8. Achievements Collection -->
+        <section id="portfolio-achievements-section" class="portfolio-section" aria-label="Achievements &amp; Distinctions" hidden></section>
+
+        <!-- 9. Testimonials Collection -->
+        <section id="portfolio-testimonials-section" class="portfolio-section" aria-label="Client Testimonials &amp; Endorsements" hidden></section>
+      </div>
+    </main>
+
+    <!-- Site Footer Slot -->
+    <footer class="site-footer" id="bexo-footer"></footer>
+
+    <!-- Runtime Integration Scripts -->
+    <script type="module">
+      import { initNavigation } from '../js/nav.js';
+      import { initTheme } from '../js/theme.js';
+      import { renderPage } from '../js/render.js';
+      import { initMedia } from '../js/media.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        initNavigation('portfolio');
+        renderPage('portfolio');
+        initMedia();
+      });
+    </script>
+  </body>
+</html>

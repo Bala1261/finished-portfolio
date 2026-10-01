@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Ezhil Arasan — Writer, Content Strategist & Consultant. Helping brands, founders, and thinkers communicate ideas that move people." />
+    <meta name="author" content="Ezhil Arasan" />
+    <title>Ezhil Arasan — Writer, Content Strategist &amp; Consultant</title>
+
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="Ezhil Arasan — Writer, Content Strategist &amp; Consultant" />
+    <meta property="og:description" content="I write, think, and build ideas that matter." />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <!-- Topbar Navigation Slot -->
+    <header class="topbar" id="bexo-navbar"></header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="home-main">
+      <div class="container">
+        <!-- Hero Section -->
+        <section class="home-hero-section" aria-label="Editorial Introduction">
+          <div class="home-hero-grid">
+            <div class="hero-text-col">
+              <div class="hero-status-wrap">
+                <span class="badge badge-accent">Editorial &amp; Strategy</span>
+                <div id="home-hire-badge" class="status-pill status-open" hidden></div>
+              </div>
+
+              <h1 class="hero-title" data-bind="user.name">Ezhil Arasan</h1>
+              <p class="hero-tagline" data-bind="profile.tagline">I write, think, and build ideas that matter.</p>
+
+              <div class="hero-actions-row">
+                <a href="pages/portfolio.html" class="btn btn-primary btn-lg" id="cta-view-portfolio">
+                  <span>View Portfolio</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <div id="cta-resume-container" class="inline-block" hidden></div>
+                <a href="pages/contact.html" class="btn btn-text">
+                  Direct Inquiries &rarr;
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-visual-col">
+              <div class="hero-portrait-frame">
+                <img 
+                  id="home-portrait" 
+                  src="assets/hero-portrait.jpg" 
+                  alt="Ezhil Arasan - Editorial Portrait" 
+                  class="hero-portrait-img" 
+                  loading="eager" 
+                />
+                <div class="hero-portrait-overlay">
+                  <div class="portrait-name" data-bind="user.name">Ezhil Arasan</div>
+                  <div class="portrait-role" data-bind="profile.headline">Writer, Content Strategist &amp; Consultant</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Metrics Strip -->
+          <div class="home-stats-strip" id="home-hero-stats" aria-label="Editorial Impact Metrics"></div>
+
+          <!-- Core Manifesto Conviction -->
+          <div class="home-manifesto-section" id="home-manifesto"></div>
+
+          <!-- Featured Essay Highlight -->
+          <div class="home-featured-wrapper" id="home-featured-essay" hidden></div>
+
+          <!-- Featured Case Study Teaser -->
+          <div class="home-featured-wrapper" id="home-featured-case" hidden></div>
+
+          <!-- Weekly Dispatch Newsletter Box -->
+          <section class="home-newsletter-card" aria-label="Weekly Dispatch Subscription">
+            <span class="eyebrow-tag">Weekly Dispatch</span>
+            <h2 class="newsletter-heading">One Sharp Idea. Every Sunday.</h2>
+            <p class="newsletter-desc">
+              Join 35,000+ founders, strategists, and writers receiving our private weekly brief on communication craft and narrative leverage.
+            </p>
+            <form id="home-newsletter-form" class="newsletter-form" novalidate>
+              <input 
+                type="email" 
+                class="newsletter-input" 
+                placeholder="Enter your email address..." 
+                required 
+                aria-label="Email address for weekly dispatch" 
+              />
+              <button type="submit" class="btn btn-primary">Subscribe &rarr;</button>
+            </form>
+            <div id="newsletter-status-msg" class="newsletter-feedback" role="status" aria-live="polite"></div>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <!-- Site Footer Slot -->
+    <footer class="site-footer" id="bexo-footer"></footer>
+
+    <!-- Runtime Integration Scripts -->
+    <script type="module">
+      import { initNavigation } from './js/nav.js';
+      import { initTheme } from './js/theme.js';
+      import { renderPage } from './js/render.js';
+      import { initMedia } from './js/media.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        initNavigation('home');
+        renderPage('home');
+        initMedia();
+      });
+    </script>
+  </body>
+</html>
