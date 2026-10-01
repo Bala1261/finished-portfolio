@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="David Vance — Senior Business Analyst & Management Consultant Executive Portfolio. Data-driven strategy, commercial due diligence, and financial modeling." />
+    <meta name="author" content="David Vance" />
+    <title>David Vance — Executive Business & Management Portfolio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <!-- Topbar Navigation Slot -->
+    <header class="topbar" id="bexo-navbar"></header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="home-main">
+      <div class="container">
+        <!-- Hero Section -->
+        <section class="home-hero-section" aria-label="Executive Introduction">
+          <div class="home-hero-grid">
+            <div class="hero-text-col">
+              <div class="hero-status-wrap">
+                <span class="badge badge-accent">Strategy &amp; Analytics</span>
+                <div id="home-hire-badge" class="status-pill status-open" hidden></div>
+              </div>
+
+              <h1 class="hero-title" data-bind="user.name">David Vance</h1>
+              <p class="hero-tagline" data-bind="profile.tagline">Business decisions. Backed by insight.</p>
+              
+              <div class="hero-actions-row">
+                <a href="pages/portfolio.html" class="btn btn-primary btn-lg" id="cta-view-portfolio">
+                  View Portfolio →
+                </a>
+                <div id="cta-resume-container" class="inline-block" hidden></div>
+                <a href="pages/contact.html" class="btn btn-text">
+                  Direct Inquiries
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-visual-col">
+              <div class="hero-portrait-frame">
+                <img 
+                  id="home-portrait" 
+                  src="assets/executive_portrait.jpg" 
+                  alt="David Vance - Executive Portrait" 
+                  class="hero-portrait-img" 
+                  loading="eager" 
+                />
+                <div class="hero-portrait-overlay">
+                  <div class="portrait-name" data-bind="user.name">David Vance</div>
+                  <div class="portrait-role" data-bind="profile.headline">Senior Business Analyst &amp; Strategy Consultant</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Metrics Strip -->
+          <div class="home-stats-strip" id="home-hero-stats" aria-label="Key Performance Indicators"></div>
+
+          <!-- Featured Commercial Project Teaser -->
+          <div class="home-featured-wrapper" id="home-featured-project" hidden></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Site Footer Slot -->
+    <footer class="site-footer" id="bexo-footer"></footer>
+
+    <!-- Runtime Integration Scripts -->
+    <script type="module">
+      import { initNavigation } from './js/nav.js';
+      import { initTheme } from './js/theme.js';
+      import { renderPage } from './js/render.js';
+      import { initMedia } from './js/media.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        initNavigation('home');
+        renderPage('home');
+        initMedia();
+      });
+    </script>
+  </body>
+</html>

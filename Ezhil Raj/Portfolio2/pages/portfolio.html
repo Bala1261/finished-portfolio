@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portfolio of David Vance — Case studies in enterprise analytics, commercial due diligence, supply chain efficiency, and corporate strategy." />
+    <title>Portfolio &amp; Case Studies — David Vance</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/portfolio.css" />
+  </head>
+  <body>
+    <!-- Topbar Navigation Slot -->
+    <header class="topbar" id="bexo-navbar"></header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="portfolio-main">
+      <div class="container">
+        <!-- 1. Identity & About Section -->
+        <section id="portfolio-identity-section" class="portfolio-section" aria-label="Professional Identity"></section>
+
+        <!-- 2. Skills Collection -->
+        <section id="portfolio-skills-section" class="portfolio-section" aria-label="Skills &amp; Competencies" hidden></section>
+
+        <!-- 3. Experience Collection -->
+        <section id="portfolio-experience-section" class="portfolio-section" aria-label="Work Experience &amp; Track Record" hidden></section>
+
+        <!-- 4. Education Collection -->
+        <section id="portfolio-education-section" class="portfolio-section" aria-label="Academic Degrees &amp; Honors" hidden></section>
+
+        <!-- 5. Selected Work (Projects) Collection -->
+        <section id="portfolio-projects-section" class="portfolio-section" aria-label="Selected Case Studies" hidden></section>
+
+        <!-- 6. Certificates Collection -->
+        <section id="portfolio-certificates-section" class="portfolio-section" aria-label="Certificates &amp; Credentials" hidden></section>
+
+        <!-- 7. Achievements Collection -->
+        <section id="portfolio-achievements-section" class="portfolio-section" aria-label="Achievements &amp; Distinctions" hidden></section>
+
+        <!-- 8. Research Collection -->
+        <section id="portfolio-research-section" class="portfolio-section" aria-label="Research Papers &amp; Strategic Briefs" hidden></section>
+      </div>
+    </main>
+
+    <!-- Site Footer Slot -->
+    <footer class="site-footer" id="bexo-footer"></footer>
+
+    <!-- Runtime Integration Scripts -->
+    <script type="module">
+      import { initNavigation } from '../js/nav.js';
+      import { initTheme } from '../js/theme.js';
+      import { renderPage } from '../js/render.js';
+      import { initMedia } from '../js/media.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        initNavigation('portfolio');
+        renderPage('portfolio');
+        initMedia();
+      });
+    </script>
+  </body>
+</html>

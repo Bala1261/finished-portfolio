@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="BEXO Executive Business & Management Portfolio Standard" />
+    <title>BEXO Executive Business &amp; Management Portfolio Standard</title>
+    <style>
+      :root { --ink:#0f172a; --muted:#5e6874; --paper:#f8fafc; --panel:#ffffff; --line:#d9dde2; --blue:#145bff; --blue-soft:#eaf1ff; --green:#10b981; --green-soft:#ecfdf5; --amber:#d97706; --amber-soft:#fffbeb; --red:#e11d48; --red-soft:#fff1f2; --shadow:0 18px 50px rgba(15,23,42,.08); }
+      * { box-sizing:border-box; }
+      html { scroll-behavior:smooth; }
+      body { margin:0; color:var(--ink); background:var(--paper); font:16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      a { color:var(--blue); }
+      .topbar { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center; gap:20px; padding:14px 5vw; background:rgba(248,250,252,.94); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
+      .brand { font-weight:800; letter-spacing:.08em; text-transform:uppercase; display:flex; align-items:center; gap:10px; }
+      .version { color:var(--muted); font-size:13px; font-weight:600; }
+      .layout { display:grid; grid-template-columns:260px minmax(0, 920px); gap:44px; width:min(1280px,90vw); margin:0 auto; }
+      aside { position:sticky; top:82px; align-self:start; max-height:calc(100vh - 104px); overflow:auto; padding:28px 0; }
+      aside h2 { margin:0 0 10px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+      aside a { display:block; padding:7px 10px; color:var(--muted); text-decoration:none; border-left:2px solid transparent; border-radius:4px; font-size:14px; }
+      aside a:hover, aside a:focus { color:var(--blue); border-left-color:var(--blue); background:var(--blue-soft); }
+      main { padding:70px 0 100px; }
+      .hero { padding:42px; background:linear-gradient(135deg,#071426,#145bff); color:#fff; border-radius:28px; box-shadow:var(--shadow); }
+      .eyebrow { margin:0 0 10px; color:#b9d1ff; font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+      h1,h2,h3 { line-height:1.12; letter-spacing:-.03em; }
+      h1 { margin:0 0 18px; max-width:700px; font-size:clamp(36px,6vw,68px); color:#ffffff; }
+      h2 { margin:70px 0 18px; font-size:32px; scroll-margin-top:90px; }
+      h3 { margin:28px 0 10px; font-size:22px; scroll-margin-top:90px; }
+      p { max-width:78ch; }
+      .hero p { max-width:64ch; color:#e3edff; font-size:17px; }
+      .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+      .chip { display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:#ffffff1f; color:#fff; font-size:13px; font-weight:600; }
+      .callout { margin:20px 0; padding:18px 20px; border:1px solid var(--line); border-left:5px solid var(--blue); border-radius:12px; background:var(--panel); box-shadow:0 8px 24px rgba(22,31,42,.04); }
+      .callout.must { border-left-color:var(--green); background:var(--green-soft); }
+      .callout.conditional { border-left-color:var(--amber); background:var(--amber-soft); }
+      .callout.forbidden { border-left-color:var(--red); background:var(--red-soft); }
+      .label { display:inline-block; margin-bottom:5px; font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); }
+      .must .label { color:var(--green); }.conditional .label { color:var(--amber); }.forbidden .label { color:var(--red); }
+      .route-grid,.reference-grid,.two-col { display:grid; gap:18px; }
+      .route-grid { grid-template-columns:repeat(4,1fr); }
+      .two-col { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .card { padding:22px; background:var(--panel); border:1px solid var(--line); border-radius:16px; box-shadow:0 8px 24px rgba(22,31,42,.035); }
+      .card h3 { margin-top:0; font-size:19px; }
+      .route { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; color:var(--blue); font-weight:700; }
+      .status { display:inline-block; margin-top:10px; padding:3px 8px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; background:var(--green-soft); color:var(--green); }
+      table { width:100%; border-collapse:collapse; margin:18px 0; background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+      th,td { padding:13px 14px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); }
+      th { background:#eef3fa; font-size:13px; letter-spacing:.04em; }
+      tr:last-child td { border-bottom:0; }
+      code { padding:2px 5px; border-radius:5px; background:#eef0f3; color:#145bff; font:13px ui-monospace,SFMono-Regular,Menlo,monospace; }
+      pre { overflow:auto; padding:20px; border-radius:14px; background:#071426; color:#e9f0f8; font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace; }
+      .checklist { display:grid; gap:10px; padding:0; list-style:none; }
+      .checklist li { padding:11px 14px 11px 38px; background:var(--panel); border:1px solid var(--line); border-radius:10px; position:relative; }
+      .checklist li::before { content:"✓"; position:absolute; left:14px; color:var(--green); font-size:16px; font-weight:900; line-height:1.2; }
+      .metric { display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid var(--line); }.metric:last-child { border-bottom:0; }
+      .metric strong { color:var(--blue); }
+      .footer { margin-top:80px; padding-top:20px; color:var(--muted); border-top:1px solid var(--line); font-size:13px; }
+      @media (max-width:900px) { .layout { display:block; width:min(94vw,720px); }.topbar { padding:12px 3vw; } aside { position:static; max-height:none; padding:16px 0 0; display:flex; gap:8px; overflow:auto; white-space:nowrap; } aside h2 { display:none; } aside a { border:1px solid var(--line); border-radius:999px; padding:5px 10px; background:#fff; } main { padding-top:34px; }.hero { padding:28px; }.route-grid,.two-col { grid-template-columns:1fr; } h2 { margin-top:48px; } table { display:block; overflow-x:auto; white-space:normal; } }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span>BEXO / Executive Templates</span>
+      </div>
+      <div class="version">Business &amp; Management Standard · v1.0</div>
+    </header>
+    <div class="layout">
+      <aside aria-label="Document navigation">
+        <h2>On this page</h2>
+        <a href="#purpose">Purpose</a>
+        <a href="#routes">Routes</a>
+        <a href="#data">Data contract</a>
+        <a href="#pages">Page rules</a>
+        <a href="#visual">Visual rules</a>
+        <a href="#runtime">Renderer</a>
+        <a href="#accessibility">Accessibility</a>
+        <a href="#qa">QA checklist</a>
+        <a href="#map">File map</a>
+      </aside>
+      <main>
+        <section class="hero">
+          <p class="eyebrow">Canonical implementation guide</p>
+          <h1>Executive Business &amp; Management Standard</h1>
+          <p>A detailed visual and technical specification for public portfolios representing BBA/MBA graduates, Management Consultants, Business Analysts, and Corporate Leaders matching the BEXO standard contract.</p>
+          <div class="chips">
+            <span class="chip">Theme: Business &amp; Management</span>
+            <span class="chip">Four public routes</span>
+            <span class="chip">window.__BEXO_PROFILE__</span>
+            <span class="chip">Data-driven rendering</span>
+            <span class="chip">Accessible &amp; Responsive</span>
+          </div>
+        </section>
+
+        <section id="purpose">
+          <h2>1. Product purpose</h2>
+          <p>Every executive business portfolio must answer four high-stakes questions rapidly: who is this professional, what commercial/analytical outcomes prove their mastery, how can an organization contact them, and how can they be retained or hired?</p>
+          <div class="callout must">
+            <span class="label">System rule</span>
+            <strong>The template preserves the public-site contract.</strong> The BEXO platform renderer injects <code>window.__BEXO_PROFILE__</code> dynamically, and the 4 canonical routes handle navigation identically.
+          </div>
+          <div class="callout forbidden">
+            <span class="label">Do not</span>
+            Hard-code user identity into production files, omit required routes, or duplicate platform hiring forms.
+          </div>
+        </section>
+
+        <section id="routes">
+          <h2>2. Required page system</h2>
+          <div class="route-grid">
+            <article class="card">
+              <div class="route">index.html</div>
+              <h3>Home</h3>
+              <p>Name, current designation, portrait, status badge, hero metrics, and "View Portfolio" CTA.</p>
+              <span class="status">Required</span>
+            </article>
+            <article class="card">
+              <div class="route">pages/portfolio.html</div>
+              <h3>Portfolio</h3>
+              <p>Photo, title, bio, mission, skills tabs, experience timeline, education, case studies, and honors.</p>
+              <span class="status">Required</span>
+            </article>
+            <article class="card">
+              <div class="route">pages/contact.html</div>
+              <h3>Contact</h3>
+              <p>Direct mailto:, conditional open-to-work pill, channels, honeypot, and validated form.</p>
+              <span class="status">Required</span>
+            </article>
+            <article class="card">
+              <div class="route">pages/hire-me.html</div>
+              <h3>Hire Me</h3>
+              <p>One primary action that hands off to <code>/hire-me/{handle}</code> with direct fallback links.</p>
+              <span class="status">Required</span>
+            </article>
+          </div>
+          <div class="callout conditional">
+            <span class="label">Navigation order</span>
+            <strong>Home → Portfolio → Contact → Hire Me.</strong> Uniform navigation labels, active route tracking (<code>aria-current="page"</code>), skip link, and responsive mobile drawer.
+          </div>
+        </section>
+
+        <section id="data">
+          <h2>3. Data contract</h2>
+          <p>Production receives normalized profile objects through <code>window.__BEXO_PROFILE__</code>. Local preview is provided by <code>js/profile-data.js</code>, and normalized by <code>js/profile-runtime.js</code>.</p>
+          <pre aria-label="Profile data schema">{
+  "user": {
+    "name": "David Vance",
+    "email": "david.vance.biz@gmail.com",
+    "photoUrl": "assets/executive_portrait.jpg",
+    "resumeUrl": "assets/David_Vance_Executive_Resume.pdf",
+    "openToHire": true,
+    "phone": "+1 (212) 555-0194",
+    "location": "New York, NY • Open to Relocation"
+  },
+  "profile": {
+    "handle": "davidvance",
+    "headline": "Senior Business Analyst &amp; Strategy Consultant",
+    "careerGoal": "Bridging corporate strategy and rigorous, data-driven analytical execution.",
+    "bio": "I combine business thinking, analytical skills and practical execution..."
+  },
+  "projectEntries": [...],
+  "experienceEntries": [...],
+  "educationEntries": [...],
+  "certificateEntries": [...],
+  "achievementEntries": [...],
+  "researchEntries": [...],
+  "skillEntries": [...]
+}</pre>
+          <div class="two-col">
+            <article class="card">
+              <h3>Normalized collections</h3>
+              <p>Consumes <code>projectEntries</code>, <code>experienceEntries</code>, <code>educationEntries</code>, <code>certificateEntries</code>, <code>achievementEntries</code>, <code>researchEntries</code>, and <code>skillEntries</code> as arrays.</p>
+            </article>
+            <article class="card">
+              <h3>Empty collection rule</h3>
+              <p>Renders zero, one, or many items. If an array is empty or undefined, the section automatically hides without blank headings or gaps.</p>
+            </article>
+          </div>
+          <div class="callout conditional">
+            <span class="label">Truthful state rules</span>
+            <code>user.resumeUrl</code> controls the resume CTA button. <code>user.openToHire === true</code> controls the opportunity badge. Neither state is inferred from unrelated fields.
+          </div>
+        </section>
+
+        <section id="pages">
+          <h2>4. Page-by-page implementation rules</h2>
+          <h3>Home (<code>index.html</code>)</h3>
+          <div class="card">
+            <div class="metric"><span>Identity</span><strong>Required (Name + Portrait)</strong></div>
+            <div class="metric"><span>Designation</span><strong>headline → bio fallback</strong></div>
+            <div class="metric"><span>Primary Action</span><strong>View Portfolio (links to pages/portfolio.html)</strong></div>
+            <div class="metric"><span>Resume CTA</span><strong>Only visible when resumeUrl exists</strong></div>
+            <div class="metric"><span>Status Badge</span><strong>Only visible when openToHire === true</strong></div>
+          </div>
+
+          <h3>Portfolio (<code>pages/portfolio.html</code>)</h3>
+          <p>Order: About / Identity → Skills → Experience → Education → Selected Work (Case Studies) → Certificates → Achievements → Research.</p>
+          <div class="two-col">
+            <article class="card">
+              <h3>Interactive Case Study Lightbox</h3>
+              <p>Clicking "View Case Study Breakdown" opens an accessible modal with Challenge, Research, Strategy, Solution, Quantified Commercial Outcomes, and Learnings.</p>
+            </article>
+            <article class="card">
+              <h3>Interactive Skills Tabs</h3>
+              <p>Filterable by category: All, Strategy, Analytics, Leadership, Tools with proficiency levels and contextual descriptions.</p>
+            </article>
+          </div>
+
+          <h3>Contact (<code>pages/contact.html</code>)</h3>
+          <div class="callout must">
+            <span class="label">Behavioral rules</span>
+            Direct <code>mailto:</code> link, open-to-hire badge, honeypot spam protection, validation for name, email, message, and phone (when provided), submitting to <code>/api/profile/public/{handle}/contact</code> with <code>aria-live</code> feedback.
+          </div>
+
+          <h3>Hire Me (<code>pages/hire-me.html</code>)</h3>
+          <div class="callout conditional">
+            <span class="label">Platform handoff</span>
+            Single dominant action button resolving to <code>/hire-me/{handle}</code> with fallback direct email and office phone actions. No redundant secondary hiring forms.
+          </div>
+        </section>
+
+        <section id="visual">
+          <h2>5. Visual and interaction standard</h2>
+          <div class="two-col">
+            <article class="card">
+              <h3>Executive Design Language</h3>
+              <p>Deep corporate navy (<code>#071426</code>), electric cobalt (<code>#145BFF</code>), and light slate (<code>#F8FAFC</code>). Crisp typography with Plus Jakarta Sans &amp; Inter.</p>
+            </article>
+            <article class="card">
+              <h3>Responsive Breakpoints</h3>
+              <p>Desktop (1200px), Tablet (900px), Mobile (600px, 375px, 320px). Zero horizontal scroll at 320px width.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="runtime">
+          <h2>6. Renderer integration map</h2>
+          <table>
+            <thead>
+              <tr><th>Concern</th><th>File</th><th>Contract Rule</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Preview Data</td><td><code>js/profile-data.js</code></td><td>Supplies David Vance preview profile matching schema.</td></tr>
+              <tr><td>Normalization</td><td><code>js/profile-runtime.js</code></td><td>Resolves <code>window.__BEXO_PROFILE__</code>, paths, and XSS sanitization.</td></tr>
+              <tr><td>Navigation &amp; Footer</td><td><code>js/nav.js</code></td><td>4 canonical routes, active state, mobile drawer, skip link, conditional resume.</td></tr>
+              <tr><td>Composition</td><td><code>js/render.js</code></td><td>Renders Home, Portfolio, Hire Me; safely hides empty collections.</td></tr>
+              <tr><td>Contact Logic</td><td><code>js/contact.js</code></td><td>Field validation, honeypot, /api submission, live aria feedback.</td></tr>
+              <tr><td>Media &amp; Modals</td><td><code>js/media.js</code></td><td>Case study breakdown dialog, image lightbox, escape listener.</td></tr>
+              <tr><td>Theme System</td><td><code>js/theme.js</code></td><td>Executive light/dark modes with localStorage persistence.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="accessibility">
+          <h2>7. Accessibility and SEO</h2>
+          <ul>
+            <li>Single descriptive <code>&lt;h1&gt;</code> per page with tailored meta descriptions.</li>
+            <li>Accessible navigation with <code>aria-current="page"</code> and keyboard trap on mobile drawer.</li>
+            <li>Skip-to-content link (<code>#main-content</code>) at the start of every document.</li>
+            <li>Informative <code>alt</code> attributes on all portrait and dashboard media.</li>
+            <li>Accessible forms with explicit labels, <code>aria-required</code>, <code>aria-invalid</code>, and <code>aria-live</code> status.</li>
+            <li>Full support for <code>prefers-reduced-motion: reduce</code>.</li>
+          </ul>
+        </section>
+
+        <section id="qa">
+          <h2>8. Acceptance checklist</h2>
+          <ul class="checklist">
+            <li>Home renders name, designation, portrait photo, and View Portfolio CTA.</li>
+            <li>Resume CTA button appears only with valid <code>user.resumeUrl</code>.</li>
+            <li>Status badge appears only when <code>user.openToHire === true</code>.</li>
+            <li>Portfolio renders all 8 collections cleanly, hiding any empty arrays.</li>
+            <li>Contact validates name, email, message, and phone; submits to <code>/api/profile/public/{handle}/contact</code>.</li>
+            <li>Contact honeypot is invisible to users and catches automated submissions.</li>
+            <li>Hire Me routes to <code>/hire-me/{handle}</code> with direct fallback channels.</li>
+            <li>Navigation operates seamlessly across all routes with correct active states.</li>
+            <li>320px, 375px, 768px, and desktop widths have no horizontal overflow.</li>
+            <li>Keyboard navigation, focus rings, skip link, and reduced motion work properly.</li>
+            <li>Zero console runtime errors across all pages.</li>
+            <li>Production injection via <code>window.__BEXO_PROFILE__</code> overrides local demo data.</li>
+          </ul>
+        </section>
+
+        <section id="map">
+          <h2>9. Canonical file map</h2>
+          <table>
+            <thead>
+              <tr><th>Page / Feature</th><th>Source File</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Home</td><td><code>index.html</code>, <code>css/index.css</code></td></tr>
+              <tr><td>Portfolio</td><td><code>pages/portfolio.html</code>, <code>css/portfolio.css</code></td></tr>
+              <tr><td>Contact</td><td><code>pages/contact.html</code>, <code>css/contact.css</code>, <code>js/contact.js</code></td></tr>
+              <tr><td>Hire Me</td><td><code>pages/hire-me.html</code>, <code>js/render.js</code></td></tr>
+              <tr><td>Shared System</td><td><code>js/nav.js</code>, <code>js/profile-runtime.js</code>, <code>js/media.js</code>, <code>js/theme.js</code>, <code>js/profile-data.js</code></td></tr>
+              <tr><td>Standard Guide</td><td><code>PORTFOLIO-STANDARD-BUSINESS.html</code></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <footer class="footer">
+          BEXO Premium Templates · Executive Business &amp; Management Canonical Standard v1.0
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

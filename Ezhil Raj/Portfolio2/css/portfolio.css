@@ -1,0 +1,863 @@
+/**
+ * BEXO Standard Portfolio Page Styles
+ * Scope: pages/portfolio.html
+ */
+
+.portfolio-main {
+  padding: 48px 0 100px;
+}
+
+/* =========================================================================
+   1. IDENTITY HEADER
+   ========================================================================= */
+.identity-header-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 24px;
+}
+
+.identity-portrait-wrapper {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+}
+
+.identity-portrait-img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.identity-badge-float {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+}
+
+.identity-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.identity-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.identity-location {
+  font-size: 13px;
+  color: var(--color-ink-subtle);
+  font-weight: 500;
+}
+
+.identity-name {
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+}
+
+.identity-headline {
+  font-size: 19px;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.identity-bio p {
+  color: var(--color-ink-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.identity-goal-box {
+  margin-top: 6px;
+  padding: 14px 18px;
+  background: var(--color-primary-soft);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.goal-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.goal-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-ink);
+  font-style: italic;
+}
+
+.identity-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.identity-meta-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 72px;
+}
+
+.meta-strip-item {
+  padding: 20px 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.strip-label {
+  font-size: 12px;
+  color: var(--color-ink-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.strip-val {
+  font-size: 15px;
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+.strip-sub {
+  font-size: 12px;
+  color: var(--color-ink-muted);
+  margin-top: 2px;
+}
+
+/* =========================================================================
+   COMMON SECTION HEADINGS
+   ========================================================================= */
+.portfolio-section {
+  margin-bottom: 84px;
+  scroll-margin-top: 90px;
+}
+
+.section-heading-wrap {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: clamp(26px, 3vw, 36px);
+  margin-top: 8px;
+  margin-bottom: 6px;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: var(--color-ink-muted);
+  max-width: 60ch;
+}
+
+/* =========================================================================
+   2. SKILLS COLLECTION
+   ========================================================================= */
+.skills-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.skill-tab-btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-ink-muted);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.skill-tab-btn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-ink);
+}
+
+.skill-tab-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px var(--color-primary-glow);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.skill-card {
+  padding: 22px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.skill-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+}
+
+.skill-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.skill-name {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.skill-level-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.skill-desc {
+  font-size: 13px;
+  color: var(--color-ink-muted);
+  line-height: 1.5;
+}
+
+.skill-card-cat {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--color-ink-subtle);
+  text-transform: uppercase;
+}
+
+/* =========================================================================
+   3. EXPERIENCE TIMELINE (Image 3)
+   ========================================================================= */
+.timeline-container {
+  position: relative;
+  padding-left: 36px;
+}
+
+.timeline-line-rail {
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: 11px;
+  width: 2px;
+  background: #145bff;
+  box-shadow: 0 0 8px rgba(20, 91, 255, 0.4);
+}
+
+.timeline-items {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.timeline-node {
+  position: relative;
+}
+
+.timeline-marker {
+  position: absolute;
+  top: 16px;
+  left: -36px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 3px var(--color-canvas);
+  transition: all 0.25s ease;
+  z-index: 2;
+}
+
+.timeline-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #475569;
+  transition: background-color 0.25s ease;
+}
+
+.timeline-node.is-current .timeline-marker,
+.timeline-node:hover .timeline-marker {
+  border-color: #145bff;
+  box-shadow: 0 0 0 4px rgba(20, 91, 255, 0.2);
+}
+
+.timeline-node.is-current .timeline-dot,
+.timeline-node:hover .timeline-dot {
+  background: #145bff;
+}
+
+.timeline-card {
+  padding: 28px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast);
+}
+
+.timeline-card:hover {
+  transform: translateX(4px);
+}
+
+.timeline-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.timeline-role {
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.timeline-company-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.timeline-company {
+  color: var(--color-primary);
+  font-size: 15px;
+}
+
+.timeline-loc {
+  color: var(--color-ink-subtle);
+  font-size: 13px;
+}
+
+.timeline-year-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-ink-subtle);
+  background: var(--color-surface-hover);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.current-pill {
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-emerald);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.timeline-desc {
+  color: var(--color-ink-muted);
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.timeline-highlights {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--color-ink-muted);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag-pill {
+  padding: 4px 10px;
+  background: var(--color-canvas);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  color: var(--color-ink-subtle);
+}
+
+/* =========================================================================
+   4. EDUCATION COLLECTION
+   ========================================================================= */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.edu-card {
+  padding: 28px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edu-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edu-year {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-ink-subtle);
+}
+
+.edu-gpa-badge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.edu-degree {
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.edu-inst {
+  font-size: 14px;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.edu-spec {
+  font-size: 13px;
+  color: var(--color-ink-muted);
+}
+
+.edu-honors {
+  font-size: 13px;
+  color: var(--color-amber);
+  font-weight: 500;
+}
+
+.edu-coursework {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.cw-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-ink-subtle);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.cw-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cw-pill {
+  padding: 3px 8px;
+  background: var(--color-canvas);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  color: var(--color-ink-muted);
+}
+
+/* =========================================================================
+   5. SELECTED WORK (PROJECT CARDS)
+   ========================================================================= */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.project-entry-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.project-entry-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-card-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+}
+
+.project-info-col {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.project-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-year {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-ink-subtle);
+}
+
+.project-role-tag {
+  font-size: 12px;
+  color: var(--color-ink-muted);
+  font-weight: 600;
+}
+
+.project-card-title {
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.project-tagline {
+  font-size: 15px;
+  color: var(--color-ink-muted);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.project-desc {
+  font-size: 14px;
+  color: var(--color-ink-subtle);
+  line-height: 1.6;
+}
+
+.project-metrics-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.p-metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-metric-value {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.p-metric-label {
+  font-size: 11px;
+  color: var(--color-ink-subtle);
+}
+
+.project-stack-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.stack-chip {
+  padding: 3px 8px;
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-ink-muted);
+}
+
+.project-actions-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.project-visual-col {
+  background: #0f172a;
+  overflow: hidden;
+}
+
+.project-img-frame {
+  width: 100%;
+  height: 100%;
+}
+
+.project-img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.project-entry-card:hover .project-img-frame img {
+  transform: scale(1.03);
+}
+
+/* =========================================================================
+   6. CERTIFICATES, ACHIEVEMENTS, RESEARCH
+   ========================================================================= */
+.certs-grid,
+.achievements-grid,
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.cert-card,
+.achievement-card,
+.research-card {
+  padding: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  transition: transform var(--transition-fast);
+}
+
+.cert-card:hover,
+.achievement-card:hover,
+.research-card:hover {
+  transform: translateY(-2px);
+}
+
+.cert-top,
+.ach-badge-row,
+.res-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cert-issuer,
+.ach-org,
+.res-publisher {
+  font-size: 13px;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.cert-year,
+.ach-year,
+.res-year {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-ink-subtle);
+}
+
+.cert-title,
+.ach-title,
+.res-title {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.cert-desc,
+.ach-desc,
+.res-abstract {
+  font-size: 13px;
+  color: var(--color-ink-muted);
+  line-height: 1.5;
+}
+
+.cert-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border);
+}
+
+.cert-id {
+  font-family: var(--font-mono);
+  color: var(--color-ink-subtle);
+}
+
+.cert-verify-link {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* =========================================================================
+   PORTFOLIO RESPONSIVENESS
+   ========================================================================= */
+@media (max-width: 900px) {
+  .identity-header-grid {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+  .identity-portrait-wrapper {
+    max-width: 200px;
+  }
+  .project-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-info-col {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .identity-header-grid {
+    padding: 20px 16px;
+    gap: 20px;
+  }
+  .identity-name {
+    font-size: 28px;
+  }
+  .identity-headline {
+    font-size: 17px;
+  }
+  .skills-cluster-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .timeline-container {
+    padding-left: 28px;
+  }
+  .timeline-marker {
+    left: -28px;
+    width: 20px;
+    height: 20px;
+  }
+  .timeline-dot {
+    width: 6px;
+    height: 6px;
+  }
+  .timeline-card {
+    padding: 18px 16px;
+  }
+  .timeline-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .edu-card {
+    padding: 20px 16px;
+  }
+  .project-info-col {
+    padding: 20px 16px;
+  }
+  .project-card-title {
+    font-size: 20px;
+  }
+  .project-metrics-strip {
+    gap: 12px;
+  }
+  .p-metric-value {
+    font-size: 18px;
+  }
+  .project-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .project-actions-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+  .research-card {
+    padding: 20px 16px;
+  }
+  .case-study-metrics-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}

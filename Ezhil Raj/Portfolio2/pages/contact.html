@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Get in touch with David Vance — Available for corporate strategy roles, management consulting advisory, and commercial analytics engagements." />
+    <title>Contact &amp; Executive Inquiries — David Vance</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/contact.css" />
+  </head>
+  <body>
+    <!-- Topbar Navigation Slot -->
+    <header class="topbar" id="bexo-navbar"></header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="contact-main">
+      <div class="container">
+        <div class="contact-layout-grid">
+          <!-- Left Column: Direct Channels & Status -->
+          <div class="contact-info-panel">
+            <div id="contact-status-badge" class="contact-badge-zone"></div>
+
+            <h1 class="contact-heading">Let's build something that creates impact.</h1>
+            <p class="contact-subheading">
+              Open to strategic executive opportunities, corporate management roles, advisory projects, and analytical problem-solving discussions.
+            </p>
+
+            <div class="contact-channels-card">
+              <div class="channel-item">
+                <span class="channel-label">Direct Executive Email</span>
+                <div id="contact-email-slot"></div>
+              </div>
+
+              <div class="channel-item">
+                <span class="channel-label">Telephone</span>
+                <div id="contact-phone-slot"></div>
+              </div>
+
+              <div class="channel-item">
+                <span class="channel-label">Location Base</span>
+                <div id="contact-location-slot"></div>
+              </div>
+
+              <div id="contact-socials-slot"></div>
+            </div>
+          </div>
+
+          <!-- Right Column: Accessible Form Card -->
+          <div class="contact-form-card">
+            <div class="form-header">
+              <h2 class="form-title">Send Strategic Inquiry</h2>
+              <p class="form-subtitle">Messages are transmitted directly to the executive communication channel.</p>
+            </div>
+
+            <form id="bexo-contact-form" novalidate aria-label="Executive Contact Form">
+              <!-- Honeypot Field for Spam Protection (Hidden) -->
+              <div class="honeypot-field" aria-hidden="true">
+                <label for="contact-fax">Leave this field blank</label>
+                <input type="text" id="contact-fax" name="_gotcha" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <!-- Name Field -->
+              <div class="form-group">
+                <label for="contact-name" class="form-label">
+                  Full Name <span class="required-star">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="contact-name" 
+                  name="name" 
+                  class="form-input" 
+                  placeholder="e.g. Eleanor Vance" 
+                  required 
+                  aria-required="true" 
+                />
+              </div>
+
+              <!-- Email Field -->
+              <div class="form-group">
+                <label for="contact-email" class="form-label">
+                  Corporate / Professional Email <span class="required-star">*</span>
+                </label>
+                <input 
+                  type="email" 
+                  id="contact-email" 
+                  name="email" 
+                  class="form-input" 
+                  placeholder="eleanor@enterprise.com" 
+                  required 
+                  aria-required="true" 
+                />
+              </div>
+
+              <!-- Phone Field (Optional) -->
+              <div class="form-group">
+                <label for="contact-phone" class="form-label">
+                  Phone Number <span class="optional-hint">(Optional)</span>
+                </label>
+                <input 
+                  type="tel" 
+                  id="contact-phone" 
+                  name="phone" 
+                  class="form-input" 
+                  placeholder="+1 (555) 000-0000" 
+                />
+              </div>
+
+              <!-- Message Field -->
+              <div class="form-group">
+                <label for="contact-message" class="form-label">
+                  Inquiry or Project Context <span class="required-star">*</span>
+                </label>
+                <textarea 
+                  id="contact-message" 
+                  name="message" 
+                  class="form-textarea" 
+                  rows="4" 
+                  placeholder="Detail your organizational needs, strategic initiative, or meeting schedule..." 
+                  required 
+                  aria-required="true"
+                ></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary form-submit-btn" id="contact-submit-btn">
+                Send Executive Inquiry →
+              </button>
+
+              <!-- Live Status Output (Accessible Alert) -->
+              <div id="form-live-status" class="form-status-alert" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Site Footer Slot -->
+    <footer class="site-footer" id="bexo-footer"></footer>
+
+    <!-- Runtime Integration Scripts -->
+    <script type="module">
+      import { initNavigation } from '../js/nav.js';
+      import { initTheme } from '../js/theme.js';
+      import { initContact } from '../js/contact.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        initNavigation('contact');
+        initContact();
+      });
+    </script>
+  </body>
+</html>

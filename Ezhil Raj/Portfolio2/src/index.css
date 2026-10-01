@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-bg: #F7F9FC;
+  --primary-dark: #071426;
+  --primary-blue: #145BFF;
+  --secondary-blue: #3278FF;
+  --light-blue: #EAF1FF;
+  --text-main: #101828;
+  --text-secondary: #667085;
+  --border-subtle: rgba(16, 24, 40, 0.10);
+}
+
+html {
+  background-color: var(--primary-bg);
+  color: var(--text-main);
+  scroll-behavior: auto;
+}
+
+/* Lenis Recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Custom cursor hide default cursor only on devices that support hover / fine pointers */
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor-enabled,
+  body.custom-cursor-enabled * {
+    cursor: none !important;
+  }
+}
+
+/* Selection Color */
+::selection {
+  background-color: #145BFF;
+  color: #FFFFFF;
+}
+
+/* Marquee continuous scroll */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility for masked overflow text reveal */
+.overflow-mask {
+  overflow: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F9FC;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* ==========================================================================
+   Print Media Styles for Executive Curriculum Vitae & Resume
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 14mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #101828 !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  #main-content,
+  nav,
+  footer,
+  .custom-cursor-container,
+  .scroll-progress-bar,
+  .print-hide,
+  .resume-modal-backdrop,
+  .resume-modal-header {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .resume-modal-root {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .resume-modal-window {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  .resume-printable-content {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    color: #101828 !important;
+  }
+
+  .resume-section-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+}
