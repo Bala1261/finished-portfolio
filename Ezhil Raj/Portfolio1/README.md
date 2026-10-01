@@ -123,3 +123,7 @@ export const portfolioData = {
 ## 📄 License
 
 MIT
+
+
+live web : https://content-professional.vercel.app/pages/portfolio.html
+
