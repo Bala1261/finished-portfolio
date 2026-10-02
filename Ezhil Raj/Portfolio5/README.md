@@ -1,6 +1,8 @@
-﻿# Jothimani — Full-Stack & Cloud DevOps Engineer Portfolio (Portfolio 5)
+# Jothimani — Full-Stack & Cloud DevOps Engineer Portfolio
 
 An ultra-modern, high-performance developer portfolio built to the **BEXO Premium Portfolio Standard**, featuring interactive 3D WebGL visuals, cybernetic sound design, and data-driven profile rendering.
+
+🔗 **Live Production URL:** [https://portfolio-5-versal.vercel.app/](https://portfolio-5-versal.vercel.app/)
 
 ---
 
@@ -38,6 +40,7 @@ An ultra-modern, high-performance developer portfolio built to the **BEXO Premiu
 
 ### Installation
 ```bash
+cd frontend
 npm install
 ```
 
@@ -50,6 +53,20 @@ npm run dev
 ```bash
 npm run build
 ```
+
+---
+
+## ☁️ Deployment
+
+### Live Deployment on Vercel
+Deployed live at: [https://portfolio-5-versal.vercel.app/](https://portfolio-5-versal.vercel.app/)
+- **Root Directory:** `frontend`
+- **Application Preset:** `Vite`
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+
+### Deploy on GitHub Pages
+Automated via `.github/workflows/deploy.yml` on every push to `main`.
 
 ---
 
