@@ -68,6 +68,11 @@ export const Navbar: React.FC<NavbarProps> = ({ portfolio }) => {
 
   const displayName = profile?.name || profile?.handle || 'Developer';
 
+  const resumeFileName =
+    typeof portfolio?.resume === 'object' && portfolio.resume.name
+      ? portfolio.resume.name
+      : 'Resume.pdf';
+
   return (
     <header className={`bexo-navbar-wrapper ${isScrolled ? 'is-scrolled' : ''}`}>
       <div className="bexo-navbar-container">
@@ -95,6 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({ portfolio }) => {
               size="sm"
               icon={<FileDown />}
               isExternal
+              download={resumeFileName}
             >
               Resume
             </Button>
@@ -136,6 +142,7 @@ export const Navbar: React.FC<NavbarProps> = ({ portfolio }) => {
                 size="md"
                 icon={<FileDown />}
                 isExternal
+                download={resumeFileName}
                 onClick={handleLinkClick}
               >
                 Download Resume
