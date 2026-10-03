@@ -14,12 +14,14 @@ interface BaseButtonProps {
 export type ButtonAsButtonProps = BaseButtonProps &
   Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseButtonProps> & {
     href?: undefined;
+    download?: undefined;
   };
 
 export type ButtonAsLinkProps = BaseButtonProps &
   Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseButtonProps> & {
     href: string;
     isExternal?: boolean;
+    download?: string | boolean;
   };
 
 export type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
@@ -49,6 +51,8 @@ export const Button: React.FC<ButtonProps> = (props) => {
 
   if (href) {
     const isExternal = 'isExternal' in props ? props.isExternal : !href.startsWith('#');
+    const download = 'download' in props ? props.download : undefined;
+
     return (
       <a
         href={href}
@@ -56,6 +60,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
         aria-label={ariaLabel}
         target={isExternal ? '_blank' : undefined}
         rel={isExternal ? 'noopener noreferrer' : undefined}
+        download={download}
         {...(rest as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
         {content}

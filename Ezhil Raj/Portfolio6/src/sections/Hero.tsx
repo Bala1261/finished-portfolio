@@ -23,6 +23,9 @@ export const Hero: React.FC<HeroProps> = ({ portfolio }) => {
       ? sanitizeUrl(resume.url)
       : null;
 
+  const resumeFileName =
+    typeof resume === 'object' && resume.name ? resume.name : 'Resume.pdf';
+
   const hasProjects = Boolean(projects && projects.length > 0);
 
   // Avatar handling (string URL or PortfolioAsset)
@@ -80,6 +83,7 @@ export const Hero: React.FC<HeroProps> = ({ portfolio }) => {
                 size="lg"
                 icon={<FileDown />}
                 isExternal
+                download={resumeFileName}
               >
                 Download Resume
               </Button>

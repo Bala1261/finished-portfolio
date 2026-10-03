@@ -325,7 +325,7 @@ export const fixtureAlexMorgan: Portfolio = {
           kind: 'image',
           url: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80',
           name: 'Conference Presentation Slide',
-          alt: 'Presentation slide on predictive sharding',
+          alt: 'Conference presentation slide on predictive sharding',
         },
       ],
     },
@@ -356,7 +356,7 @@ export const fixtureAlexMorgan: Portfolio = {
   resume: {
     id: 'resume-pdf',
     kind: 'pdf',
-    url: 'https://example.com/alex_morgan_resume.pdf',
+    url: '/alex_morgan_resume.pdf',
     name: 'Alex_Morgan_Staff_Systems_Engineer_CV.pdf',
     sizeBytes: 1420000,
   },

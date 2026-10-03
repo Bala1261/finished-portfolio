@@ -18,7 +18,7 @@ export const ResumeCTA: React.FC<ResumeCTAProps> = ({ resume, developerName }) =
 
   if (!safeUrl) return null;
 
-  const fileName = typeof resume === 'object' && resume.name ? resume.name : 'Curriculum Vitae';
+  const fileName = typeof resume === 'object' && resume.name ? resume.name : 'Resume.pdf';
 
   return (
     <section className="bexo-resume-cta-section" aria-label="Curriculum Vitae Download">
@@ -42,6 +42,7 @@ export const ResumeCTA: React.FC<ResumeCTAProps> = ({ resume, developerName }) =
             size="lg"
             icon={<FileDown />}
             isExternal
+            download={fileName}
           >
             Download Resume
           </Button>
