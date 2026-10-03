@@ -1,39 +1,56 @@
 /**
- * Safe URL validation and sanitization for external links
+ * Safe URL validation and sanitization for external and relative links
  */
 export function sanitizeUrl(url?: string): string | null {
   if (!url || typeof url !== 'string') return null;
   const trimmed = url.trim();
   if (!trimmed) return null;
 
+  // Reject dangerous protocols
+  const lower = trimmed.toLowerCase();
+  if (
+    lower.startsWith('javascript:') ||
+    lower.startsWith('data:') ||
+    lower.startsWith('vbscript:')
+  ) {
+    return null;
+  }
+
   // Allow mailto: and tel:
-  if (trimmed.startsWith('mailto:') || trimmed.startsWith('tel:')) {
+  if (lower.startsWith('mailto:') || lower.startsWith('tel:')) {
     return trimmed;
   }
 
-  // Reject javascript:, data:, vbscript: protocols
-  const lower = trimmed.toLowerCase();
-  if (lower.startsWith('javascript:') || lower.startsWith('data:') || lower.startsWith('vbscript:')) {
-    return null;
+  // Allow relative URLs, root paths, and anchor jumps (do NOT prepend https://)
+  if (
+    trimmed.startsWith('/') ||
+    trimmed.startsWith('#') ||
+    trimmed.startsWith('./') ||
+    trimmed.startsWith('../')
+  ) {
+    return trimmed;
   }
 
-  // If missing scheme, prepend https:// if it looks like a domain
-  if (!/^https?:\/\//i.test(trimmed)) {
-    if (trimmed.startsWith('//')) {
-      return `https:${trimmed}`;
-    }
-    return `https://${trimmed}`;
+  // Protocol-relative URL
+  if (trimmed.startsWith('//')) {
+    return `https:${trimmed}`;
   }
 
-  try {
-    const parsed = new URL(trimmed);
-    if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
-      return trimmed;
+  // Absolute HTTP/HTTPS URLs
+  if (/^https?:\/\//i.test(trimmed)) {
+    try {
+      const parsed = new URL(trimmed);
+      if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+        return trimmed;
+      }
+      return null;
+    } catch {
+      return null;
     }
-    return null;
-  } catch {
-    return null;
   }
+
+  // If missing scheme but domain-like (e.g. github.com/user)
+  return `https://${trimmed}`;
 }
 
 /**
