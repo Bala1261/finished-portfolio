@@ -1,0 +1,101 @@
+.bexo-dev-toolbar {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  max-width: 95vw;
+}
+
+.bexo-dev-toolbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.85rem;
+  background-color: rgba(18, 21, 31, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+}
+
+.bexo-dev-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-right: 0.5rem;
+  border-right: 1px solid var(--border);
+}
+
+.bexo-dev-icon {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.bexo-dev-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bexo-dev-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  background-color: var(--surface-elevated);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.bexo-dev-btn:hover {
+  color: var(--text);
+  border-color: var(--border-light);
+}
+
+.bexo-dev-btn.active {
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border-color: var(--primary);
+  font-weight: 600;
+}
+
+.bexo-dev-check {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .bexo-dev-toolbar {
+    bottom: 0.5rem;
+    width: 95vw;
+  }
+  .bexo-dev-toolbar-inner {
+    flex-wrap: wrap;
+    border-radius: var(--radius-md);
+    justify-content: center;
+  }
+  .bexo-dev-tag {
+    border-right: none;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .bexo-dev-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "templateId": "developer-premium",
+  "version": "1.0.0",
+  "name": "Developer Premium",
+  "rendererKind": "bexo-web",
+  "supportedSchemaVersions": [
+    "bexo-portfolio/v1"
+  ],
+  "supportedSections": [
+    "profile",
+    "summary",
+    "about",
+    "education",
+    "experience",
+    "projects",
+    "certificates",
+    "achievements",
+    "research",
+    "skills",
+    "contact",
+    "resume"
+  ],
+  "capabilities": {
+    "multiPage": false,
+    "animations": true,
+    "projectGallery": true,
+    "projectDetail": true,
+    "video": true,
+    "resumeDownload": true
+  }
+}

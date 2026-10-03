@@ -1,0 +1,98 @@
+.bexo-resume-cta-section {
+  padding: 3rem 0;
+}
+
+.bexo-resume-cta-card {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.25rem;
+  background: linear-gradient(135deg, var(--surface-elevated) 0%, rgba(56, 189, 248, 0.05) 100%);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.bexo-resume-cta-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary) 0%, var(--accent) 100%);
+}
+
+.bexo-resume-cta-icon-wrap {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bexo-resume-doc-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--primary);
+}
+
+.bexo-resume-cta-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bexo-resume-cta-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.015em;
+}
+
+.bexo-resume-cta-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 600px;
+}
+
+.bexo-resume-filename {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--primary);
+  background-color: var(--primary-soft);
+  width: fit-content;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.bexo-resume-cta-action {
+  flex-shrink: 0;
+}
+
+@media (max-width: 860px) {
+  .bexo-resume-cta-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.75rem;
+  }
+
+  .bexo-resume-cta-action {
+    width: 100%;
+  }
+
+  .bexo-resume-cta-action a,
+  .bexo-resume-cta-action button {
+    width: 100%;
+  }
+}

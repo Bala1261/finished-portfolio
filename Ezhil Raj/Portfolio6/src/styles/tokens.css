@@ -1,0 +1,52 @@
+:root {
+  /* BEXO Developer Premium Color System */
+  --background: #090a0f;
+  --background-subtle: #0d0f17;
+  --surface: #12151f;
+  --surface-elevated: #181c2a;
+  --surface-hover: #1f2436;
+  --surface-active: #272d42;
+
+  --text: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --muted: #8492a6;
+  --muted-dim: #475569;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.14);
+  --border-active: rgba(56, 189, 248, 0.35);
+
+  --primary: #38bdf8;
+  --primary-hover: #0ea5e9;
+  --primary-soft: rgba(56, 189, 248, 0.12);
+  --primary-glow: rgba(56, 189, 248, 0.25);
+
+  --accent: #818cf8;
+  --accent-soft: rgba(129, 140, 248, 0.12);
+
+  --success: #34d399;
+  --success-soft: rgba(52, 211, 153, 0.12);
+
+  /* Typography */
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Layout & Geometry */
+  --max-width: 1200px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Elevation & Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 14px -1px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 10px 28px -3px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 25px -3px rgba(56, 189, 248, 0.2);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}

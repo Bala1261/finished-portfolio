@@ -1,0 +1,102 @@
+.bexo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  user-select: none;
+  white-space: nowrap;
+  position: relative;
+  cursor: pointer;
+}
+
+.bexo-btn:active {
+  transform: translateY(1px);
+}
+
+/* Sizes */
+.bexo-btn--sm {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.825rem;
+  border-radius: var(--radius-sm);
+}
+
+.bexo-btn--md {
+  padding: 0.65rem 1.25rem;
+  font-size: 0.9rem;
+}
+
+.bexo-btn--lg {
+  padding: 0.85rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Variants */
+.bexo-btn--primary {
+  background: linear-gradient(135deg, var(--primary) 0%, #0284c7 100%);
+  color: #030712;
+  font-weight: 600;
+  box-shadow: 0 0 20px -5px rgba(56, 189, 248, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.bexo-btn--primary:hover {
+  background: linear-gradient(135deg, #7dd3fc 0%, #0369a1 100%);
+  box-shadow: 0 0 25px -2px rgba(56, 189, 248, 0.6);
+  transform: translateY(-1px);
+}
+
+.bexo-btn--secondary {
+  background-color: var(--surface-elevated);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.bexo-btn--secondary:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--border-light);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.bexo-btn--outline {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.bexo-btn--outline:hover {
+  color: var(--text);
+  border-color: var(--primary);
+  background-color: var(--primary-soft);
+  transform: translateY(-1px);
+}
+
+.bexo-btn--ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid transparent;
+}
+
+.bexo-btn--ghost:hover {
+  color: var(--text);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.bexo-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bexo-btn-icon svg {
+  width: 1em;
+  height: 1em;
+  stroke-width: 2;
+}

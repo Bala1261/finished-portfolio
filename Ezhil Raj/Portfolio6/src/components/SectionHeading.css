@@ -1,0 +1,46 @@
+.bexo-section-heading {
+  margin-bottom: 2.5rem;
+}
+
+.bexo-section-heading--left {
+  text-align: left;
+}
+
+.bexo-section-heading--center {
+  text-align: center;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bexo-heading-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.bexo-heading-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.bexo-heading-subtitle {
+  margin-top: 0.75rem;
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .bexo-section-heading {
+    margin-bottom: 1.75rem;
+  }
+}

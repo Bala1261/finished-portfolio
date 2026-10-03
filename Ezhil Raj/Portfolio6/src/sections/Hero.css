@@ -1,0 +1,214 @@
+.bexo-hero-section {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding-top: 7rem;
+  padding-bottom: 4rem;
+}
+
+.bexo-hero-content {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  align-items: center;
+  gap: 3.5rem;
+  width: 100%;
+}
+
+.bexo-hero-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.bexo-hero-badge {
+  margin-bottom: 0.25rem;
+}
+
+.bexo-hero-name {
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  line-height: 1.05;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.bexo-hero-handle {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: normal;
+}
+
+.bexo-hero-headline {
+  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.bexo-hero-summary {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 580px;
+}
+
+.bexo-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.bexo-hero-career-goal {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.bexo-goal-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.bexo-hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.bexo-avatar-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bexo-avatar-glow {
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(129, 140, 248, 0.1) 50%, transparent 75%);
+  filter: blur(25px);
+  border-radius: var(--radius-xl);
+  pointer-events: none;
+}
+
+.bexo-avatar-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  background-color: var(--surface-elevated);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bexo-avatar-initials-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--surface-elevated) 0%, #171d2b 100%);
+}
+
+.bexo-avatar-terminal-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--primary);
+  opacity: 0.8;
+}
+
+.bexo-initials-text {
+  font-family: var(--font-mono);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.05em;
+}
+
+.bexo-avatar-pill {
+  position: absolute;
+  bottom: -1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(18, 21, 31, 0.9);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(8px);
+}
+
+.bexo-avatar-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--success);
+  box-shadow: 0 0 6px var(--success);
+}
+
+@media (max-width: 960px) {
+  .bexo-hero-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .bexo-hero-visual {
+    order: -1;
+  }
+
+  .bexo-avatar-wrapper {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bexo-hero-section {
+    padding-top: 5.5rem;
+    padding-bottom: 2.5rem;
+    min-height: auto;
+  }
+
+  .bexo-hero-actions {
+    width: 100%;
+  }
+
+  .bexo-hero-actions > * {
+    width: 100%;
+  }
+
+  .bexo-avatar-wrapper {
+    max-width: 180px;
+  }
+}

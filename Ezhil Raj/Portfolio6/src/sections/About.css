@@ -1,0 +1,95 @@
+.bexo-about-section {
+  padding: 4rem 0;
+}
+
+.bexo-about-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.bexo-about-statement-card {
+  background: linear-gradient(145deg, var(--surface) 0%, var(--surface-elevated) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.bexo-about-statement-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.bexo-about-card-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--primary);
+}
+
+.bexo-about-card-icon.highlight {
+  color: var(--primary);
+}
+
+.bexo-about-card-icon.success {
+  color: var(--success);
+}
+
+.bexo-about-statement-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  white-space: pre-line;
+}
+
+.bexo-about-details-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.bexo-about-info-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: border-color var(--transition-fast);
+}
+
+.bexo-about-info-card:hover {
+  border-color: var(--border-light);
+}
+
+.bexo-about-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bexo-about-card-header h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.bexo-about-card-body {
+  font-size: 0.925rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+@media (max-width: 860px) {
+  .bexo-about-grid {
+    grid-template-columns: 1fr;
+  }
+}

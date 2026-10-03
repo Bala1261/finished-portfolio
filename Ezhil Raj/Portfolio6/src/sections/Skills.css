@@ -1,0 +1,108 @@
+.bexo-skills-section {
+  padding: 4rem 0;
+}
+
+.bexo-skills-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.bexo-skill-category-panel {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: all var(--transition-base);
+}
+
+.bexo-skill-category-panel:hover {
+  border-color: var(--border-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.bexo-category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.85rem;
+}
+
+.bexo-cat-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.bexo-category-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.bexo-category-count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  background-color: var(--surface-elevated);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+}
+
+.bexo-skill-pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bexo-skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  background-color: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  cursor: default;
+}
+
+.bexo-skill-pill:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--border-active);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.bexo-skill-pill-bullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  opacity: 0.6;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.bexo-skill-pill:hover .bexo-skill-pill-bullet {
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+@media (max-width: 640px) {
+  .bexo-skills-categories-grid {
+    grid-template-columns: 1fr;
+  }
+}

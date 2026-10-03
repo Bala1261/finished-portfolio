@@ -1,0 +1,205 @@
+.bexo-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(5, 7, 12, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow-y: auto;
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.bexo-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  display: flex;
+  flex-direction: column;
+}
+
+.bexo-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: rgba(18, 21, 31, 0.8);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  backdrop-filter: blur(4px);
+  transition: all var(--transition-fast);
+}
+
+.bexo-modal-close:hover {
+  color: var(--text);
+  background-color: var(--surface-hover);
+  border-color: var(--border-light);
+  transform: rotate(90deg);
+}
+
+.bexo-modal-close-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.bexo-modal-hero-asset {
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-elevated);
+}
+
+.bexo-modal-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bexo-modal-header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.bexo-meta-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--primary);
+  margin-right: 0.35rem;
+  vertical-align: middle;
+}
+
+.bexo-modal-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.bexo-modal-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  white-space: pre-line;
+}
+
+.bexo-modal-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.bexo-modal-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.bexo-section-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--primary);
+}
+
+.bexo-modal-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bexo-tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background-color: var(--surface-elevated);
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.bexo-modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.bexo-gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background-color: var(--surface-elevated);
+}
+
+.bexo-gallery-caption {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding: 0.5rem 0.75rem;
+}
+
+.bexo-modal-credits {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.bexo-modal-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.bexo-modal-action-btn {
+  background-color: var(--surface-elevated);
+  border: 1px solid var(--border-light);
+  padding: 0.6rem 1rem !important;
+  font-weight: 500;
+  color: var(--text) !important;
+}
+
+.bexo-modal-action-btn:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--primary);
+  color: var(--primary) !important;
+}
+
+@media (max-width: 640px) {
+  .bexo-modal-backdrop {
+    padding: 0.75rem;
+  }
+  .bexo-modal-body {
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+  .bexo-modal-title {
+    font-size: 1.35rem;
+  }
+}
