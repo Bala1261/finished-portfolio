@@ -29,34 +29,34 @@ export const FIXTURES: Record<FixtureKey, { name: string; data: Portfolio }> = {
  * Resolves the active portfolio data according to BEXO injection contract.
  *
  * In Production:
- * Resolves directly from window.__BEXO_PORTFOLIO__ (injected by host renderer).
+ * - If window.__BEXO_PORTFOLIO__ is present (injected by BEXO runtime), uses it directly.
+ * - If running as a standalone demo/preview (e.g. Vercel deployment without host injection),
+ *   it renders the realistic Alex Morgan developer preview so the template can be evaluated live.
  *
- * In Development:
- * Defaults to the Alex Morgan development fixture, or allows testing different scenarios.
+ * Query Parameter Overrides:
+ * - ?fixture=minimal     -> Tests empty states
+ * - ?fixture=edge-cases  -> Tests stress cases
+ * - ?fixture=alex-morgan -> Full developer profile
  */
 export function getInitialPortfolio(): Portfolio {
-  // Check window injection first (standard BEXO host injection)
+  // 1. Strict Priority: Canonical BEXO Host Injection
   if (typeof window !== 'undefined' && window.__BEXO_PORTFOLIO__) {
     return window.__BEXO_PORTFOLIO__;
   }
 
-  // Development environment fallback
-  if (import.meta.env.DEV) {
-    // Check URL search params for quick testing e.g. ?fixture=minimal
-    if (typeof window !== 'undefined') {
+  // 2. Query param fixture selector for live QA and test evaluation
+  if (typeof window !== 'undefined') {
+    try {
       const params = new URLSearchParams(window.location.search);
       const fixtureParam = params.get('fixture') as FixtureKey | null;
       if (fixtureParam && FIXTURES[fixtureParam]) {
         return FIXTURES[fixtureParam].data;
       }
+    } catch {
+      // Fallback safely if URLSearchParams is unavailable
     }
-    return fixtureAlexMorgan;
   }
 
-  // In production if no data was injected yet, return a safe minimal default
-  return {
-    profile: {
-      name: '',
-    },
-  };
+  // 3. Fallback to representative Alex Morgan fixture for standalone preview / Vercel demo
+  return fixtureAlexMorgan;
 }

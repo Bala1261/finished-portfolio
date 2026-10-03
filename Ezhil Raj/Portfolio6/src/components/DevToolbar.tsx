@@ -9,8 +9,13 @@ interface DevToolbarProps {
 }
 
 export const DevToolbar: React.FC<DevToolbarProps> = ({ currentFixture, onSelectFixture }) => {
-  // Only render during local development
-  if (!import.meta.env.DEV) {
+  // Render during local development OR when testing via ?demo=1 or ?dev=1
+  const isDev =
+    import.meta.env.DEV ||
+    (typeof window !== 'undefined' &&
+      (window.location.search.includes('demo=1') || window.location.search.includes('dev=1')));
+
+  if (!isDev) {
     return null;
   }
 
@@ -19,7 +24,7 @@ export const DevToolbar: React.FC<DevToolbarProps> = ({ currentFixture, onSelect
       <div className="bexo-dev-toolbar-inner">
         <div className="bexo-dev-tag">
           <Layers className="bexo-dev-icon" aria-hidden="true" />
-          <span>BEXO DEV FIXTURE:</span>
+          <span>BEXO TEST FIXTURE:</span>
         </div>
 
         <div className="bexo-dev-buttons">
