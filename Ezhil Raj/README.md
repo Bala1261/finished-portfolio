@@ -14,3 +14,7 @@ https://portfolio-4-ivgj.vercel.app/
 
 Live Portfolio5
 https://portfolio-5-versal.vercel.app/
+
+Live Portfolio6
+https://portfolio1-pi-snowy.vercel.app/
+
