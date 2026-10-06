@@ -29,6 +29,22 @@
   --font-serif: 'DM Serif Display', 'Instrument Serif', Georgia, serif;
   --font-sans: 'Inter', 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --container-max: 1240px;
+
+  /* BEXO Standard Canonical Variables */
+  --ink: #171717;
+  --muted: #66615b;
+  --paper: #f7f4ee;
+  --panel: #ffffff;
+  --line: #e5e0d8;
+  --terracotta: #c75b32;
+  --terracotta-soft: #fbf2ee;
+  --green: #15803d;
+  --green-soft: #ecfdf5;
+  --amber: #b45309;
+  --amber-soft: #fef3c7;
+  --red: #b91c1c;
+  --red-soft: #fef2f2;
+  --shadow: 0 18px 50px rgba(23, 23, 23, 0.06);
 }
 
 [data-theme="dark"] {
@@ -50,6 +66,22 @@
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.50);
+
+  /* BEXO Standard Canonical Variables (Dark Mode) */
+  --ink: #edebe6;
+  --muted: #a39f97;
+  --paper: #121212;
+  --panel: #1b1b1b;
+  --line: rgba(255, 255, 255, 0.10);
+  --terracotta: #e07248;
+  --terracotta-soft: rgba(224, 114, 72, 0.16);
+  --green: #34d399;
+  --green-soft: rgba(52, 211, 153, 0.12);
+  --amber: #f59e0b;
+  --amber-soft: rgba(245, 158, 11, 0.12);
+  --red: #f87171;
+  --red-soft: rgba(248, 113, 113, 0.12);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.50);
 }
 
 /* Base Reset & Typography */

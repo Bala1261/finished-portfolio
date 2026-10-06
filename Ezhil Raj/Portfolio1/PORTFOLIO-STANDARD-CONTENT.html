@@ -173,8 +173,30 @@
           </div>
         </section>
 
+        <section id="visual">
+          <h2>5. Visual and interaction standard</h2>
+          <div class="two-col">
+            <article class="card">
+              <h3>Editorial Design Language</h3>
+              <p>Warm Paper canvas (<code>#F7F4EE</code>), refined terracotta (<code>#C75B32</code>), deep ink (<code>#171717</code>), and crisp white panels. Classical editorial serif typography with <strong>DM Serif Display</strong> paired with <strong>Inter</strong> for UI and body prose.</p>
+            </article>
+            <article class="card">
+              <h3>Canonical CSS Variables</h3>
+              <p>Standard design tokens: <code>--paper</code>, <code>--ink</code>, <code>--muted</code>, <code>--panel</code>, <code>--line</code>, <code>--terracotta</code>, <code>--terracotta-soft</code>, <code>--green</code>, <code>--amber</code>, <code>--red</code>, and <code>--shadow</code> with responsive dark mode mappings.</p>
+            </article>
+            <article class="card">
+              <h3>Micro-Interactions &amp; Modals</h3>
+              <p>Curated reading progress bar on long-form essays, structured challenge-approach-outcome modals for case studies, capsule navigation tracking, and subtle hover lifts.</p>
+            </article>
+            <article class="card">
+              <h3>Responsive Breakpoints</h3>
+              <p>Desktop (1240px max-width), Tablet (900px), Mobile (600px, 375px, 320px). Zero horizontal scroll down to 320px viewport width.</p>
+            </article>
+          </div>
+        </section>
+
         <section id="runtime">
-          <h2>5. Renderer integration</h2>
+          <h2>6. Renderer integration map</h2>
           <table>
             <thead><tr><th>Module</th><th>File</th><th>Contract Responsibilities</th></tr></thead>
             <tbody>
@@ -188,8 +210,20 @@
           </table>
         </section>
 
+        <section id="accessibility">
+          <h2>7. Accessibility and SEO</h2>
+          <ul class="checklist">
+            <li>Single descriptive <code>&lt;h1&gt;</code> per page with tailored meta titles and descriptions.</li>
+            <li>Accessible navigation with <code>aria-current="page"</code>, skip link, and focus trap on mobile drawer.</li>
+            <li>Article reading modal with keyboard Escape trap, focus restore, and reading progress indicator.</li>
+            <li>Case study breakdown dialog with structured Challenge, Strategic Approach, and Measurable Outcomes.</li>
+            <li>Accessible contact form with explicit labels, <code>aria-required</code>, <code>aria-invalid</code>, honeypot protection, and <code>aria-live</code> status feedback.</li>
+            <li>Full support for <code>prefers-reduced-motion: reduce</code> across transitions and smooth scroll.</li>
+          </ul>
+        </section>
+
         <section id="qa">
-          <h2>6. Acceptance checklist</h2>
+          <h2>8. Acceptance checklist</h2>
           <ul class="checklist">
             <li>Home renders name, designation, portrait, proof metrics, and View Portfolio CTA.</li>
             <li>Resume button renders only when a valid <code>resumeUrl</code> exists.</li>
@@ -206,7 +240,7 @@
         </section>
 
         <section id="map">
-          <h2>7. Canonical file map</h2>
+          <h2>9. Canonical file map</h2>
           <table>
             <thead><tr><th>Page / Feature</th><th>Implementation Files</th></tr></thead>
             <tbody>
