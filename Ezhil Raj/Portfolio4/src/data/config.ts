@@ -52,4 +52,47 @@ const config = {
   },
   leetcodeUsername: "alexcarter",
 };
+
+export interface BexoProfileContract {
+  user: {
+    name: string;
+    email: string;
+    phone?: string;
+    photoUrl: string;
+    resumeUrl: string;
+    openToHire: boolean;
+  };
+  profile: {
+    handle: string;
+    headline: string;
+    careerGoal: string;
+    bio: string;
+  };
+  social: {
+    linkedin?: string;
+    github?: string;
+    instagram?: string;
+    whatsapp?: string;
+    twitter?: string;
+  };
+}
+
+export const canonicalProfile: BexoProfileContract = {
+  user: {
+    name: config.author,
+    email: config.email,
+    phone: config.phone,
+    photoUrl: "/assets/me.png",
+    resumeUrl: config.resume,
+    openToHire: config.openToHire,
+  },
+  profile: {
+    handle: config.handle,
+    headline: config.headline,
+    careerGoal: config.careerGoal,
+    bio: config.bio,
+  },
+  social: config.social,
+};
+
 export { config };

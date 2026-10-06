@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="BEXO Interactive Developer & Tech Portfolio Standard" />
+    <title>BEXO Interactive Developer &amp; Tech Portfolio Standard</title>
+    <style>
+      :root {
+        --ink: #f8fafc;
+        --muted: #94a3b8;
+        --paper: #030014;
+        --panel: #0b0f19;
+        --panel-elevated: #111827;
+        --line: #1e293b;
+        --blue: #38bdf8;
+        --blue-soft: rgba(56, 189, 248, 0.12);
+        --purple: #a855f7;
+        --purple-soft: rgba(168, 85, 247, 0.12);
+        --brand: #ff9466;
+        --brand-soft: rgba(255, 148, 102, 0.12);
+        --green: #10b981;
+        --green-soft: rgba(16, 185, 129, 0.14);
+        --amber: #f59e0b;
+        --amber-soft: rgba(245, 158, 11, 0.14);
+        --red: #ef4444;
+        --red-soft: rgba(239, 68, 68, 0.14);
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.6);
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      a { color: var(--blue); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 14px 5vw;
+        background: rgba(3, 0, 20, 0.92);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(14px);
+      }
+      .brand {
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #fff;
+      }
+      .brand-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--brand);
+        box-shadow: 0 0 10px var(--brand);
+      }
+      .version { color: var(--muted); font-size: 13px; font-weight: 600; }
+      .layout {
+        display: grid;
+        grid-template-columns: 260px minmax(0, 920px);
+        gap: 44px;
+        width: min(1280px, 90vw);
+        margin: 0 auto;
+      }
+      aside {
+        position: sticky;
+        top: 82px;
+        align-self: start;
+        max-height: calc(100vh - 104px);
+        overflow: auto;
+        padding: 28px 0;
+      }
+      aside h2 {
+        margin: 0 0 10px;
+        font-size: 12px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      aside a {
+        display: block;
+        padding: 7px 10px;
+        color: var(--muted);
+        text-decoration: none;
+        border-left: 2px solid transparent;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: all .15s ease;
+      }
+      aside a:hover, aside a:focus {
+        color: var(--blue);
+        border-left-color: var(--blue);
+        background: var(--blue-soft);
+      }
+      main { padding: 70px 0 100px; }
+      .hero {
+        padding: 44px;
+        background: linear-gradient(135deg, #070914 0%, #0d1629 45%, #191436 100%);
+        color: #fff;
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+      }
+      h1, h2, h3 { line-height: 1.15; letter-spacing: -.03em; color: #fff; }
+      h1 { margin: 0 0 18px; max-width: 760px; font-size: clamp(34px, 5.5vw, 64px); font-weight: 800; }
+      h2 { margin: 70px 0 18px; font-size: 32px; scroll-margin-top: 90px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+      h3 { margin: 28px 0 10px; font-size: 21px; scroll-margin-top: 90px; color: #e2e8f0; }
+      p { max-width: 78ch; color: #cbd5e1; }
+      .hero p { max-width: 66ch; color: #e2e8f0; font-size: 17px; line-height: 1.65; }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .callout {
+        margin: 22px 0;
+        padding: 18px 22px;
+        border: 1px solid var(--line);
+        border-left: 5px solid var(--blue);
+        border-radius: 14px;
+        background: var(--panel);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+      .callout.must { border-left-color: var(--green); background: rgba(16, 185, 129, 0.06); }
+      .callout.conditional { border-left-color: var(--amber); background: rgba(245, 158, 11, 0.06); }
+      .callout.forbidden { border-left-color: var(--red); background: rgba(239, 68, 68, 0.06); }
+      .label {
+        display: inline-block;
+        margin-bottom: 6px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
+      .must .label { color: var(--green); }
+      .conditional .label { color: var(--amber); }
+      .forbidden .label { color: var(--red); }
+      .route-grid, .two-col { display: grid; gap: 18px; }
+      .route-grid { grid-template-columns: repeat(4, 1fr); }
+      .two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card {
+        padding: 22px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      }
+      .card h3 { margin-top: 0; font-size: 19px; }
+      .route {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px;
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .status {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 3px 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        background: var(--green-soft);
+        color: var(--green);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      th, td { padding: 13px 15px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); color: #cbd5e1; }
+      th { background: #0f172a; font-size: 13px; font-weight: 700; letter-spacing: .04em; color: #f8fafc; }
+      tr:last-child td { border-bottom: 0; }
+      code {
+        padding: 2px 6px;
+        border-radius: 5px;
+        background: #1e293b;
+        color: #38bdf8;
+        font: 13px ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      pre {
+        overflow: auto;
+        padding: 20px;
+        border-radius: 14px;
+        background: #090d16;
+        color: #e2e8f0;
+        font: 13px/1.65 ui-monospace, SFMono-Regular, Menlo, monospace;
+        border: 1px solid var(--line);
+      }
+      .checklist { display: grid; gap: 10px; padding: 0; list-style: none; }
+      .checklist li {
+        padding: 12px 14px 12px 38px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        position: relative;
+        color: #e2e8f0;
+      }
+      .checklist li::before {
+        content: "□";
+        position: absolute;
+        left: 14px;
+        color: var(--blue);
+        font-size: 18px;
+        line-height: 1.2;
+      }
+      .metric {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .metric:last-child { border-bottom: 0; }
+      .metric strong { color: var(--blue); }
+      .footer {
+        margin-top: 80px;
+        padding-top: 24px;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        font-size: 13px;
+      }
+      @media (max-width: 900px) {
+        .layout { display: block; width: min(94vw, 720px); }
+        .topbar { padding: 12px 4vw; }
+        aside { position: static; max-height: none; padding: 16px 0 0; display: flex; gap: 8px; overflow: auto; white-space: nowrap; }
+        aside h2 { display: none; }
+        aside a { border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; background: var(--panel); }
+        main { padding-top: 34px; }
+        .hero { padding: 28px; }
+        .route-grid, .two-col { grid-template-columns: 1fr; }
+        h2 { margin-top: 48px; }
+        table { display: block; overflow-x: auto; white-space: normal; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand"><span class="brand-dot"></span> BEXO / Interactive Tech</div>
+      <div class="version">Portfolio standard · v1.0 (Developer Edition)</div>
+    </header>
+    <div class="layout">
+      <aside aria-label="Document navigation">
+        <h2>On this page</h2>
+        <a href="#purpose">Purpose</a>
+        <a href="#routes">Routes</a>
+        <a href="#data">Data contract</a>
+        <a href="#pages">Page rules</a>
+        <a href="#visual">Visual rules</a>
+        <a href="#runtime">Renderer</a>
+        <a href="#accessibility">Accessibility</a>
+        <a href="#qa">QA checklist</a>
+        <a href="#map">File map</a>
+      </aside>
+      <main>
+        <section class="hero">
+          <p class="eyebrow">Canonical implementation guide</p>
+          <h1>Interactive Developer &amp; Tech Portfolio Standard</h1>
+          <p>A comprehensive visual, architectural, and technical contract for high-performance developer portfolios featuring Spline 3D interactions, Next.js App Router, neural profile HUD, resilient form validation, and BEXO platform handoff.</p>
+          <div class="chips">
+            <span class="chip">Reference: Template-4 (Interactive 3D Tech)</span>
+            <span class="chip">Next.js 14 App Router</span>
+            <span class="chip">Spline 3D Keyboard &amp; HUD</span>
+            <span class="chip">Four Canonical Routes</span>
+            <span class="chip">Data-Driven Profile Contract</span>
+            <span class="chip">Truthful Handoff</span>
+          </div>
+        </section>
+
+        <section id="purpose">
+          <h2>1. Product purpose</h2>
+          <p>Every developer portfolio must answer four high-stakes engineering and hiring questions rapidly: who is this software engineer/system designer, what production systems, open-source work, and architecture prove their technical depth, how can an engineering team contact them directly, and how can they be hired or retained through the platform?</p>
+          <div class="callout must">
+            <span class="label">System rule</span>
+            <strong>The template preserves the public-site contract.</strong> The Next.js App Router and BEXO platform renderer inject real engineer profile data without changing the four canonical routes (<code>/</code>, <code>/portfolio</code>, <code>/contact</code>, <code>/hire-me</code>), navigation order, or hiring handoff behavior.
+          </div>
+          <div class="callout forbidden">
+            <span class="label">Do not</span>
+            Hard-code production user data into generic components, add competing secondary navigation systems, bypass honeypot anti-spam measures on contact submission, or duplicate custom billing/checkout forms inside the template.
+          </div>
+        </section>
+
+        <section id="routes">
+          <h2>2. Required page system</h2>
+          <div class="route-grid">
+            <article class="card">
+              <div class="route">/</div>
+              <h3>Home</h3>
+              <p>Neural HUD hero, 3D interactive preview, designation, tech stack chips, and "View Portfolio" CTA.</p>
+              <span class="status">Required</span>
+            </article>
+            <article class="card">
+              <div class="route">/portfolio</div>
+              <h3>Portfolio</h3>
+              <p>Full engineering showcase: About card, Spline 3D interactive keyboard, project cards, and certificates.</p>
+              <span class="status">Required</span>
+            </article>
+            <article class="card">
+              <div class="route">/contact</div>
+              <h3>Contact</h3>
+              <p>Direct email mailto, open-to-work status, verified social links, and resilient contact portal.</p>
+              <span class="status">Required</span>
+            </article>
+            <article class="card">
+              <div class="route">/hire-me</div>
+              <h3>Hire Me</h3>
+              <p>Platform handoff with clear value proposition and primary action resolving to <code>/hire-me/{handle}</code>.</p>
+              <span class="status">Required</span>
+            </article>
+          </div>
+          <div class="callout conditional">
+            <span class="label">Navigation order</span>
+            <strong>Home (<code>/</code>) → Portfolio (<code>/portfolio</code>) → Contact (<code>/contact</code>) → Hire Me (<code>/hire-me</code>).</strong> Keep link labels, active route indicators (<code>aria-current="page"</code>), keyboard focus, and mobile drawer transitions synchronized across all routes.
+          </div>
+        </section>
+
+        <section id="data">
+          <h2>3. Data contract</h2>
+          <p>Production receives normalized profile objects through <code>window.__BEXO_PROFILE__</code> or centralized configuration modules (<code>src/data/config.ts</code>, <code>projects.tsx</code>, <code>constants.ts</code>, <code>certifications.ts</code>). Local preview data supports Alex Carter, and the renderer must gracefully handle dynamically injected data at runtime.</p>
+          <pre aria-label="Profile data schema">{
+  "user": {
+    "name": "Alex Carter",
+    "email": "alexcarter.dev@gmail.com",
+    "phone": "+1 555-0199",
+    "photoUrl": "/assets/me.png",
+    "resumeUrl": "https://drive.google.com/file/d/1hFjr5zUdN9GPsgRVrLEUigB0AVsBzFTP/view?usp=sharing",
+    "openToHire": true
+  },
+  "profile": {
+    "handle": "alexcarter",
+    "headline": "Full Stack Developer | System Designer",
+    "careerGoal": "Building high-performance scalable systems and AI-powered applications.",
+    "bio": "Aspiring Software Developer passionate about full-stack development, system design, and AI/ML innovation. Strong proficiency in Java, Python, and JavaScript, with hands-on experience building scalable Web and Android applications."
+  },
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/alexcarter-dev/",
+    "github": "https://github.com/EXHIL6373",
+    "instagram": "https://www.instagram.com/alexcarter.dev/",
+    "whatsapp": "https://wa.me/15550199?text=Hi%20Alex,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
+  }
+}</pre>
+          <div class="two-col">
+            <article class="card">
+              <h3>Normalized collections</h3>
+              <p>Consumes <code>projectEntries</code> (BaitBlocker, Farm2Pharma, NeuroCare, Git-it-done, NearbyNow, SpinShop), <code>skillEntries</code> (Spline 3D Keyboard, Full-stack, AI/ML, Cloud), and <code>certificateEntries</code> (Coursera, Infosys DSA, Deep Learning) as typed arrays.</p>
+            </article>
+            <article class="card">
+              <h3>Empty collection rule</h3>
+              <p>Supports zero, one, or many items per collection. Any empty section must disappear cleanly from the DOM without leaving dangling headings, empty grids, or broken layout dividers.</p>
+            </article>
+          </div>
+          <div class="callout conditional">
+            <span class="label">Truthful states</span>
+            <code>user.resumeUrl</code> conditionally controls the Resume download CTA button. <code>user.openToHire === true</code> controls the pulsating availability badge. Neither state may ever be hardcoded to <code>true</code> when the profile data specifies false or null.
+          </div>
+        </section>
+
+        <section id="pages">
+          <h2>4. Page-by-page implementation rules</h2>
+          <h3>Home (<code>/</code>)</h3>
+          <div class="card">
+            <div class="metric"><span>Identity</span><strong>Required (Name + Portrait HUD)</strong></div>
+            <div class="metric"><span>Designation</span><strong>Full Stack Developer | System Designer</strong></div>
+            <div class="metric"><span>Primary CTA</span><strong>View Portfolio (routes to /portfolio)</strong></div>
+            <div class="metric"><span>Resume CTA</span><strong>Conditional (rendered only when resumeUrl exists)</strong></div>
+            <div class="metric"><span>Media</span><strong>Interactive 3D Neural Reveal + Particles</strong></div>
+          </div>
+          <div class="callout must">
+            <span class="label">First viewport rule</span>
+            The above-the-fold viewport must communicate identity, role, and primary CTA without vertical overflow on standard mobile screens (320px–375px). Dynamic viewport units (<code>100svh</code> / <code>100dvh</code>) guarantee layout stability during mobile address bar transitions.
+          </div>
+
+          <h3>Portfolio (<code>/portfolio</code>)</h3>
+          <p>Comprehensive technical profile organized in clear logical hierarchy: About &amp; Focus Badges → 3D Interactive Keyboard (Spline) → Falling Skill Cards → Selected Projects Showcase → Certifications Carousel.</p>
+          <div class="two-col">
+            <article class="card">
+              <h3>3D Spline Keyboard &amp; Skills</h3>
+              <p>Interactive 3D mechanical keyboard powered by Spline runtime. Each keycap reveals skill metadata, proficiency tags, and triggers falling physical cards on mobile viewports.</p>
+            </article>
+            <article class="card">
+              <h3>Project Showcase</h3>
+              <p>Displays rich engineering cards with project badges, tech stack pills, architecture summaries, live preview links, and GitHub repository handoffs.</p>
+            </article>
+          </div>
+
+          <h3>Contact (<code>/contact</code>)</h3>
+          <div class="callout must">
+            <span class="label">Resilient form architecture</span>
+            Provides direct email <code>mailto:</code>, phone connection, social channels, and an interactive contact portal. Form inputs include Full Name, Email, optional Phone, and Message.
+          </div>
+          <ul>
+            <li>Validates name, email, and message prior to API submission.</li>
+            <li>Validates phone with standard regex only when supplied.</li>
+            <li>Contains a hidden honeypot field (<code>honeypot</code>) that drops automated bot submissions silently.</li>
+            <li>Submits to Next.js API route <code>/api/send</code> (powered by Resend API).</li>
+            <li>Provides accessible live status feedback (loading, success, error) with <code>aria-live="polite"</code>.</li>
+          </ul>
+
+          <h3>Hire Me (<code>/hire-me</code>)</h3>
+          <div class="callout conditional">
+            <span class="label">Platform handoff</span>
+            Communicates role specialties, engagement terms, and provides a direct handoff action resolving to <code>/hire-me/{handle}</code>. Also offers a fallback email link. Do not recreate custom checkout or payment forms inside the template.
+          </div>
+        </section>
+
+        <section id="visual">
+          <h2>5. Visual and interaction standard</h2>
+          <div class="two-col">
+            <article class="card">
+              <h3>Cyber-Tech Design Language</h3>
+              <p>Deep space canvas (<code>#030014</code>), elevated cyber cards (<code>#0b0f19</code>), neon brand ember (<code>hsl(20, 100%, 70%)</code>), electric cyan (<code>#38bdf8</code>), and cyber purple (<code>#a855f7</code>). Glassmorphism backdrop filters ensure high-end depth.</p>
+            </article>
+            <article class="card">
+              <h3>Responsive Breakpoints</h3>
+              <p>Mobile (320px–640px), Tablet (641px–1024px), Desktop (1025px+). Strictly zero horizontal scroll at 320px CSS width. Fluid typography prevents word breaking.</p>
+            </article>
+          </div>
+
+          <h3>Canonical CSS Variables</h3>
+          <table>
+            <thead>
+              <tr><th>Variable</th><th>Tech Palette Value</th><th>Role &amp; Application</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>--ink</code></td><td><code>#f8fafc</code></td><td>Primary high-contrast foreground text</td></tr>
+              <tr><td><code>--muted</code></td><td><code>#94a3b8</code></td><td>Secondary muted slate for captions and metadata</td></tr>
+              <tr><td><code>--paper</code></td><td><code>#030014</code></td><td>Deep space cosmic black background canvas</td></tr>
+              <tr><td><code>--panel</code></td><td><code>#0b0f19</code></td><td>Elevated card surface with subtle border outline</td></tr>
+              <tr><td><code>--line</code></td><td><code>#1e293b</code></td><td>Card borders, divider lines, and subtle structural frames</td></tr>
+              <tr><td><code>--blue</code> / <code>--cyan</code></td><td><code>#38bdf8</code></td><td>Electric cyan primary action and interactive focus</td></tr>
+              <tr><td><code>--purple</code></td><td><code>#a855f7</code></td><td>Cyber purple accent, glows, and badges</td></tr>
+              <tr><td><code>--brand</code></td><td><code>#ff9466</code> / <code>hsl(20, 100%, 70%)</code></td><td>Signature glowing neon ember brand accent</td></tr>
+              <tr><td><code>--green</code></td><td><code>#10b981</code></td><td>Truthful available-to-hire badge and success states</td></tr>
+              <tr><td><code>--amber</code></td><td><code>#f59e0b</code></td><td>Pending actions, caution callouts, and in-progress states</td></tr>
+              <tr><td><code>--red</code></td><td><code>#ef4444</code></td><td>Form validation errors and destructive warnings</td></tr>
+              <tr><td><code>--shadow</code></td><td><code>0 18px 50px rgba(0, 0, 0, 0.6)</code></td><td>High-depth elevation shadow for cards and modals</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="runtime">
+          <h2>6. Renderer integration map</h2>
+          <table>
+            <thead>
+              <tr><th>Concern</th><th>File Location</th><th>Contract Rule</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Config &amp; Profile</td><td><code>src/data/config.ts</code></td><td>Supplies Alex Carter profile fields, social links, resume URL.</td></tr>
+              <tr><td>Global Design Tokens</td><td><code>src/app/globals.css</code></td><td>Defines canonical <code>:root</code> tokens and Tailwind base layers.</td></tr>
+              <tr><td>Header &amp; Navigation</td><td><code>src/components/header/header.tsx</code></td><td>Four routes with active route pill and mobile drawer lock.</td></tr>
+              <tr><td>3D Spline Scene</td><td><code>src/components/sections/skills.tsx</code></td><td>Mounts interactive Spline keyboard with fallback cards.</td></tr>
+              <tr><td>WebGL Background</td><td><code>src/components/ui/ResponsiveLightfall.tsx</code></td><td>WebGL lightfall shader tuned for mobile/desktop performance.</td></tr>
+              <tr><td>Contact Submission</td><td><code>src/components/ContactForm.tsx</code></td><td>Honeypot protection, validation, and status dispatch.</td></tr>
+              <tr><td>API Backend</td><td><code>src/app/api/send/route.ts</code></td><td>Resend API integration handling structured emails safely.</td></tr>
+              <tr><td>Platform Handoff</td><td><code>src/app/hire-me/page.tsx</code></td><td>Redirects to <code>/hire-me/{handle}</code> with engagement briefing.</td></tr>
+            </tbody>
+          </table>
+          <div class="callout forbidden">
+            <span class="label">Production safety</span>
+            Never hardcode credentials or secrets into source files. All dynamic profile fields must remain injectable via <code>window.__BEXO_PROFILE__</code> or runtime props.
+          </div>
+        </section>
+
+        <section id="accessibility">
+          <h2>7. Accessibility and SEO</h2>
+          <ul>
+            <li>Single descriptive <code>&lt;h1&gt;</code> per page with tailored title and meta description.</li>
+            <li>Accessible navigation with <code>aria-current="page"</code> and accessible mobile menu toggle.</li>
+            <li>Focus-visible rings on all interactive elements (buttons, inputs, links).</li>
+            <li>Informative <code>alt</code> text on profile images, certification credentials, and screenshots.</li>
+            <li>Visible form labels, native input types, real-time error toasts, and <code>aria-live</code> status indicators.</li>
+            <li>Full support for <code>prefers-reduced-motion: reduce</code> to prevent disorientation.</li>
+            <li>Structured Open Graph images and metadata for rich previews on social platforms.</li>
+          </ul>
+        </section>
+
+        <section id="qa">
+          <h2>8. Acceptance checklist</h2>
+          <ul class="checklist">
+            <li>Home renders Alex Carter identity, designation, portrait HUD, and View Portfolio CTA.</li>
+            <li>Resume button appears only when <code>config.resume</code> / <code>user.resumeUrl</code> exists.</li>
+            <li>Availability badge displays conditionally based on <code>openToHire === true</code>.</li>
+            <li>Portfolio cleanly renders 3D Spline keyboard, skills, projects, and certifications.</li>
+            <li>Empty collections disappear completely without leftover gaps or empty headers.</li>
+            <li>Contact validates name, email, message, and ignores phone when omitted.</li>
+            <li>Honeypot field stops automated submissions without false positives.</li>
+            <li>Hire Me directs users cleanly to <code>/hire-me/{handle}</code> with fallback link.</li>
+            <li>Zero horizontal scrolling at 320px, 375px, 768px, and desktop widths.</li>
+            <li>Keyboard navigation, focus rings, and mobile menu scroll-lock function properly.</li>
+            <li>Next.js TypeScript build compiles cleanly with zero lint or runtime errors.</li>
+          </ul>
+        </section>
+
+        <section id="map">
+          <h2>9. Canonical file map</h2>
+          <table>
+            <thead>
+              <tr><th>Page / Feature</th><th>Source File</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Home Page</td><td><code>src/app/page.tsx</code>, <code>src/components/sections/hero.tsx</code></td></tr>
+              <tr><td>Portfolio Page</td><td><code>src/app/portfolio/page.tsx</code>, <code>src/components/sections/skills.tsx</code>, <code>projects.tsx</code></td></tr>
+              <tr><td>Contact Page</td><td><code>src/app/contact/page.tsx</code>, <code>src/components/ContactForm.tsx</code></td></tr>
+              <tr><td>Hire Me Page</td><td><code>src/app/hire-me/page.tsx</code>, <code>src/app/hire-me/[handle]/page.tsx</code></td></tr>
+              <tr><td>Design System</td><td><code>src/app/globals.css</code>, <code>tailwind.config.ts</code></td></tr>
+              <tr><td>Data Engine</td><td><code>src/data/config.ts</code>, <code>src/data/constants.ts</code>, <code>src/data/certifications.ts</code></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <footer class="footer">
+          BEXO Interactive Tech Templates · Canonical standard v1.0 (Developer Edition) · Synchronized with <code>Portfolio 4</code>.
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
