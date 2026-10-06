@@ -11,6 +11,22 @@
   --text-main: #101828;
   --text-secondary: #667085;
   --border-subtle: rgba(16, 24, 40, 0.10);
+
+  /* BEXO Standard Canonical Variables */
+  --ink: #0f172a;
+  --muted: #5e6874;
+  --paper: #f8fafc;
+  --panel: #ffffff;
+  --line: #d9dde2;
+  --blue: #145bff;
+  --blue-soft: #eaf1ff;
+  --green: #10b981;
+  --green-soft: #ecfdf5;
+  --amber: #d97706;
+  --amber-soft: #fffbeb;
+  --red: #e11d48;
+  --red-soft: #fff1f2;
+  --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
 }
 
 html {

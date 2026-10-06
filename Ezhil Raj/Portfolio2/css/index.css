@@ -49,6 +49,22 @@
   --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
   --transition-base: 250ms cubic-bezier(0.16, 1, 0.3, 1);
   --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* BEXO Standard Canonical Variables */
+  --ink: #0f172a;
+  --muted: #5e6874;
+  --paper: #f8fafc;
+  --panel: #ffffff;
+  --line: #d9dde2;
+  --blue: #145bff;
+  --blue-soft: #eaf1ff;
+  --green: #10b981;
+  --green-soft: #ecfdf5;
+  --amber: #d97706;
+  --amber-soft: #fffbeb;
+  --red: #e11d48;
+  --red-soft: #fff1f2;
+  --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
 }
 
 /* Dark Mode Tokens */
@@ -78,6 +94,22 @@
   --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.5);
   --shadow-xl: 0 30px 70px rgba(0, 0, 0, 0.6);
+
+  /* BEXO Standard Canonical Variables (Dark Mode) */
+  --ink: #f8fafc;
+  --muted: #94a3b8;
+  --paper: #090e17;
+  --panel: #0f172a;
+  --line: #1e293b;
+  --blue: #3b82f6;
+  --blue-soft: rgba(59, 130, 246, 0.14);
+  --green: #10b981;
+  --green-soft: rgba(16, 185, 129, 0.15);
+  --amber: #d97706;
+  --amber-soft: rgba(217, 119, 6, 0.15);
+  --red: #e11d48;
+  --red-soft: rgba(225, 29, 72, 0.15);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
 }
 
 /* Base Reset & Typography */

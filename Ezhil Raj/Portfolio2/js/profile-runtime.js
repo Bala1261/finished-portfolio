@@ -10,6 +10,11 @@
 
 import { defaultProfile } from './profile-data.js';
 
+// Ensure window.__BEXO_PROFILE__ is available globally in preview/standalone environments
+if (typeof window !== 'undefined' && !window.__BEXO_PROFILE__) {
+  window.__BEXO_PROFILE__ = defaultProfile;
+}
+
 export function getProfile() {
   const raw = (typeof window !== 'undefined' && window.__BEXO_PROFILE__) 
     ? window.__BEXO_PROFILE__ 
