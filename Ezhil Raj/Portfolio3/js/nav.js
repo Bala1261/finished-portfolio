@@ -10,7 +10,7 @@
  */
 
 import { getProfile, resolveRoute, resolveAsset, escapeHtml } from './profile-runtime.js';
-import { initTheme, toggleTheme } from './theme.js';
+import { initTheme } from './theme.js';
 
 export function initNavigation(activeRoute = 'home') {
   const profile = getProfile();

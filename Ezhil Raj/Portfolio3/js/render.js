@@ -38,13 +38,17 @@ export function renderPage(pageType) {
 function renderHome(profile) {
   const { user, profile: meta, projectEntries, services, awards, clients } = profile;
 
+  const designation = meta.headline || meta.bio || 'Creative Director & Designer';
+  if (user.name) {
+    document.title = `${user.name} — ${designation}`;
+  }
+
   // Name & Designation
   const nameEls = document.querySelectorAll('[data-bind="user.name"]');
   nameEls.forEach((el) => {
     el.textContent = user.name || 'Alex Mercer';
   });
 
-  const designation = meta.headline || meta.bio || 'Creative Director & Designer';
   const headlineEls = document.querySelectorAll('[data-bind="profile.headline"]');
   headlineEls.forEach((el) => {
     el.textContent = designation;
@@ -60,21 +64,34 @@ function renderHome(profile) {
     el.textContent = meta.bio || '';
   });
 
-  // Portrait Photo
+  // Portrait Photo with Monogram Initials Fallback
   const portraitEl = document.getElementById('home-portrait');
   if (portraitEl) {
+    const parentFrame = portraitEl.parentElement;
     if (user.photoUrl) {
       portraitEl.onerror = () => {
         if (!portraitEl.dataset.fallbackApplied) {
           portraitEl.dataset.fallbackApplied = 'true';
           const filename = user.photoUrl.split('/').pop() || 'portrait.png';
           portraitEl.src = resolveAsset(`assets/${filename}`);
+        } else {
+          portraitEl.style.display = 'none';
+          if (parentFrame) {
+            parentFrame.classList.add('no-photo');
+            parentFrame.setAttribute('data-initials', user.initials || '✦');
+          }
         }
       };
       portraitEl.src = resolveAsset(user.photoUrl);
       portraitEl.alt = `${user.name} — Creative Director Portrait`;
+      portraitEl.style.display = '';
+      if (parentFrame) parentFrame.classList.remove('no-photo');
     } else {
-      portraitEl.parentElement?.classList.add('no-photo');
+      portraitEl.style.display = 'none';
+      if (parentFrame) {
+        parentFrame.classList.add('no-photo');
+        parentFrame.setAttribute('data-initials', user.initials || '✦');
+      }
     }
   }
 
@@ -183,9 +200,10 @@ function renderHome(profile) {
 
   // Creative Services Overview
   const servicesSlot = document.getElementById('home-services-slot');
-  if (servicesSlot) {
+  const servicesSection = document.getElementById('home-services-section') || servicesSlot?.closest('section');
+  if (servicesSection && servicesSlot) {
     if (services.length > 0) {
-      servicesSlot.parentElement?.removeAttribute('hidden');
+      servicesSection.removeAttribute('hidden');
       servicesSlot.innerHTML = services.map((srv) => `
         <div class="service-card">
           <span class="service-num">${escapeHtml(srv.number || '01')}</span>
@@ -194,39 +212,54 @@ function renderHome(profile) {
         </div>
       `).join('');
     } else {
-      servicesSlot.parentElement?.setAttribute('hidden', '');
+      servicesSection.setAttribute('hidden', '');
+      servicesSlot.innerHTML = '';
     }
   }
 
-  // Awards Strip
+  // Awards Strip & Clients Marquee Section
   const awardsSlot = document.getElementById('home-awards-slot');
-  if (awardsSlot) {
-    if (awards.length > 0) {
-      awardsSlot.parentElement?.removeAttribute('hidden');
-      awardsSlot.innerHTML = awards.map((awd) => `
-        <div class="award-pill">
-          <span class="award-year">${escapeHtml(awd.year)}</span>
-          <strong class="award-name">${escapeHtml(awd.title)}</strong>
-          <span class="award-cat">${escapeHtml(awd.category)}</span>
-        </div>
-      `).join('');
-    } else {
-      awardsSlot.parentElement?.setAttribute('hidden', '');
-    }
-  }
-
-  // Clients Marquee
   const clientsSlot = document.getElementById('home-clients-slot');
-  if (clientsSlot) {
-    if (clients.length > 0) {
-      clientsSlot.parentElement?.removeAttribute('hidden');
-      clientsSlot.innerHTML = clients.map((c) => `
-        <div class="client-badge">
-          <span>${escapeHtml(c.name)}</span>
-        </div>
-      `).join('');
+  const awardsSection = document.getElementById('home-awards-section') || awardsSlot?.closest('section');
+  const hasAwards = awards.length > 0;
+  const hasClients = clients.length > 0;
+
+  if (awardsSection) {
+    if (hasAwards || hasClients) {
+      awardsSection.removeAttribute('hidden');
+      if (awardsSlot) {
+        if (hasAwards) {
+          awardsSlot.removeAttribute('hidden');
+          awardsSlot.innerHTML = awards.map((awd) => `
+            <div class="award-pill">
+              <span class="award-year">${escapeHtml(awd.year)}</span>
+              <strong class="award-name">${escapeHtml(awd.title)}</strong>
+              <span class="award-cat">${escapeHtml(awd.category)}</span>
+            </div>
+          `).join('');
+        } else {
+          awardsSlot.setAttribute('hidden', '');
+          awardsSlot.innerHTML = '';
+        }
+      }
+
+      if (clientsSlot) {
+        if (hasClients) {
+          clientsSlot.removeAttribute('hidden');
+          clientsSlot.innerHTML = clients.map((c) => `
+            <div class="client-badge">
+              <span>${escapeHtml(c.name)}</span>
+            </div>
+          `).join('');
+        } else {
+          clientsSlot.setAttribute('hidden', '');
+          clientsSlot.innerHTML = '';
+        }
+      }
     } else {
-      clientsSlot.parentElement?.setAttribute('hidden', '');
+      awardsSection.setAttribute('hidden', '');
+      if (awardsSlot) awardsSlot.innerHTML = '';
+      if (clientsSlot) clientsSlot.innerHTML = '';
     }
   }
 }
@@ -251,6 +284,10 @@ function renderPortfolio(profile) {
     researchEntries,
   } = profile;
 
+  if (user.name) {
+    document.title = `Portfolio & Selected Works — ${user.name}`;
+  }
+
   // 1. Identity Block
   const nameEls = document.querySelectorAll('[data-bind="user.name"]');
   nameEls.forEach((el) => { el.textContent = user.name || 'Alex Mercer'; });
@@ -274,11 +311,25 @@ function renderPortfolio(profile) {
 
   const portraitEl = document.getElementById('portfolio-portrait');
   if (portraitEl) {
+    const parentCol = portraitEl.parentElement;
     if (user.photoUrl) {
+      portraitEl.onerror = () => {
+        portraitEl.style.display = 'none';
+        if (parentCol) {
+          parentCol.classList.add('no-photo');
+          parentCol.setAttribute('data-initials', user.initials || '✦');
+        }
+      };
       portraitEl.src = resolveAsset(user.photoUrl);
       portraitEl.alt = `${user.name} Portrait`;
+      portraitEl.style.display = '';
+      if (parentCol) parentCol.classList.remove('no-photo');
     } else {
-      portraitEl.parentElement?.classList.add('no-photo');
+      portraitEl.style.display = 'none';
+      if (parentCol) {
+        parentCol.classList.add('no-photo');
+        parentCol.setAttribute('data-initials', user.initials || '✦');
+      }
     }
   }
 
@@ -409,7 +460,7 @@ function renderPortfolio(profile) {
 
       // Wire up modal openers
       workGrid.querySelectorAll('.project-modal-trigger').forEach((btn) => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', () => {
           const idx = parseInt(btn.getAttribute('data-index'), 10);
           if (!isNaN(idx) && projectEntries[idx]) {
             openCaseStudyModal(projectEntries[idx]);
@@ -502,11 +553,15 @@ function renderHireMe(profile) {
   const handle = meta.handle || 'alexmercer';
   const platformHandoffUrl = `/hire-me/${encodeURIComponent(handle)}`;
 
+  if (user.name) {
+    document.title = `Hire Me & Retainers — ${user.name}`;
+  }
+
   container.innerHTML = `
     <div class="hire-hero">
       <div class="hire-badge-row">
         <span class="badge badge-accent">BEXO Verified Talent Handoff</span>
-        ${user.openToHire ? '<span class="status-pill status-open">Actively Accepting Engagements</span>' : ''}
+        ${user.openToHire ? '<span class="status-pill status-open">Actively Accepting Engagements</span>' : '<span class="status-pill status-closed">Currently Engaged</span>'}
       </div>
       <h1 class="hire-title">Retain or Hire <span class="highlight">${escapeHtml(user.name)}</span></h1>
       <p class="hire-lead">${escapeHtml(meta.headline || 'Creative Director & Designer')} — ${escapeHtml(user.location || 'New York & Global Remote')}</p>
@@ -548,6 +603,10 @@ function renderHireMe(profile) {
       <div class="hire-fallback-section">
         <h3>Direct Contact & Verification Fallbacks</h3>
         <div class="hire-fallback-links">
+          <a href="${resolveRoute('contact')}" class="fallback-link-btn" id="fallback-contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Direct Message / Inquiry Form &rarr;</span>
+          </a>
           ${user.email ? `
             <a href="mailto:${escapeHtml(user.email)}?subject=Direct Inquiry for ${encodeURIComponent(user.name)}" class="fallback-link-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>

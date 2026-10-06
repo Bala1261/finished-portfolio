@@ -11,59 +11,68 @@
 import { defaultProfile } from './profile-data.js';
 
 export function getProfile() {
-  const raw = (typeof window !== 'undefined' && window.__BEXO_PROFILE__)
+  const isInjected = typeof window !== 'undefined' && Boolean(window.__BEXO_PROFILE__);
+  const raw = isInjected
     ? window.__BEXO_PROFILE__
     : (typeof window !== 'undefined' && window.defaultProfile ? window.defaultProfile : defaultProfile);
 
-  return normalizeProfile(raw || {});
+  return normalizeProfile(raw || {}, isInjected);
 }
 
-export function normalizeProfile(raw) {
+export function normalizeProfile(raw, isInjected = false) {
+  const isDemo = !isInjected && (raw === defaultProfile || !raw.user);
   const user = raw.user || {};
   const profile = raw.profile || {};
 
+  // Compute initials and names safely
+  const name = user.name !== undefined ? user.name : (isDemo ? 'Alex Mercer' : '');
+  const nameParts = (name || '').trim().split(/\s+/).filter(Boolean);
+  const firstName = user.firstName || nameParts[0] || (isDemo ? 'Alex' : '');
+  const lastName = user.lastName || nameParts.slice(1).join(' ') || (isDemo ? 'Mercer' : '');
+  const initials = user.initials || (nameParts.length > 0 ? nameParts.map((p) => p[0]).join('').substring(0, 2).toUpperCase() : (isDemo ? 'AM' : '✦'));
+
   return {
     user: {
-      name: user.name || 'Alex Mercer',
-      firstName: user.firstName || 'Alex',
-      lastName: user.lastName || 'Mercer',
-      initials: user.initials || 'AM',
-      email: user.email || 'hello@alexmercer.design',
-      phone: user.phone || '+1 (555) 234-8901',
-      photoUrl: user.photoUrl || 'assets/portrait.png',
-      resumeUrl: user.resumeUrl || 'assets/Alex_Mercer_Creative_Resume.pdf',
-      openToHire: Boolean(user.openToHire !== undefined ? user.openToHire : true),
-      location: user.location || 'New York, NY',
-      socials: Array.isArray(user.socials) ? user.socials : [
+      name,
+      firstName,
+      lastName,
+      initials,
+      email: user.email !== undefined ? user.email : (isDemo ? 'hello@alexmercer.design' : ''),
+      phone: user.phone !== undefined ? user.phone : (isDemo ? '+1 (555) 234-8901' : ''),
+      photoUrl: user.photoUrl !== undefined ? user.photoUrl : (isDemo ? 'assets/portrait.png' : ''),
+      resumeUrl: user.resumeUrl !== undefined ? user.resumeUrl : (isDemo ? 'assets/Alex_Mercer_Creative_Resume.pdf' : ''),
+      openToHire: Boolean(user.openToHire !== undefined ? user.openToHire : (isDemo ? true : false)),
+      location: user.location !== undefined ? user.location : (isDemo ? 'New York, NY' : ''),
+      socials: Array.isArray(user.socials) ? user.socials : (isDemo ? [
         { label: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
         { label: 'Dribbble', href: 'https://dribbble.com', icon: 'dribbble' },
         { label: 'Behance', href: 'https://behance.net', icon: 'behance' },
         { label: 'Instagram', href: 'https://instagram.com', icon: 'instagram' },
-      ],
+      ] : []),
     },
     profile: {
-      handle: profile.handle || 'alexmercer',
-      headline: profile.headline || 'Creative Director & Designer',
-      careerGoal: profile.careerGoal || 'Crafting immersive visual identities and digital experiences that inspire and scale.',
-      bio: profile.bio || profile.headline || 'I shape visual identities and digital product experiences at the intersection of motion, typography, and interactive technology.',
-      tagline: profile.tagline || profile.headline || 'Art Director & Interactive Designer',
-      overviewQuote: profile.overviewQuote || 'Good design is invisible. Great design is unforgettable.',
-      heroStats: Array.isArray(profile.heroStats) ? profile.heroStats : [
+      handle: profile.handle !== undefined ? profile.handle : (isDemo ? 'alexmercer' : (name.toLowerCase().replace(/[^a-z0-9]/g, '') || 'profile')),
+      headline: profile.headline !== undefined ? profile.headline : (isDemo ? 'Creative Director & Designer' : ''),
+      careerGoal: profile.careerGoal !== undefined ? profile.careerGoal : (isDemo ? 'Crafting immersive visual identities and digital experiences that inspire and scale.' : ''),
+      bio: profile.bio !== undefined ? profile.bio : (profile.headline || (isDemo ? 'I shape visual identities and digital product experiences at the intersection of motion, typography, and interactive technology.' : '')),
+      tagline: profile.tagline !== undefined ? profile.tagline : (profile.headline || (isDemo ? 'Art Director & Interactive Designer' : '')),
+      overviewQuote: profile.overviewQuote !== undefined ? profile.overviewQuote : (isDemo ? 'Good design is invisible. Great design is unforgettable.' : ''),
+      heroStats: Array.isArray(profile.heroStats) ? profile.heroStats : (isDemo ? [
         { value: '10+', label: 'Years Experience', desc: 'Brand & digital systems' },
         { value: '45+', label: 'Delivered Projects', desc: 'From branding to WebGL' },
         { value: '14', label: 'Design Awards', desc: 'D&AD, Awwwards, AIGA' },
-      ],
+      ] : []),
     },
-    projectEntries: Array.isArray(raw.projectEntries) ? raw.projectEntries : [],
-    experienceEntries: Array.isArray(raw.experienceEntries) ? raw.experienceEntries : [],
-    educationEntries: Array.isArray(raw.educationEntries) ? raw.educationEntries : [],
-    certificateEntries: Array.isArray(raw.certificateEntries) ? raw.certificateEntries : [],
-    achievementEntries: Array.isArray(raw.achievementEntries) ? raw.achievementEntries : [],
-    researchEntries: Array.isArray(raw.researchEntries) ? raw.researchEntries : [],
-    skillEntries: Array.isArray(raw.skillEntries) ? raw.skillEntries : [],
-    services: Array.isArray(raw.services) ? raw.services : [],
-    awards: Array.isArray(raw.awards) ? raw.awards : [],
-    clients: Array.isArray(raw.clients) ? raw.clients : [],
+    projectEntries: Array.isArray(raw.projectEntries) ? raw.projectEntries : (isDemo ? (defaultProfile.projectEntries || []) : []),
+    experienceEntries: Array.isArray(raw.experienceEntries) ? raw.experienceEntries : (isDemo ? (defaultProfile.experienceEntries || []) : []),
+    educationEntries: Array.isArray(raw.educationEntries) ? raw.educationEntries : (isDemo ? (defaultProfile.educationEntries || []) : []),
+    certificateEntries: Array.isArray(raw.certificateEntries) ? raw.certificateEntries : (isDemo ? (defaultProfile.certificateEntries || []) : []),
+    achievementEntries: Array.isArray(raw.achievementEntries) ? raw.achievementEntries : (isDemo ? (defaultProfile.achievementEntries || []) : []),
+    researchEntries: Array.isArray(raw.researchEntries) ? raw.researchEntries : (isDemo ? (defaultProfile.researchEntries || []) : []),
+    skillEntries: Array.isArray(raw.skillEntries) ? raw.skillEntries : (isDemo ? (defaultProfile.skillEntries || []) : []),
+    services: Array.isArray(raw.services) ? raw.services : (isDemo ? (defaultProfile.services || []) : []),
+    awards: Array.isArray(raw.awards) ? raw.awards : (isDemo ? (defaultProfile.awards || []) : []),
+    clients: Array.isArray(raw.clients) ? raw.clients : (isDemo ? (defaultProfile.clients || []) : []),
   };
 }
 

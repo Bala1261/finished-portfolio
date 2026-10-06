@@ -13,6 +13,9 @@ import { getProfile, escapeHtml } from './profile-runtime.js';
 
 export function initContact() {
   const profile = getProfile();
+  if (profile.user.name) {
+    document.title = `Contact & Inquiries — ${profile.user.name}`;
+  }
   renderContactInfo(profile);
   setupContactForm(profile);
 }
@@ -38,13 +41,17 @@ function renderContactInfo(profile) {
   }
 
   const emailSlot = document.getElementById('contact-email-slot');
-  if (emailSlot && profile.user.email) {
-    emailSlot.innerHTML = `
-      <a href="mailto:${escapeHtml(profile.user.email)}" class="contact-info-link" id="contact-email-link">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <span>${escapeHtml(profile.user.email)}</span>
-      </a>
-    `;
+  if (emailSlot) {
+    if (profile.user.email) {
+      emailSlot.innerHTML = `
+        <a href="mailto:${escapeHtml(profile.user.email)}" class="contact-info-link" id="contact-email-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>${escapeHtml(profile.user.email)}</span>
+        </a>
+      `;
+    } else {
+      emailSlot.innerHTML = '';
+    }
   }
 
   const phoneSlot = document.getElementById('contact-phone-slot');
@@ -62,23 +69,31 @@ function renderContactInfo(profile) {
   }
 
   const locationSlot = document.getElementById('contact-location-slot');
-  if (locationSlot && profile.user.location) {
-    locationSlot.innerHTML = `
-      <div class="contact-meta-item">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>${escapeHtml(profile.user.location)}</span>
-      </div>
-    `;
+  if (locationSlot) {
+    if (profile.user.location) {
+      locationSlot.innerHTML = `
+        <div class="contact-meta-item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>${escapeHtml(profile.user.location)}</span>
+        </div>
+      `;
+    } else {
+      locationSlot.innerHTML = '';
+    }
   }
 
   const socialsSlot = document.getElementById('contact-socials-slot');
-  if (socialsSlot && Array.isArray(profile.user.socials)) {
-    socialsSlot.innerHTML = profile.user.socials.map((s) => `
-      <a href="${escapeHtml(s.href)}" target="_blank" rel="noopener noreferrer" class="social-pill-link">
-        <span>${escapeHtml(s.label)}</span>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-      </a>
-    `).join('');
+  if (socialsSlot) {
+    if (Array.isArray(profile.user.socials) && profile.user.socials.length > 0) {
+      socialsSlot.innerHTML = profile.user.socials.map((s) => `
+        <a href="${escapeHtml(s.href)}" target="_blank" rel="noopener noreferrer" class="social-pill-link">
+          <span>${escapeHtml(s.label)}</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      `).join('');
+    } else {
+      socialsSlot.innerHTML = '';
+    }
   }
 }
 

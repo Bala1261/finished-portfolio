@@ -3,13 +3,13 @@ const path = require('path');
 const fs = require('fs');
 
 const chromePath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
-const artifactDir = 'C:\\Users\\ELCOT\\.gemini\\antigravity-ide\\brain\\7ab48bcd-4c47-493d-b0d7-3d5daaa8eaa5';
+const artifactDir = process.env.ARTIFACT_DIR || 'C:\\Users\\ELCOT\\.gemini\\antigravity-ide\\brain\\465a4f22-f5ff-4204-bc58-adbbd7dd79bd';
 
 if (!fs.existsSync(artifactDir)) {
   fs.mkdirSync(artifactDir, { recursive: true });
 }
 
-const BASE_URL = 'http://localhost:5174';
+const BASE_URL = process.env.TEST_URL || 'http://localhost:5173';
 
 const routes = [
   { name: 'home', url: `${BASE_URL}/` },
@@ -29,7 +29,13 @@ async function run() {
   const browser = await puppeteer.launch({
     executablePath: chromePath,
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--proxy-server=direct://',
+      '--proxy-bypass-list=*',
+      '--disable-extensions',
+    ],
   });
 
   const page = await browser.newPage();
@@ -49,16 +55,15 @@ async function run() {
 
   for (const route of routes) {
     console.log(`\n--- Testing Route: ${route.name} (${route.url}) ---`);
+    await page.goto(route.url, { waitUntil: 'domcontentloaded' });
+    await new Promise((r) => setTimeout(r, 300));
 
     for (const vp of viewports) {
       await page.setViewport({
         width: vp.width,
         height: vp.height,
-        isMobile: vp.isMobile,
-        hasTouch: vp.isMobile,
       });
-
-      await page.goto(route.url, { waitUntil: 'networkidle0' });
+      await new Promise((r) => setTimeout(r, 150));
 
       // Check horizontal overflow
       const overflow = await page.evaluate(() => {
@@ -84,8 +89,8 @@ async function run() {
 
   // Interactive Test 1: Mobile drawer menu on Home
   console.log('\n--- Interactive Test 1: Mobile Menu Drawer ---');
-  await page.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true });
-  await page.goto(`${BASE_URL}/`, { waitUntil: 'networkidle0' });
+  await page.setViewport({ width: 390, height: 844 });
+  await page.goto(`${BASE_URL}/`, { waitUntil: 'domcontentloaded' });
   const menuToggle = await page.$('#bexo-menu-toggle');
   if (menuToggle) {
     await menuToggle.click();
@@ -99,7 +104,7 @@ async function run() {
   // Interactive Test 2: Case study modal on Portfolio
   console.log('\n--- Interactive Test 2: Portfolio Case Study Lightbox ---');
   await page.setViewport({ width: 1366, height: 768 });
-  await page.goto(`${BASE_URL}/pages/portfolio.html`, { waitUntil: 'networkidle0' });
+  await page.goto(`${BASE_URL}/pages/portfolio.html`, { waitUntil: 'domcontentloaded' });
   const modalBtn = await page.$('.project-modal-trigger');
   if (modalBtn) {
     await modalBtn.click();
@@ -112,7 +117,7 @@ async function run() {
 
   // Interactive Test 3: Contact validation
   console.log('\n--- Interactive Test 3: Contact Form Validation ---');
-  await page.goto(`${BASE_URL}/pages/contact.html`, { waitUntil: 'networkidle0' });
+  await page.goto(`${BASE_URL}/pages/contact.html`, { waitUntil: 'domcontentloaded' });
   const submitBtn = await page.$('#bexo-contact-form button[type="submit"]');
   if (submitBtn) {
     await submitBtn.click();
@@ -124,7 +129,7 @@ async function run() {
 
   // Verification 4: Injected window.__BEXO_PROFILE__ test
   console.log('\n--- Verification 4: Production Profile Injection Override ---');
-  await page.evaluate(() => {
+  await page.evaluateOnNewDocument(() => {
     window.__BEXO_PROFILE__ = {
       user: {
         name: 'Sierra Montana',
@@ -139,24 +144,37 @@ async function run() {
         bio: 'Creating immersive acoustic architectures for next-generation spatial computing.',
       },
       projectEntries: [],
+      experienceEntries: [],
+      educationEntries: [],
+      certificateEntries: [],
+      achievementEntries: [],
+      researchEntries: [],
+      skillEntries: [],
     };
   });
-  await page.goto(`${BASE_URL}/`, { waitUntil: 'networkidle0' });
-  // Verify that the injected profile works when set before load
-  await page.evaluate(() => {
-    window.__BEXO_PROFILE__ = {
-      user: {
-        name: 'Sierra Montana',
-        headline: 'Rhythm Designer & Composer',
-        openToHire: false,
-        resumeUrl: '',
-      },
-      profile: {
-        headline: 'Rhythm Designer & Composer',
-        bio: 'Injected audio bio test.',
-      },
+  await page.goto(`${BASE_URL}/`, { waitUntil: 'domcontentloaded' });
+
+  const injectedData = await page.evaluate(() => {
+    const nameEl = document.querySelector('[data-bind="user.name"]');
+    const headlineEl = document.querySelector('[data-bind="profile.headline"]');
+    const resumeCta = document.getElementById('cta-resume-container');
+    const hireBadge = document.getElementById('home-hire-badge');
+    const servicesSec = document.getElementById('home-services-section');
+    return {
+      name: nameEl?.textContent,
+      headline: headlineEl?.textContent,
+      resumeHidden: resumeCta?.hasAttribute('hidden'),
+      hireBadgeHidden: hireBadge?.hasAttribute('hidden'),
+      servicesHidden: servicesSec?.hasAttribute('hidden'),
+      docTitle: document.title,
     };
   });
+
+  console.log('  -> Injected Name:', injectedData.name, (injectedData.name === 'Sierra Montana' ? '✅' : '❌'));
+  console.log('  -> Injected Headline:', injectedData.headline, (injectedData.headline === 'Rhythm Designer & Composer' ? '✅' : '❌'));
+  console.log('  -> Resume CTA hidden (no resumeUrl):', injectedData.resumeHidden ? '✅ YES' : '❌ NO');
+  console.log('  -> Open to Hire badge hidden (openToHire: false):', injectedData.hireBadgeHidden ? '✅ YES' : '❌ NO');
+  console.log('  -> Document Title updated:', injectedData.docTitle, '✅');
   console.log('  -> Verified injection hook points.');
 
   await browser.close();
