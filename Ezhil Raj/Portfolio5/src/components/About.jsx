@@ -3,7 +3,8 @@ import { CheckCircle2, User, Sparkles } from 'lucide-react';
 import { playCyberTone } from '../utils/audio';
 import SpotlightCard from './reactbits/SpotlightCard';
 
-export default function About() {
+export default function About({ profileData }) {
+  const bio = profileData?.profile?.bio;
   const metrics = [
     { number: '7+', label: 'Key Engineered Projects', icon: 'fas fa-diagram-project', color: 'rgba(0, 240, 255, 0.2)' },
     { number: '156+', label: 'LeetCode & DSA Solved', icon: 'fas fa-code', color: 'rgba(245, 158, 11, 0.2)' },
@@ -30,7 +31,7 @@ export default function About() {
           Architecting The <span className="text-gradient">Cloud Future</span>
         </h2>
         <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
-          Passionate engineering student stepping forward in DevOps automation, cloud architecture, and high-performance algorithmic programming.
+          {profileData?.profile?.headline || 'Passionate engineering student stepping forward in DevOps automation, cloud architecture, and high-performance algorithmic programming.'}
         </p>
       </div>
 
@@ -61,12 +62,18 @@ export default function About() {
         {/* Narrative & Pillars */}
         <div className="lg:col-span-6 flex flex-col justify-center">
           <div className="space-y-4 text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
-            <p>
-              I am an Information Technology student at <strong>Dr. Mahalingam College of Engineering and Technology</strong>. My passion is rooted in building reliable cloud platforms, optimizing Linux workloads, and orchestrating container environments.
-            </p>
-            <p>
-              I bridge foundational software engineering with modern cloud DevOps practices — ensuring every service is <strong>scalable, self-healing, and continuously deployed</strong>.
-            </p>
+            {bio ? (
+              <p>{bio}</p>
+            ) : (
+              <>
+                <p>
+                  I am an Information Technology student at <strong>Dr. Mahalingam College of Engineering and Technology</strong>. My passion is rooted in building reliable cloud platforms, optimizing Linux workloads, and orchestrating container environments.
+                </p>
+                <p>
+                  I bridge foundational software engineering with modern cloud DevOps practices — ensuring every service is <strong>scalable, self-healing, and continuously deployed</strong>.
+                </p>
+              </>
+            )}
           </div>
 
           {/* 4 Pillars Grid */}

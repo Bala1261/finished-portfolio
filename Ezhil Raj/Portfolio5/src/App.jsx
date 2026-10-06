@@ -102,7 +102,7 @@ export default function App() {
         {/* Route 2: Portfolio (#portfolio) with Canonical Hierarchy */}
         <div id="portfolio" className="relative scroll-mt-24">
           {/* Identity & Biography */}
-          <About />
+          <About profileData={profileData} />
 
           {/* Technical Capabilities & Stack */}
           <Skills />

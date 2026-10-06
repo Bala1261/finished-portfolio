@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="BEXO Cloud, DevOps & Full-Stack Portfolio Standard — Cloud Infrastructure & Kinetic WebGL Edition" />
+    <title>BEXO Cloud &amp; DevOps Portfolio Standard</title>
+    <style>
+      :root {
+        --ink: #f8fafc;
+        --muted: #94a3b8;
+        --paper: #030712;
+        --panel: rgba(11, 19, 38, 0.72);
+        --panel-elevated: #111e38;
+        --line: rgba(255, 255, 255, 0.08);
+        --border-subtle: #1e293b;
+        --accent: #00f0ff;
+        --accent-soft: rgba(0, 240, 255, 0.12);
+        --blue: #38bdf8;
+        --blue-soft: rgba(56, 189, 248, 0.12);
+        --purple: #8b5cf6;
+        --purple-soft: rgba(139, 92, 246, 0.12);
+        --green: #10b981;
+        --green-soft: rgba(16, 185, 129, 0.14);
+        --amber: #f59e0b;
+        --amber-soft: rgba(245, 158, 11, 0.14);
+        --red: #ef4444;
+        --red-soft: rgba(239, 68, 68, 0.14);
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.6);
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      a { color: var(--blue); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 14px 5vw;
+        background: rgba(3, 7, 18, 0.94);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(14px);
+      }
+      .brand {
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #fff;
+      }
+      .brand-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 10px var(--accent);
+      }
+      .version {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 260px minmax(0, 920px);
+        gap: 44px;
+        width: min(1280px, 90vw);
+        margin: 0 auto;
+      }
+      aside {
+        position: sticky;
+        top: 82px;
+        align-self: start;
+        max-height: calc(100vh - 104px);
+        overflow: auto;
+        padding: 28px 0;
+      }
+      aside h2 {
+        margin: 0 0 10px;
+        font-size: 12px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      aside a {
+        display: block;
+        padding: 7px 10px;
+        color: var(--muted);
+        text-decoration: none;
+        border-left: 2px solid transparent;
+        transition: all 0.2s ease;
+      }
+      aside a:hover, aside a:focus {
+        color: var(--accent);
+        border-left-color: var(--accent);
+        background: var(--accent-soft);
+      }
+      main { padding: 70px 0 100px; }
+      .hero {
+        padding: 42px;
+        background: linear-gradient(135deg, #091326, #112240);
+        color: #fff;
+        border-radius: 28px;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: -40%;
+        right: -20%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+      }
+      h1, h2, h3 { line-height: 1.15; letter-spacing: -0.03em; }
+      h1 { margin: 0 0 18px; max-width: 700px; font-size: clamp(36px, 6vw, 68px); }
+      h2 { margin: 70px 0 18px; font-size: 32px; scroll-margin-top: 90px; color: #f8fafc; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+      h3 { margin: 28px 0 10px; font-size: 21px; scroll-margin-top: 90px; color: #e2e8f0; }
+      p { max-width: 78ch; color: #cbd5e1; }
+      .hero p { max-width: 64ch; color: #cbd5e1; font-size: 17px; }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .callout {
+        margin: 20px 0;
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+        border-left: 5px solid var(--blue);
+        border-radius: 12px;
+        background: var(--panel);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+      .callout.must { border-left-color: var(--green); background: rgba(16, 185, 129, 0.08); }
+      .callout.conditional { border-left-color: var(--amber); background: rgba(245, 158, 11, 0.08); }
+      .callout.forbidden { border-left-color: var(--red); background: rgba(239, 68, 68, 0.08); }
+      .label {
+        display: inline-block;
+        margin-bottom: 5px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
+      .must .label { color: var(--green); }
+      .conditional .label { color: var(--amber); }
+      .forbidden .label { color: var(--red); }
+      .route-grid, .two-col { display: grid; gap: 18px; }
+      .route-grid { grid-template-columns: repeat(4, 1fr); }
+      .two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card {
+        padding: 22px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(12px);
+      }
+      .card h3 { margin-top: 0; font-size: 19px; }
+      .route { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: var(--accent); font-weight: 700; }
+      .status {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 3px 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        background: var(--green-soft);
+        color: var(--green);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 18px 0;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      th, td { padding: 13px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+      th { background: rgba(17, 30, 56, 0.85); font-size: 13px; letter-spacing: .04em; color: #f1f5f9; }
+      tr:last-child td { border-bottom: 0; }
+      code {
+        padding: 2px 6px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--accent);
+        font: 13px ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      pre {
+        overflow: auto;
+        padding: 20px;
+        border-radius: 14px;
+        background: #060b17;
+        border: 1px solid var(--line);
+        color: #e2e8f0;
+        font: 13px/1.65 ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      .checklist { display: grid; gap: 10px; padding: 0; list-style: none; }
+      .checklist li {
+        padding: 11px 14px 11px 38px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        position: relative;
+        color: #e2e8f0;
+      }
+      .checklist li::before {
+        content: "\25A1";
+        position: absolute;
+        left: 14px;
+        color: var(--accent);
+        font-size: 18px;
+        line-height: 1.2;
+      }
+      .metric {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .metric:last-child { border-bottom: 0; }
+      .metric strong { color: var(--accent); }
+      .footer {
+        margin-top: 80px;
+        padding-top: 20px;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        font-size: 13px;
+      }
+      @media (max-width: 900px) {
+        .layout { display: block; width: min(94vw, 720px); }
+        .topbar { padding: 12px 3vw; }
+        aside {
+          position: static;
+          max-height: none;
+          padding: 16px 0 0;
+          display: flex;
+          gap: 8px;
+          overflow: auto;
+          white-space: nowrap;
+        }
+        aside h2 { display: none; }
+        aside a { border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; background: var(--panel); }
+        main { padding-top: 34px; }
+        .hero { padding: 28px; }
+        .route-grid, .two-col { grid-template-columns: 1fr; }
+        h2 { margin-top: 48px; }
+        table { display: block; overflow-x: auto; white-space: normal; }
+      }
+      @media print {
+        .topbar, aside { display: none; }
+        .layout { display: block; width: 100%; }
+        main { padding: 0; }
+        .hero { color: #111; background: #fff; border: 2px solid #111; box-shadow: none; }
+        .hero p, .eyebrow { color: #333; }
+        .card, table { break-inside: avoid; box-shadow: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span>BEXO / Premium Templates</span>
+      </div>
+      <div class="version">Cloud &amp; DevOps Edition &middot; v1.0</div>
+    </header>
+    <div class="layout">
+      <aside aria-label="Document navigation">
+        <h2>On this page</h2>
+        <a href="#purpose">Purpose</a>
+        <a href="#routes">Routes</a>
+        <a href="#data">Data contract</a>
+        <a href="#pages">Page rules</a>
+        <a href="#visual">Visual rules</a>
+        <a href="#runtime">Renderer</a>
+        <a href="#accessibility">Accessibility</a>
+        <a href="#qa">QA checklist</a>
+        <a href="#map">File map</a>
+      </aside>
+      <main>
+        <section class="hero">
+          <p class="eyebrow">Canonical implementation guide</p>
+          <h1>BEXO Cloud &amp; DevOps Portfolio Standard</h1>
+          <p>A comprehensive visual and technical architecture standard for creating, validating, and deploying cloud developer portfolios matching BEXO 4-route navigation, cloud telemetry profiles, 3D WebGL kinetic visuals, responsive containment, and platform handoffs.</p>
+          <div class="chips">
+            <span class="chip">Reference: Cloud DevOps Edition</span>
+            <span class="chip">Four Public Routes</span>
+            <span class="chip">3D WebGL Sculpture</span>
+            <span class="chip">Data Contract (Jothimani)</span>
+            <span class="chip">Responsive + Accessible</span>
+          </div>
+        </section>
+
+        <section id="purpose">
+          <h2>1. Product purpose</h2>
+          <p>Every developer portfolio must answer four high-stakes engineering and hiring questions rapidly: who is this cloud &amp; DevOps engineer, what production architecture, container orchestration, and CI/CD pipelines prove their technical depth, how can an engineering team contact them directly, and how can they be hired or retained through the platform?</p>
+          <div class="callout must">
+            <span class="label">System rule</span>
+            <strong>Theme aesthetics may change, but the public-site contract is invariant.</strong> Production builds must ingest profile data via <code>window.__BEXO_PROFILE__</code> or normalized fallback contracts (<code>frontend/src/utils/profile-data.js</code>). Primary navigation must route seamlessly across all four sections.
+          </div>
+          <div class="callout forbidden">
+            <span class="label">Do not</span>
+            Hard-code developer identity into core component renderers without data fallbacks, introduce competing sub-navigations, or fabricate an isolated hiring checkout outside the platform handoff system.
+          </div>
+        </section>
+
+        <section id="routes">
+          <h2>2. Required page system</h2>
+          <div class="route-grid">
+            <article class="card">
+              <div class="route">/ (Hero)</div>
+              <h3>Home</h3>
+              <p>Identity, typewriter designation, 3D tilt portrait centerpiece with orbital badges (AWS, Docker, Linux, K8s), and primary "Explore Portfolio" action.</p>
+              <span class="status">Required</span>
+            </article>
+            <article class="card">
+              <div class="route">/#portfolio</div>
+              <h3>Portfolio</h3>
+              <p>Full engineering showcase: Biography &amp; Pillars, Interactive Tech Matrix, Chronological Timeline, Academic Foundation, Projects, and Certifications.</p>
+              <span class="status">Required</span>
+            </article>
+            <article class="card">
+              <div class="route">/#contact</div>
+              <h3>Contact</h3>
+              <p>Direct <code>mailto:</code> link, truthful availability badge, spam honeypot guard, and phone-supported inquiry portal.</p>
+              <span class="status">Required</span>
+            </article>
+            <article class="card">
+              <div class="route">/hire-me/{handle}</div>
+              <h3>Hire Me</h3>
+              <p>Talent acquisition modal &amp; route handing off directly to BEXO platform recruitment with instant direct mail fallback.</p>
+              <span class="status">Required</span>
+            </article>
+          </div>
+          <div class="callout conditional">
+            <span class="label">Navigation order</span>
+            <strong>Home &rarr; Portfolio &rarr; Contact &rarr; Hire Me.</strong> Labels, active route status, keyboard navigation focus, and return-to-top anchors must maintain absolute parity.
+          </div>
+        </section>
+
+        <section id="data">
+          <h2>3. Data contract</h2>
+          <p>Production environments inject the normalized profile object through <code>window.__BEXO_PROFILE__</code>. Local development is powered by <code>frontend/src/utils/profile-data.js</code>, maintaining seamless parity between dynamic production payloads and static previews.</p>
+          <pre aria-label="Profile data schema">{
+  "user": {
+    "name": "Jothimani",
+    "email": "jothimani782006@gmail.com",
+    "phone": "+91 94890 25415",
+    "photoUrl": "/portfolio_img.jpeg",
+    "resumeUrl": "/727624BIT110_Final_Resume_Jothimani-2027.pdf",
+    "openToHire": true,
+    "location": "Tamil Nadu, India"
+  },
+  "profile": {
+    "handle": "jothimani7806",
+    "headline": "Aspiring Cloud Engineer &amp; DevOps Developer",
+    "careerGoal": "Building resilient cloud infrastructure, container orchestration, and automated CI/CD deployment pipelines.",
+    "bio": "Specializing in resilient cloud infrastructure, container orchestration with Docker &amp; Kubernetes, and automated CI/CD deployment pipelines. Building the future of scalable web systems.",
+    "githubUrl": "https://github.com/jothimani7806",
+    "linkedinUrl": "https://www.linkedin.com/in/jothimani-p-7402a2328",
+    "leetcodeUrl": "https://leetcode.com/u/Jothimani06/"
+  }
+}</pre>
+          <div class="two-col">
+            <article class="card">
+              <h3>Normalized collections</h3>
+              <p>Consume <code>projectEntries</code>, <code>experienceEntries</code>, <code>educationEntries</code>, <code>skillEntries</code>, <code>certificateEntries</code>, and <code>achievementEntries</code> as normalized arrays.</p>
+            </article>
+            <article class="card">
+              <h3>Collection rules</h3>
+              <p>Render zero, one, or multiple items. Empty sections must self-suppress without leftover headings or irregular layout margins. Preserve external links, GitHub repositories, and preview assets.</p>
+            </article>
+          </div>
+          <div class="callout conditional">
+            <span class="label">Conditional content</span>
+            <code>user.resumeUrl</code> conditionally activates the Download Resume action in the hero and navigation. <code>user.openToHire === true</code> toggles the real-time "Available for Hire &amp; Cloud Internships" badge.
+          </div>
+        </section>
+
+        <section id="pages">
+          <h2>4. Page-by-page implementation rules</h2>
+          <h3>Home (<code>/#hero</code>)</h3>
+          <div class="card">
+            <div class="metric"><span>Identity</span><strong>Required (Jothimani + 3D Tilt Portrait Centerpiece)</strong></div>
+            <div class="metric"><span>Designation</span><strong>Aspiring Cloud Engineer &amp; DevOps Developer</strong></div>
+            <div class="metric"><span>Primary CTA</span><strong>Explore Portfolio (routes to #portfolio)</strong></div>
+            <div class="metric"><span>Resume CTA</span><strong>Conditional (rendered only when resumeUrl exists)</strong></div>
+            <div class="metric"><span>Centerpiece</span><strong>3D Mouse Tilt Portrait with Orbital Tech Badges (AWS, Docker, K8s, Linux)</strong></div>
+          </div>
+          <div class="callout must">
+            <span class="label">First viewport rule</span>
+            The initial above-the-fold viewport must communicate developer identity, core cloud specialization, and primary CTA without vertical truncation on standard mobile displays (320px&ndash;375px).
+          </div>
+
+          <h3>Portfolio (<code>/#portfolio</code>)</h3>
+          <p>Canonical section ordering: <strong>About &amp; Biography &rarr; Technical Capabilities &amp; Stack &rarr; Chronological Evolution (Timeline) &rarr; Academic Foundation &rarr; Selected Work (Projects) &rarr; Credentials &amp; Certifications &rarr; Algorithmic Milestones</strong>.</p>
+          <div class="two-col">
+            <article class="card">
+              <h3>Interactive Tech Matrix</h3>
+              <p>Categorized tabs across Cloud &amp; DevOps (AWS, Docker, Linux, Git), Programming (Python, JS, C, Java), Frontend &amp; Backend, and Database &amp; Tools.</p>
+            </article>
+            <article class="card">
+              <h3>Engineered Project Cards</h3>
+              <p>Featured projects (Routine Tracker, VLC Hand Gesture, AWS CI/CD Pipeline, Linux Sentinel CLI) showcasing architecture tags, description, and direct GitHub repositories.</p>
+            </article>
+          </div>
+
+          <h3>Contact (<code>/#contact</code>)</h3>
+          <div class="callout must">
+            <span class="label">Contact portal rules</span>
+            Direct <code>mailto:</code> link must be prominently rendered alongside the dynamic <code>openToHire</code> status indicator. The interactive form must include:
+          </div>
+          <ul>
+            <li>Name, Email, optional Phone, and Message fields with client-side sanitization.</li>
+            <li>Honeypot field (<code>website_trap</code>) to silently trap spam bots.</li>
+            <li>Real-time <code>aria-live</code> feedback announcing submission status.</li>
+            <li>Verified social links: GitHub, LinkedIn, and LeetCode.</li>
+          </ul>
+
+          <h3>Hire Me (<code>HireMeModal</code> / <code>/hire-me/{handle}</code>)</h3>
+          <div class="callout conditional">
+            <span class="label">Platform handoff</span>
+            Provide a dedicated recruitment dialog pointing to <code>https://portfolio-5-versal.vercel.app/hire-me/jothimani7806</code> with instant email fallback. Templates must not reinvent payment processing or independent checkout flows.
+          </div>
+        </section>
+
+        <section id="visual">
+          <h2>5. Visual and interaction standard</h2>
+          <div class="two-col">
+            <article class="card">
+              <h3>Cloud &amp; DevOps Design Language</h3>
+              <p>Deep cosmic canvas (<code>#030712</code>), glassmorphic console surfaces (<code>rgba(11, 19, 38, 0.72)</code>), electric cyan telemetry accent (<code>#00f0ff</code>), AWS sky blue (<code>#38bdf8</code>), and Kubernetes violet (<code>#8b5cf6</code>).</p>
+            </article>
+            <article class="card">
+              <h3>Responsive Breakpoints</h3>
+              <p>Mobile (320px&ndash;640px), Tablet (641px&ndash;1024px), Desktop (1025px+). Strictly zero horizontal scroll at 320px CSS width. Fluid typography prevents word breaking.</p>
+            </article>
+          </div>
+
+          <h3>Canonical CSS Variables</h3>
+          <table>
+            <thead>
+              <tr><th>Variable</th><th>Cloud Palette Value</th><th>Role &amp; Application</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>--ink</code></td><td><code>#f8fafc</code></td><td>Primary telemetry text and headers.</td></tr>
+              <tr><td><code>--muted</code> / <code>--muted-text</code></td><td><code>#94a3b8</code></td><td>Subdued slate for secondary metrics and descriptions.</td></tr>
+              <tr><td><code>--paper</code></td><td><code>#030712</code></td><td>Deep cosmic background canvas.</td></tr>
+              <tr><td><code>--panel</code></td><td><code>rgba(11, 19, 38, 0.72)</code></td><td>Glassmorphic container card and modal surface.</td></tr>
+              <tr><td><code>--panel-elevated</code></td><td><code>#111e38</code></td><td>Elevated terminal panel for active states.</td></tr>
+              <tr><td><code>--line</code></td><td><code>rgba(255, 255, 255, 0.08)</code></td><td>Subtle container mesh dividing lines.</td></tr>
+              <tr><td><code>--accent</code></td><td><code>#00f0ff</code></td><td>Electric cyan telemetry highlights and active glow.</td></tr>
+              <tr><td><code>--blue</code></td><td><code>#38bdf8</code></td><td>AWS sky blue for links and secondary brand accents.</td></tr>
+              <tr><td><code>--purple</code></td><td><code>#8b5cf6</code></td><td>Kubernetes cluster orchestrator violet accent.</td></tr>
+              <tr><td><code>--green-standard</code></td><td><code>#10b981</code></td><td>Healthy cluster probe, success toasts, and available-for-hire badge.</td></tr>
+              <tr><td><code>--amber-standard</code></td><td><code>#f59e0b</code></td><td>Pipeline warnings, caution states, and pending indicators.</td></tr>
+              <tr><td><code>--red-standard</code></td><td><code>#ef4444</code></td><td>Pod crash alerts, honeypot traps, and validation errors.</td></tr>
+              <tr><td><code>--shadow</code></td><td><code>0 18px 50px rgba(0, 0, 0, 0.6)</code></td><td>High-depth glassmorphic elevation shadow.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="runtime">
+          <h2>6. Renderer integration map</h2>
+          <table>
+            <thead>
+              <tr><th>Concern</th><th>File Location</th><th>Contract Rule</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Config &amp; Profile</td><td><code>frontend/src/utils/profile-data.js</code></td><td>Supplies Jothimani profile fields, social links, resume URL, and normalized entries.</td></tr>
+              <tr><td>Global Design Tokens</td><td><code>frontend/src/index.css</code></td><td>Defines canonical <code>:root</code> tokens and Tailwind layers.</td></tr>
+              <tr><td>Floating Island Navbar</td><td><code>frontend/src/components/Navbar.jsx</code></td><td>Four routes with theme selector, audio toggle, and Hire Me trigger.</td></tr>
+              <tr><td>Hero Centerpiece</td><td><code>frontend/src/components/Hero.jsx</code></td><td>3D tilt portrait stage with orbital badges, typewriter, and CTAs.</td></tr>
+              <tr><td>3D Kinetic WebGL</td><td><code>frontend/src/components/ThreeCanvas.jsx</code></td><td>Procedural Three.js background sculpture with tone mapping.</td></tr>
+              <tr><td>3D Preloader</td><td><code>frontend/src/components/Preloader3D.jsx</code></td><td>Interactive 3D polyhedron quantum core animation with boot diagnostics.</td></tr>
+              <tr><td>Synthesized Audio</td><td><code>frontend/src/utils/audio.js</code></td><td>HTML5 Web Audio API cybernetic sound effects with persistent mute toggle.</td></tr>
+              <tr><td>Hire Me Modal</td><td><code>frontend/src/components/HireMeModal.jsx</code></td><td>Platform recruitment dialog with instant email fallback.</td></tr>
+              <tr><td>Contact Pipeline</td><td><code>frontend/src/components/Contact.jsx</code></td><td>Honeypot protection, field validation, and aria-live announcements.</td></tr>
+            </tbody>
+          </table>
+          <div class="callout forbidden">
+            <span class="label">Production safety</span>
+            Component renderers must always accept dynamic props or inspect <code>window.__BEXO_PROFILE__</code> before falling back to static constants.
+          </div>
+        </section>
+
+        <section id="accessibility">
+          <h2>7. Accessibility and SEO</h2>
+          <ul>
+            <li>Single descriptive <code>&lt;h1&gt;</code> per page with tailored title and meta description.</li>
+            <li>Accessible navigation with <code>aria-current="page"</code> and accessible mobile menu toggle.</li>
+            <li>Focus-visible rings on all interactive elements (buttons, inputs, links).</li>
+            <li>Informative <code>alt</code> text on profile images, certification badges, and project previews.</li>
+            <li>Visible form labels, native input types, real-time error toasts, and <code>aria-live</code> status indicators.</li>
+            <li>Full support for <code>prefers-reduced-motion: reduce</code> to prevent disorientation.</li>
+            <li>Synthesized audio includes an accessible persistent mute/unmute control.</li>
+            <li>Structured Open Graph images and metadata for rich previews on social platforms.</li>
+          </ul>
+        </section>
+
+        <section id="qa">
+          <h2>8. Acceptance checklist</h2>
+          <ul class="checklist">
+            <li>Home renders Jothimani identity, designation, 3D tilt portrait centerpiece, and Explore Portfolio CTA.</li>
+            <li>Resume button appears only when <code>profileData.user.resumeUrl</code> exists.</li>
+            <li>Availability badge displays conditionally based on <code>openToHire === true</code>.</li>
+            <li>Portfolio cleanly renders Tech Matrix, Projects, Timeline, Education, and Certifications.</li>
+            <li>Empty collections disappear completely without leftover gaps or empty headers.</li>
+            <li>Contact validates name, email, message, and gracefully accepts optional phone.</li>
+            <li>Honeypot field stops automated submissions without false positives.</li>
+            <li>Hire Me directs users cleanly to <code>/hire-me/{handle}</code> with email fallback.</li>
+            <li>Zero horizontal scrolling at 320px, 375px, 768px, and desktop widths.</li>
+            <li>Keyboard focus navigation, focus-visible indicators, and screen reader announcements pass inspection.</li>
+            <li>prefers-reduced-motion: reduce disables intrusive 3D transformations and animations.</li>
+            <li>Synthesized audio can be muted/unmuted with instant UI state reflection.</li>
+            <li>Console displays zero uncaught runtime exceptions or React errors.</li>
+            <li>Production profile injection via window.__BEXO_PROFILE__ overrides local defaults cleanly.</li>
+          </ul>
+        </section>
+
+        <section id="map">
+          <h2>9. Canonical file map</h2>
+          <table>
+            <thead>
+              <tr><th>Page / Feature</th><th>Source File</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Home / Hero Stage</td><td><code>frontend/src/components/Hero.jsx</code></td></tr>
+              <tr><td>Biography &amp; Pillars</td><td><code>frontend/src/components/About.jsx</code></td></tr>
+              <tr><td>Interactive Tech Matrix</td><td><code>frontend/src/components/Skills.jsx</code></td></tr>
+              <tr><td>Chronological Timeline</td><td><code>frontend/src/components/Timeline.jsx</code></td></tr>
+              <tr><td>Academic Foundation</td><td><code>frontend/src/components/Education.jsx</code></td></tr>
+              <tr><td>Selected Work (Projects)</td><td><code>frontend/src/components/Projects.jsx</code></td></tr>
+              <tr><td>Verified Certifications</td><td><code>frontend/src/components/Certifications.jsx</code></td></tr>
+              <tr><td>Problem Solving / LeetCode</td><td><code>frontend/src/components/ProblemSolving.jsx</code></td></tr>
+              <tr><td>Contact Pipeline</td><td><code>frontend/src/components/Contact.jsx</code></td></tr>
+              <tr><td>Hire Me Modal</td><td><code>frontend/src/components/HireMeModal.jsx</code></td></tr>
+              <tr><td>Design Tokens &amp; Styles</td><td><code>frontend/src/index.css</code>, <code>frontend/src/App.css</code></td></tr>
+              <tr><td>Profile Data Engine</td><td><code>frontend/src/utils/profile-data.js</code></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <footer class="footer">
+          BEXO Premium Templates &middot; Cloud &amp; DevOps Portfolio Standard v1.0 &middot; Update this handbook whenever platform contracts or schemas evolve.
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

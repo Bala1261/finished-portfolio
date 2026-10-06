@@ -103,6 +103,64 @@ export const defaultProfileData = {
       ],
     },
   ],
+  skillEntries: [
+    { name: 'Amazon Web Services (AWS)', category: 'cloud', level: 84, icon: 'fab fa-aws', color: '#ff9900' },
+    { name: 'Docker & Containers', category: 'cloud', level: 86, icon: 'fab fa-docker', color: '#2496ed' },
+    { name: 'Linux System Administration', category: 'cloud', level: 88, icon: 'fab fa-linux', color: '#fcc624' },
+    { name: 'Git & GitHub Actions', category: 'cloud', level: 90, icon: 'fab fa-git-alt', color: '#f05032' },
+    { name: 'Python', category: 'programming', level: 88, icon: 'fab fa-python', color: '#3776ab' },
+    { name: 'JavaScript (ES6+)', category: 'programming', level: 85, icon: 'fab fa-js', color: '#f7df1e' },
+    { name: 'C Language & Memory', category: 'programming', level: 85, icon: 'fas fa-c', color: '#00599c' },
+    { name: 'Java Core', category: 'programming', level: 80, icon: 'fab fa-java', color: '#ea2d2e' },
+    { name: 'React.js & Tailwind CSS', category: 'web', level: 84, icon: 'fab fa-react', color: '#61dafb' },
+    { name: 'Node.js & Express API', category: 'web', level: 82, icon: 'fab fa-node-js', color: '#68a063' },
+    { name: 'MongoDB & SQLite', category: 'data', level: 82, icon: 'fas fa-database', color: '#47a248' },
+    { name: 'Machine Learning (Scikit)', category: 'data', level: 78, icon: 'fas fa-brain', color: '#f58220' },
+  ],
+  certificateEntries: [
+    { title: 'AWS Academy Cloud Foundations', issuer: 'AWS Training & Certification', year: '2025', icon: 'fab fa-aws' },
+    { title: 'Linux Essentials Certification', issuer: 'LPI / Open Source', year: '2024', icon: 'fab fa-linux' },
+    { title: 'Artificial Intelligence Certification', issuer: 'Verified AI Program', year: '2024', icon: 'fas fa-brain' },
+    { title: 'Codesoft Internship Offer Letter', issuer: 'Codesoft Technologies', year: '2024', icon: 'fas fa-briefcase' },
+    { title: 'Thirax Full-Stack Internship', issuer: 'Thirax Web Solutions', year: '2025', icon: 'fas fa-file-shield' },
+    { title: 'Robo Miracle Robotics Internship', issuer: 'Robo Miracle Lab', year: '2024', icon: 'fas fa-robot' },
+    { title: 'Unstop Hackathons & Achievements', issuer: 'Unstop National Competitions', year: '2024', icon: 'fas fa-trophy' },
+  ],
+  achievementEntries: [
+    { title: '156+ LeetCode DSA Problems Solved', category: 'Algorithms', metric: '156+' },
+    { title: '7+ Production-Grade Engineered Systems', category: 'Engineering', metric: '7+' },
+    { title: '9+ Verified Technical Certifications', category: 'Credentials', metric: '9+' },
+  ],
+};
+
+/**
+ * Canonical BEXO Profile Contract Representation
+ */
+export const canonicalProfile = {
+  user: {
+    name: defaultProfileData.user.name,
+    email: defaultProfileData.user.email,
+    phone: defaultProfileData.user.phone,
+    photoUrl: defaultProfileData.user.photoUrl,
+    resumeUrl: defaultProfileData.user.resumeUrl,
+    openToHire: defaultProfileData.user.openToHire,
+    location: defaultProfileData.user.location,
+  },
+  profile: {
+    handle: defaultProfileData.profile.handle,
+    headline: defaultProfileData.profile.headline,
+    careerGoal: defaultProfileData.profile.careerGoal,
+    bio: defaultProfileData.profile.bio,
+    githubUrl: defaultProfileData.profile.githubUrl,
+    linkedinUrl: defaultProfileData.profile.linkedinUrl,
+    leetcodeUrl: defaultProfileData.profile.leetcodeUrl,
+  },
+  projectEntries: defaultProfileData.projectEntries,
+  experienceEntries: defaultProfileData.experienceEntries,
+  educationEntries: defaultProfileData.educationEntries,
+  skillEntries: defaultProfileData.skillEntries,
+  certificateEntries: defaultProfileData.certificateEntries,
+  achievementEntries: defaultProfileData.achievementEntries,
 };
 
 /**
@@ -110,17 +168,24 @@ export const defaultProfileData = {
  */
 export function getProfileData() {
   if (typeof window !== 'undefined' && window.__BEXO_PROFILE__) {
+    const injected = window.__BEXO_PROFILE__;
     return {
       ...defaultProfileData,
-      ...window.__BEXO_PROFILE__,
+      ...injected,
       user: {
         ...defaultProfileData.user,
-        ...(window.__BEXO_PROFILE__.user || {}),
+        ...(injected.user || {}),
       },
       profile: {
         ...defaultProfileData.profile,
-        ...(window.__BEXO_PROFILE__.profile || {}),
+        ...(injected.profile || {}),
       },
+      projectEntries: injected.projectEntries || defaultProfileData.projectEntries,
+      experienceEntries: injected.experienceEntries || defaultProfileData.experienceEntries,
+      educationEntries: injected.educationEntries || defaultProfileData.educationEntries,
+      skillEntries: injected.skillEntries || defaultProfileData.skillEntries,
+      certificateEntries: injected.certificateEntries || defaultProfileData.certificateEntries,
+      achievementEntries: injected.achievementEntries || defaultProfileData.achievementEntries,
     };
   }
   return defaultProfileData;
