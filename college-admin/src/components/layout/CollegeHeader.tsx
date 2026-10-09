@@ -227,7 +227,7 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
         </div>
 
         {/* Center: Global College-Scoped Search */}
-        <div style={{ flex: '1', maxWidth: '380px', margin: '0 20px', position: 'relative' }}>
+        <div style={{ flex: '1', minWidth: '220px', maxWidth: '360px', margin: '0 16px', position: 'relative' }}>
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -252,7 +252,7 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
             <input
               name="hdrSearch"
               type="text"
-              placeholder={`Search ${college?.code || 'college'} students, jobs, staff...`}
+              placeholder={`Search ${college?.code || 'college'} records...`}
               style={{
                 width: '100%',
                 height: '36px',
@@ -281,7 +281,7 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
         </div>
 
         {/* Right: Persona Switcher, Quota Bar, Notifications & User Info */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
           {/* Quick Persona Switcher for Testing Scenarios A-H */}
           <div ref={personaRef} style={{ position: 'relative' }}>
             <button
@@ -289,23 +289,24 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
-                padding: '6px 12px',
+                gap: '6px',
+                padding: '5px 10px',
                 borderRadius: '8px',
                 border: '1px solid #CBD5E1',
                 backgroundColor: personaOpen ? '#F8FAFC' : '#FFFFFF',
                 cursor: 'pointer',
-                fontSize: '12px',
+                fontSize: '11.5px',
                 color: '#1E293B',
                 boxShadow: '0 1px 2px rgba(0, 0, 0, 0.04)',
                 transition: 'all 0.15s ease',
+                whiteSpace: 'nowrap',
               }}
               title="Switch institutional testing persona"
             >
               <span style={{ fontSize: '11px', fontWeight: 600, color: '#64748B' }}>Persona:</span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
                 {currentUser.role === 'super_admin' ? (
-                  <Crown size={14} color="#D97706" />
+                  <Crown size={13} color="#D97706" />
                 ) : (
                   <div
                     style={{
@@ -324,14 +325,14 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
                     {currentUser.name.charAt(0)}
                   </div>
                 )}
-                <span style={{ fontWeight: 700, color: '#0F172A', maxWidth: '130px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                  {currentUser.name}
+                <span style={{ fontWeight: 700, color: '#0F172A', maxWidth: '105px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {currentUser.name.split(' ')[0]}
                 </span>
                 <span
                   style={{
-                    fontSize: '9.5px',
+                    fontSize: '9px',
                     fontWeight: 700,
-                    padding: '1px 5px',
+                    padding: '1px 4px',
                     borderRadius: '4px',
                     backgroundColor: currentUser.role === 'super_admin' ? '#FEF3C7' : '#F1F5F9',
                     color: currentUser.role === 'super_admin' ? '#92400E' : '#475569',
@@ -342,11 +343,12 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
                 </span>
               </div>
               <ChevronDown
-                size={14}
+                size={13}
                 color="#64748B"
                 style={{
                   transform: personaOpen ? 'rotate(180deg)' : 'none',
                   transition: 'transform 0.2s ease',
+                  flexShrink: 0,
                 }}
               />
             </button>
@@ -501,17 +503,18 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
           {college && (
             <div
               style={{
-                minWidth: '150px',
-                padding: '5px 10px',
+                width: '120px',
+                padding: '4px 8px',
                 borderRadius: '8px',
                 backgroundColor: '#F8FAFC',
                 border: '1px solid #E2E8F0',
+                flexShrink: 0,
               }}
               className="quota-header-widget"
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', fontWeight: 600, color: '#475569', marginBottom: '3px' }}>
-                <span>Quota Usage</span>
-                <span>{college.quota.used.toLocaleString()} / {college.quota.allocated.toLocaleString()}</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', fontWeight: 600, color: '#475569', marginBottom: '3px' }}>
+                <span>Quota</span>
+                <span>{college.quota.used} / {college.quota.allocated}</span>
               </div>
               <div style={{ height: '4px', backgroundColor: '#E2E8F0', borderRadius: '2px', overflow: 'hidden' }}>
                 <div
@@ -540,10 +543,11 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              flexShrink: 0,
             }}
             title="College Notifications"
           >
-            <Bell size={17} />
+            <Bell size={16} />
             {unreadNotificationCount > 0 && (
               <span
                 style={{
@@ -565,19 +569,20 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '8px',
-              padding: '4px 10px',
+              gap: '6px',
+              padding: '4px 8px',
               borderRadius: '8px',
               backgroundColor: '#F8FAFC',
               border: '1px solid #E2E8F0',
               cursor: 'pointer',
+              flexShrink: 0,
             }}
             title="View Profile"
           >
             <div
               style={{
-                width: '30px',
-                height: '30px',
+                width: '26px',
+                height: '26px',
                 borderRadius: '50%',
                 backgroundColor: '#2563EB',
                 color: '#FFFFFF',
@@ -585,44 +590,21 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontWeight: 700,
-                fontSize: '12px',
+                fontSize: '11px',
+                flexShrink: 0,
               }}
             >
               {currentUser.name.charAt(0)}
             </div>
-            <div style={{ textAlign: 'left' }}>
-              <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#0F172A', lineHeight: 1.2 }}>
-                {currentUser.name}
+            <div style={{ textAlign: 'left', lineHeight: 1.1 }}>
+              <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#0F172A', maxWidth: '85px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {currentUser.name.split(' ')[0]}
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                <span
-                  style={{
-                    fontSize: '9.5px',
-                    fontWeight: 700,
-                    color: '#2563EB',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.03em',
-                  }}
-                >
-                  {currentUser.role.replace('_', ' ')}
-                </span>
-                <span
-                  style={{
-                    fontSize: '9px',
-                    fontWeight: 700,
-                    padding: '1px 4px',
-                    borderRadius: '3px',
-                    backgroundColor: currentUser.accountStatus === 'ACTIVE' ? '#DCFCE7' : '#FEF3C7',
-                    color: currentUser.accountStatus === 'ACTIVE' ? '#166534' : '#92400E',
-                  }}
-                >
-                  {currentUser.accountStatus || 'ACTIVE'}
-                </span>
+              <div style={{ fontSize: '9px', fontWeight: 700, color: '#2563EB', textTransform: 'uppercase' }}>
+                {currentUser.role.replace('college_', '').replace('_', ' ')}
               </div>
             </div>
           </div>
-
-
 
           {/* Logout */}
           <button
@@ -631,7 +613,7 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
               navigate('/login');
             }}
             style={{
-              padding: '7px 10px',
+              padding: '6px 8px',
               borderRadius: '7px',
               backgroundColor: 'transparent',
               border: '1px solid #E2E8F0',
@@ -639,14 +621,15 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '6px',
-              fontSize: '12px',
+              gap: '4px',
+              fontSize: '11.5px',
               fontWeight: 600,
+              flexShrink: 0,
             }}
             title="Sign Out"
           >
-            <LogOut size={15} />
-            <span>Sign Out</span>
+            <LogOut size={13} />
+            <span>Exit</span>
           </button>
         </div>
       </header>
