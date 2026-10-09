@@ -1,18 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { useRouter } from '../../router/Router';
 import { useAdmin } from '../../context/AdminContext';
 import {
   Building2,
   Bell,
   LogOut,
-  Shield,
   AlertTriangle,
-  Layers,
-  ChevronDown,
-  User,
-  GraduationCap,
-  Check,
-  Crown,
 } from 'lucide-react';
 
 interface CollegeHeaderProps {
@@ -23,8 +16,6 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
   const { navigate } = useRouter();
   const {
     currentUser,
-    setCurrentUser,
-    staffUsers,
     logout,
     colleges,
     currentCollege,
@@ -45,63 +36,6 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
   const quotaPercent = college
     ? Math.min(100, Math.round((college.quota.used / Math.max(1, college.quota.allocated)) * 100))
     : 0;
-
-  const [personaOpen, setPersonaOpen] = useState(false);
-  const personaRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (personaRef.current && !personaRef.current.contains(e.target as Node)) {
-        setPersonaOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const personaGroups = [
-    {
-      group: 'College A: PSG Tech',
-      badge: { text: 'ACTIVE', bg: '#DCFCE7', color: '#166534' },
-      users: [
-        { id: 'usr-psg-admin', name: 'Prof. Venkatesh', role: 'College Admin', dept: 'ECE / Admin' },
-        { id: 'usr-psg-coord', name: 'Dr. Priya Murali', role: 'Coordinator', dept: 'CSE / Coordinator' },
-        { id: 'usr-psg-staff', name: 'K. Anand', role: 'College Staff', dept: 'IT / Operations' },
-      ],
-    },
-    {
-      group: 'College B: KCT',
-      badge: { text: 'ACTIVE', bg: '#DCFCE7', color: '#166534' },
-      users: [
-        { id: 'usr-kct-admin', name: 'Dr. Preetha S.', role: 'College Admin', dept: 'Admin' },
-      ],
-    },
-    {
-      group: 'College C: BIT',
-      badge: { text: 'HIGH QUOTA', bg: '#EFF6FF', color: '#2563EB' },
-      users: [
-        { id: 'usr-bit-admin', name: 'Prof. M. Ramesh', role: 'College Admin', dept: 'Admin' },
-      ],
-    },
-    {
-      group: 'College D: CIT',
-      badge: { text: 'SUSPENDED', bg: '#FEE2E2', color: '#991B1B' },
-      users: [
-        { id: 'usr-cit-admin', name: 'Dr. T. Sridhar', role: 'College Admin (Suspended)', dept: 'Admin' },
-      ],
-    },
-    ...(isCorporateAdmin
-      ? [
-          {
-            group: 'Corporate Central HQ',
-            badge: { text: 'CENTRAL HQ', bg: '#FEF3C7', color: '#92400E' },
-            users: [
-              { id: 'usr-super-kavin', name: 'Kavinbalaji', role: 'Super Admin', dept: 'Central Platform HQ' },
-            ],
-          },
-        ]
-      : []),
-  ];
 
   return (
     <div>
@@ -224,225 +158,8 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
           </div>
         </div>
 
-        {/* Right: Persona Switcher, Quota Bar, Notifications & User Info */}
+        {/* Right: Quota Bar, Notifications & User Info */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
-          {/* Quick Persona Switcher for Testing Scenarios A-H */}
-          <div ref={personaRef} style={{ position: 'relative' }}>
-            <button
-              onClick={() => setPersonaOpen(!personaOpen)}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '5px 10px',
-                borderRadius: '8px',
-                border: '1px solid #CBD5E1',
-                backgroundColor: personaOpen ? '#F8FAFC' : '#FFFFFF',
-                cursor: 'pointer',
-                fontSize: '11.5px',
-                color: '#1E293B',
-                boxShadow: '0 1px 2px rgba(0, 0, 0, 0.04)',
-                transition: 'all 0.15s ease',
-                whiteSpace: 'nowrap',
-              }}
-              title="Switch institutional testing persona"
-            >
-              <span style={{ fontSize: '11px', fontWeight: 600, color: '#64748B' }}>Persona:</span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                {currentUser.role === 'super_admin' ? (
-                  <Crown size={13} color="#D97706" />
-                ) : (
-                  <div
-                    style={{
-                      width: '18px',
-                      height: '18px',
-                      borderRadius: '50%',
-                      backgroundColor: '#EFF6FF',
-                      color: '#2563EB',
-                      fontSize: '10px',
-                      fontWeight: 800,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    {currentUser.name.charAt(0)}
-                  </div>
-                )}
-                <span style={{ fontWeight: 700, color: '#0F172A', maxWidth: '105px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                  {currentUser.name.split(' ')[0]}
-                </span>
-                <span
-                  style={{
-                    fontSize: '9px',
-                    fontWeight: 700,
-                    padding: '1px 4px',
-                    borderRadius: '4px',
-                    backgroundColor: currentUser.role === 'super_admin' ? '#FEF3C7' : '#F1F5F9',
-                    color: currentUser.role === 'super_admin' ? '#92400E' : '#475569',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {currentUser.role === 'super_admin' ? 'Super Admin' : currentUser.role.replace('college_', '').replace('_', ' ')}
-                </span>
-              </div>
-              <ChevronDown
-                size={13}
-                color="#64748B"
-                style={{
-                  transform: personaOpen ? 'rotate(180deg)' : 'none',
-                  transition: 'transform 0.2s ease',
-                  flexShrink: 0,
-                }}
-              />
-            </button>
-
-            {personaOpen && (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 'calc(100% + 6px)',
-                  right: 0,
-                  width: '320px',
-                  backgroundColor: '#FFFFFF',
-                  borderRadius: '12px',
-                  border: '1px solid #E2E8F0',
-                  boxShadow: '0 12px 28px -4px rgba(15, 23, 42, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.06)',
-                  zIndex: 100,
-                  maxHeight: '440px',
-                  overflowY: 'auto',
-                  padding: '6px',
-                }}
-              >
-                <div style={{ padding: '8px 10px 6px', borderBottom: '1px solid #F1F5F9', marginBottom: '4px' }}>
-                  <div style={{ fontSize: '11px', fontWeight: 800, color: '#0F172A', letterSpacing: '0.02em' }}>
-                    Select Institutional Persona
-                  </div>
-                  <div style={{ fontSize: '10.5px', color: '#64748B', marginTop: '1px' }}>
-                    Simulate institutional college accounts & tenant permissions
-                  </div>
-                </div>
-
-                {personaGroups.map((grp, gIdx) => (
-                  <div key={gIdx} style={{ marginBottom: '8px' }}>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: '6px 10px 4px',
-                        fontSize: '10.5px',
-                        fontWeight: 800,
-                        color: '#475569',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.04em',
-                      }}
-                    >
-                      <span>{grp.group}</span>
-                      {grp.badge && (
-                        <span
-                          style={{
-                            fontSize: '9px',
-                            fontWeight: 800,
-                            padding: '1px 5px',
-                            borderRadius: '4px',
-                            backgroundColor: grp.badge.bg,
-                            color: grp.badge.color,
-                          }}
-                        >
-                          {grp.badge.text}
-                        </span>
-                      )}
-                    </div>
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                      {grp.users.map((u) => {
-                        const isSelected = currentUser.id === u.id;
-                        return (
-                          <button
-                            key={u.id}
-                            onClick={() => {
-                              const targetUser = staffUsers.find((su) => su.id === u.id);
-                              if (targetUser) {
-                                setCurrentUser(targetUser);
-                                setPersonaOpen(false);
-                                if (targetUser.collegeId) {
-                                  navigate('/college/dashboard');
-                                } else {
-                                  navigate('/admin');
-                                }
-                              }
-                            }}
-                            style={{
-                              width: '100%',
-                              textAlign: 'left',
-                              padding: '8px 10px',
-                              borderRadius: '8px',
-                              border: 'none',
-                              backgroundColor: isSelected ? '#EFF6FF' : 'transparent',
-                              cursor: 'pointer',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'space-between',
-                              transition: 'background-color 0.12s ease',
-                            }}
-                            onMouseEnter={(e) => {
-                              if (!isSelected) e.currentTarget.style.backgroundColor = '#F8FAFC';
-                            }}
-                            onMouseLeave={(e) => {
-                              if (!isSelected) e.currentTarget.style.backgroundColor = 'transparent';
-                            }}
-                          >
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-                              <div
-                                style={{
-                                  width: '26px',
-                                  height: '26px',
-                                  borderRadius: '50%',
-                                  backgroundColor: u.id === 'usr-super-kavin' ? '#FEF3C7' : isSelected ? '#2563EB' : '#F1F5F9',
-                                  color: u.id === 'usr-super-kavin' ? '#92400E' : isSelected ? '#FFFFFF' : '#475569',
-                                  fontSize: '11px',
-                                  fontWeight: 800,
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                  flexShrink: 0,
-                                }}
-                              >
-                                {u.id === 'usr-super-kavin' ? <Crown size={13} color="#D97706" /> : u.name.charAt(0)}
-                              </div>
-                              <div style={{ minWidth: 0 }}>
-                                <div
-                                  style={{
-                                    fontSize: '12px',
-                                    fontWeight: isSelected ? 800 : 600,
-                                    color: isSelected ? '#1D4ED8' : '#0F172A',
-                                    whiteSpace: 'nowrap',
-                                    overflow: 'hidden',
-                                    textOverflow: 'ellipsis',
-                                  }}
-                                >
-                                  {u.name}
-                                </div>
-                                <div style={{ fontSize: '10.5px', color: isSelected ? '#2563EB' : '#64748B', whiteSpace: 'nowrap' }}>
-                                  {u.role}
-                                </div>
-                              </div>
-                            </div>
-
-                            {isSelected && (
-                              <Check size={14} color="#2563EB" style={{ flexShrink: 0, marginLeft: '6px' }} />
-                            )}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
           {/* Quota indicator widget */}
           {college && (
             <div
