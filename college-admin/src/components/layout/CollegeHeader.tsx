@@ -11,9 +11,7 @@ import {
   ChevronDown,
   User,
   GraduationCap,
-  Sparkles,
   Check,
-  Search,
   Crown,
 } from 'lucide-react';
 
@@ -224,60 +222,6 @@ export const CollegeHeader: React.FC<CollegeHeaderProps> = ({ onToggleMobile }) 
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Center: Global College-Scoped Search */}
-        <div style={{ flex: '1', minWidth: '220px', maxWidth: '360px', margin: '0 16px', position: 'relative' }}>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              const input = (e.currentTarget.elements.namedItem('hdrSearch') as HTMLInputElement)?.value;
-              if (input && input.trim()) {
-                navigate(`/college/students`);
-              }
-            }}
-            style={{ width: '100%', position: 'relative' }}
-          >
-            <Search
-              size={15}
-              color="#94A3B8"
-              style={{
-                position: 'absolute',
-                left: '11px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                pointerEvents: 'none',
-              }}
-            />
-            <input
-              name="hdrSearch"
-              type="text"
-              placeholder={`Search ${college?.code || 'college'} records...`}
-              style={{
-                width: '100%',
-                height: '36px',
-                padding: '0 12px 0 34px',
-                borderRadius: '8px',
-                border: '1px solid #E2E8F0',
-                backgroundColor: '#F8FAFC',
-                fontSize: '12.5px',
-                color: '#0F172A',
-                outline: 'none',
-                boxSizing: 'border-box',
-                transition: 'all 0.15s ease',
-              }}
-              onFocus={(e) => {
-                e.currentTarget.style.borderColor = '#93C5FD';
-                e.currentTarget.style.backgroundColor = '#FFFFFF';
-                e.currentTarget.style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.1)';
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.borderColor = '#E2E8F0';
-                e.currentTarget.style.backgroundColor = '#F8FAFC';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            />
-          </form>
         </div>
 
         {/* Right: Persona Switcher, Quota Bar, Notifications & User Info */}
